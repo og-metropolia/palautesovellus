@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# manually added
+.env
+vite.config.js.timestamp-*
