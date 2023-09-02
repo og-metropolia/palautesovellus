@@ -1,0 +1,41 @@
+@import url('../assets/colors.css');
+
+.etusivu-container {
+    background-color: var(--p-blue);
+    height: 100vh;
+    text-align: center;
+    padding: 1em;
+    color: var(--p-yellow);
+  }
+
+  .teacher-login {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+
+  .teacher-login img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2em;
+  }
+
+  .feature {
+    margin: 1em;
+    text-align: center;
+    background-color: var(--p-orange);
+    color: var(--p-green);
+    padding: 1em;
+    border-radius: 10px;
+  }
+
+  .feature img {
+    width: 100px;
+    height: 100px;
+  }
