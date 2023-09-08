@@ -13,7 +13,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import routes from "../routes";
+import routes from "../constants/routes.mjs";
+import { authorize } from '../backend/sql.mjs'
 
 function Copyright(props) {
   return (
@@ -34,9 +35,11 @@ export default function SignInSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    authorize({
       email: data.get('email'),
       password: data.get('password'),
+    }).then((res) => {
+      console.log(res ? 'success' : 'fail')
     });
   };
 
@@ -97,7 +100,7 @@ export default function SignInSide() {
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                label="Muista minut"
               />
               <Button
                 type="submit"
@@ -105,17 +108,17 @@ export default function SignInSide() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Rekisteröidy
               </Button>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
-                    Forgot password?
+                    Unohditko salasanasi?
                   </Link>
                 </Grid>
                 <Grid item>
                   <Link component={RouterLink} to={routes.signup} variant="body2">
-                    {"Don't have an account? Sign Up"}
+                    {"Eikö sinulla ole käyttäjätunnusta? Rekisteröidy"}
                   </Link>
                 </Grid>
               </Grid>
