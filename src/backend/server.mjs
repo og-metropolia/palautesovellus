@@ -6,7 +6,9 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
-import { queryRecordsAll } from './sql.mjs';
+import { queryRecordsAll, insertRecord } from './sql.mjs';
+
+const SALT_ROUNDS = 10;
 
 dotenv.config();
 
@@ -54,15 +56,15 @@ function getUserByUsername() {
   });
 }
 
-export function authorize() {
+function authorize() {
   app.post(`/${API_PATH}/${ENDPOINTS.auth}`, async (req, res) => {
     const { email, password: submittedPassword } = req.body;
 
-    const queryString = `SELECT * FROM ${TABLES.users} WHERE sposti = ?`;
+    const queryString = `SELECT * FROM ${TABLES.users} WHERE email = ?`;
 
     conn.query(queryString, [email], async (err, results) => {
       if (err) {
-        console.error('Database error:', err);
+        console.error('Database error: ', err);
         return res.status(500).send('Internal Server Error');
       }
 
@@ -70,7 +72,7 @@ export function authorize() {
         const user = results[0];
         bcrypt.compare(
           submittedPassword,
-          user.salasana,
+          user.password,
           function (err, result) {
             if (err) throw err;
             res.send(result ? 'true' : 'false');
@@ -81,9 +83,35 @@ export function authorize() {
   });
 }
 
+async function createUser() {
+  app.post(`/${API_PATH}/${ENDPOINTS.users}`, (req, res) => {
+    const { firstName, lastName, password: inputPassword, email } = req.body;
+
+    bcrypt.hash(inputPassword, SALT_ROUNDS, function (err, hashedPassword) {
+      if (err) {
+        console.error('Error hashing password:', err);
+        return res
+          .status(500)
+          .json({ success: false, message: 'Server error' });
+      }
+
+      const createdAt = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+      insertRecord(
+        conn,
+        res,
+        TABLES.users,
+        'firstName, lastName, password, email, joined',
+        [firstName, lastName, hashedPassword, email, createdAt],
+      );
+    });
+  });
+}
+
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);
 });
 
 getRecordsAll(ENDPOINTS.users, TABLES.users);
 authorize();
+createUser();
