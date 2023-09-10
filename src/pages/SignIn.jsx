@@ -42,21 +42,12 @@ const defaultTheme = createTheme();
 export default function SignInSide() {
   const [showPassword, setShowPassword] = React.useState(false);
 
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     const email = data.get('email');
     const password = data.get('password');
-
-    const saltRounds = 10;
-
-    // const encrypted = Buffer.from(password).toString('base64');
-    // console.log(encrypted);
 
     fetch(`${BASE_URL}/auth`, {
       method: 'POST',
@@ -143,7 +134,7 @@ export default function SignInSide() {
                     <InputAdornment position="end">
                       <IconButton
                         aria-label="toggle password visibility"
-                        onClick={handleTogglePassword}
+                        onClick={() => setShowPassword(!showPassword)}
                         edge="end">
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
