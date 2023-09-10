@@ -3,6 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mysql from 'mysql';
 import cors from 'cors';
+import bcrypt from 'bcrypt';
 import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
 import { queryRecordsAll } from './sql.mjs';
@@ -29,7 +30,6 @@ conn.connect((err) => {
   console.log('MySQL successfully connected!');
 });
 
-
 function getRecordsAll(endpoint, tableName) {
   app.get(`/${API_PATH}/${endpoint}/`, async (req, res) => {
     queryRecordsAll(conn, res, tableName);
@@ -49,30 +49,37 @@ function getUserByUsername() {
       res,
       TABLES.users,
       'username',
-      req.params.username
+      req.params.username,
     );
   });
 }
 
 export function authorize() {
   app.post(`/${API_PATH}/${ENDPOINTS.auth}`, async (req, res) => {
-    const { email, password } = req.body;
-    const queryString = `SELECT * FROM ${TABLES.users} WHERE sposti = "${email}" AND salasana = "${password}"`
-    conn.query(queryString, (err, results) => {
+    const { email, password: submittedPassword } = req.body;
+
+    const queryString = `SELECT * FROM ${TABLES.users} WHERE sposti = ?`;
+
+    conn.query(queryString, [email], async (err, results) => {
       if (err) {
         console.error('Database error:', err);
         return res.status(500).send('Internal Server Error');
       }
 
       if (results.length > 0) {
-        res.send('true');
-      } else {
-        res.send('false');
+        const user = results[0];
+        bcrypt.compare(
+          submittedPassword,
+          user.salasana,
+          function (err, result) {
+            if (err) throw err;
+            res.send(result ? 'true' : 'false');
+          },
+        );
       }
     });
   });
 }
-
 
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);
