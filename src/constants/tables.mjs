@@ -1,3 +1,3 @@
 export default Object.freeze({
-  users: 'Opettaja'
-})
+  users: 'Teacher',
+});

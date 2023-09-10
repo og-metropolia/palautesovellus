@@ -19,12 +19,12 @@ export function insertRecord(
   response,
   tableName,
   fieldNames,
-  fieldValues
+  fieldValues,
 ) {
   try {
     const placeholders = Array.from(
       { length: fieldValues.length },
-      () => '?'
+      () => '?',
     ).join(', ');
     conn.query(
       `INSERT INTO ${tableName} (${fieldNames}) VALUES (${placeholders})`,
@@ -32,16 +32,20 @@ export function insertRecord(
       (err) => {
         if (err) {
           console.log('Error while inserting a record into the database', err);
-          return response.status(400).send();
+          returnresponse
+            .status(400)
+            .json({ code: 400, message: 'Record not found' });
         }
         return response
           .status(200)
-          .json({ message: 'Record created successfully!' });
-      }
+          .json({ code: 200, message: 'Record deleted successfully!' });
+      },
     );
   } catch (err) {
     console.log(err);
-    return response.status(500).send();
+    return response
+      .status(500)
+      .json({ code: 500, message: 'Internal Server Error' });
   }
 }
 
@@ -58,15 +62,19 @@ export function deleteRecord(conn, response, tableName, id) {
     conn.query(`DELETE FROM ${tableName} WHERE id = ?`, id, (err) => {
       if (err) {
         console.log('Error while deleting a record from the database', err);
-        return response.status(400).send();
+        return response
+          .status(400)
+          .json({ code: 400, message: 'Record not found' });
       }
       return response
         .status(200)
-        .json({ message: 'Record deleted successfully!' });
+        .json({ code: 200, message: 'Record deleted successfully!' });
     });
   } catch (err) {
     console.log(err);
-    return response.status(500).send();
+    return response
+      .status(500)
+      .json({ code: 500, message: 'Internal Server Error' });
   }
 }
 
@@ -82,13 +90,19 @@ export function queryRecordsAll(conn, response, tableName) {
     conn.query(`SELECT * FROM ${tableName}`, (err, results) => {
       if (err) {
         console.log(err);
-        return response.status(400).send();
+        return response
+          .status(400)
+          .json({ code: 400, message: 'Record not found' });
       }
-      response.status(200).json(results);
+      response
+        .status(200)
+        .json({ code: 200, message: 'Record deleted successfully!' });
     });
   } catch (err) {
     console.log(err);
-    return response.status(500).send();
+    return response
+      .status(500)
+      .json({ code: 500, message: 'Internal Server Error' });
   }
 }
 
@@ -106,7 +120,7 @@ export function queryRecordByAttribute(
   response,
   tableName,
   fieldName,
-  fieldValue
+  fieldValue,
 ) {
   conn.query(
     `SELECT * FROM ${tableName} WHERE ${fieldName} = ?`,
@@ -117,10 +131,11 @@ export function queryRecordByAttribute(
       }
       if (err) {
         console.log(err);
-        return response.status(400).send();
+        return response
+          .status(400)
+          .json({ code: 400, message: 'Record not found' });
       }
       response.status(200).json(results[0]);
-    }
+    },
   );
 }
-
