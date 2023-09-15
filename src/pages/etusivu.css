@@ -1,7 +1,10 @@
 @import url('../assets/colors.css');
 
-.etusivu-container {
+body {
     background-color: var(--p-blue);
+}
+
+.etusivu-container {
     height: 100vh;
     text-align: center;
     padding: 1em;
@@ -39,3 +42,4 @@
     width: 100px;
     height: 100px;
   }
+
