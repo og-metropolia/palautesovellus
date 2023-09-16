@@ -1,6 +1,11 @@
+import React from 'react';
+import TeachersQuestion from '../components/TeachersQuestion';
+
 function App() {
   return (
-    <div>tekstiä</div>
+    <div>
+      <TeachersQuestion content="Opettajan kysymys" color="black" backgroundColor="lightgray" />
+    </div>
   );
 }
 

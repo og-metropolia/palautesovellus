@@ -3,5 +3,6 @@ export default Object.freeze({
   login: '/login',
   signup: '/signup',
   dashboard: '/dashboard',
+  feedback: '/feedback',
 });
 
