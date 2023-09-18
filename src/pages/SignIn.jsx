@@ -19,7 +19,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Copyright from '../components/Copyright'
+import Copyright from '../components/Copyright';
 
 const defaultTheme = createTheme();
 
