@@ -1,8 +1,8 @@
+@import '../constants/colors.css';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 body {
   font-family: 'Open Sans', sans-serif;
-  /* background-color: #f4f6f9; */
   color: #333;
   line-height: 1.6;
   margin: 0;
@@ -10,24 +10,23 @@ body {
 }
 
 .landing-page {
-  background-color: #f4f6f9;
-  height: 100%;
+  background-color: var(--p-white);
 }
 
 h1 {
   text-align: center;
   padding: 2rem 0;
-  font-size: 5.5rem;
+  font-size: 2rem;
   color: #2c3e50;
 }
 
-.etusivu-container {
+.landing-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: var(--p-gray);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   margin: 1rem 2rem;
@@ -36,29 +35,30 @@ h1 {
     box-shadow 0.3s;
 }
 
-.etusivu-container:hover {
+.landing-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--landing-blue);
 }
 
-.etusivu-content {
+.landing-content {
   flex: 1;
   padding: 2rem;
   max-width: 50%;
 }
 
-.etusivu-content h2 {
+.landing-content h2 {
   margin-bottom: 1rem;
   color: #34495e;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
-.etusivu-content p {
+.landing-content p {
   margin-bottom: 1.5rem;
   color: #7f8c8d;
 }
 
-.frontpage-image {
+.landing-image {
   max-width: 50%;
   height: auto;
   border-radius: 15px;
@@ -67,18 +67,49 @@ h1 {
   transition: box-shadow 0.3s;
 }
 
-.frontpage-image:hover {
+.landing-image:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+/*Navabar*/
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Jakaa sisällön kahden pään välillä */
+  align-items: center; /* Keskitä elementit pystysuunnassa */
+  padding: 1rem 2rem; /* Voit säätää tämän tarpeesi mukaan */
+  background-color: var(--landing-blue);
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); /* Lisää varjo yläpalkkiin */
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-login-btn {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.navbar-login-btn:hover {
+  background-color: var(--p-white);
+}
+.navbar-login-btn {
+  background-color: var(--p-gray);
+}
+
 @media (max-width: 768px) {
-  .etusivu-container {
+  .landing-container {
     flex-direction: column;
     margin: 1rem 0.5rem;
   }
 
-  .etusivu-content,
-  .frontpage-image {
+  .landing-content,
+  .landing-image {
     max-width: 100%;
     margin-bottom: 1rem;
   }
@@ -87,7 +118,7 @@ h1 {
     font-size: 2rem;
   }
 
-  .etusivu-content h2 {
+  .landing-content h2 {
     font-size: 1.5rem;
   }
 }

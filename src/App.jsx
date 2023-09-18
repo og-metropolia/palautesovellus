@@ -10,17 +10,15 @@ import routes from './constants/routes.mjs';
 
 function App() {
   return (
-    <Router>
-      <Route
-        path={routes.landing}
-        component={Landing}
-        style={{ backgroundColor: 'black', color: 'red' }}
-      />
-      <Route path={routes.signup} component={SignUp} />
-      <Route path={routes.login} component={SignIn} />
-      <Route path={routes.dashboard} component={Dashboard} />
-      <Route path={routes.feedback} component={Feedback} />
-    </Router>
+    <>
+      <Router>
+        <Route path={routes.landing} component={Landing} />
+        <Route path={routes.signup} component={SignUp} />
+        <Route path={routes.login} component={SignIn} />
+        <Route path={routes.dashboard} component={Dashboard} />
+        <Route path={routes.feedback} component={Feedback} />
+      </Router>
+    </>
   );
 }
 

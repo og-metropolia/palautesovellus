@@ -1,15 +1,32 @@
 import './landing.css';
-import PersonIcon from '@mui/icons-material/Person';
-import Link from '@mui/material/Link';
+import { Person as PersonIcon } from '@mui/icons-material';
+import { Link } from '@mui/material';
 import routes from '../constants/routes.mjs';
+import Footer from '../components/Footer.jsx';
 
 export default function Landing() {
   return (
     <div className="landing-page">
-      <h1>Tervetuloa Palautepomppuun!</h1>
+      {/* Yläpalkki */}
+      <div className="navbar">
+        <Link className="navbar-brand" href="/">
+          <img
+            src="src/assets/logo_512x512.png"
+            alt="Palautepomppu Logo"
+            className="navbar-favicon"
+            width={48}
+          />
+        </Link>
+        <div className="navbar-actions">
+          <Link className="navbar-login-btn" href={routes.login}>
+            <PersonIcon style={{ fontSize: '44px' }} />
+          </Link>
+        </div>
+      </div>
+      <h1>Palautepomppu</h1>
 
-      <div className="etusivu-container">
-        <div className="etusivu-content">
+      <div className="landing-container">
+        <div className="landing-content">
           <h2>Moderni palautejärjestelmä opetukseen</h2>
           <p>
             Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen
@@ -18,14 +35,19 @@ export default function Landing() {
         </div>
 
         <img
-          className="frontpage-image"
-          src="src/assets/drawingfeedback.jpg"
-          alt="Luokkahuone, jossa lapset piirtävät palautettaan."
+          className="landing-image"
+          src="src/assets/student_drawing_on_tablet.jpg"
+          alt="Lapsi antamassa palautetta."
         />
       </div>
 
-      <div className="etusivu-container">
-        <div className="etusivu-content">
+      <div className="landing-container">
+        <img
+          className="landing-image"
+          src="src/assets/drawfeedback.jpg"
+          alt="Oppilas piirtää palautettaan."
+        />
+        <div className="landing-content">
           <h2>Piirrä palaute</h2>
           <p>
             Palautepomppu mahdollistaa palautteen antamisen myös piirrosten
@@ -40,22 +62,10 @@ export default function Landing() {
             jotka saattavat jäädä tekstipohjaisessa palautteessa huomaamatta.
           </p>
         </div>
-
-        <img
-          className="frontpage-image"
-          src="src/assets/drawfeedback.jpg"
-          alt="Oppilas piirtää palautettaan."
-        />
       </div>
 
-      <div className="etusivu-container">
-        <img
-          className="frontpage-image"
-          src="https://c1.staticflickr.com/5/4424/36362397355_62c51c217f_b.jpg"
-          alt="Opettaja tarkastelee saamaansa palautetta tietokoneeltaan."
-        />
-
-        <div className="etusivu-content">
+      <div className="landing-container">
+        <div className="landing-content">
           <h2>Tulosten analysointi ja toiminnan parantaminen</h2>
           <p>
             Saatu palaute on arvokasta vain, jos sen pohjalta voidaan tehdä
@@ -73,7 +83,13 @@ export default function Landing() {
             tarjoamaan oppilaillesi parhaan mahdollisen oppimiskokemuksen.
           </p>
         </div>
+        <img
+          className="landing-image"
+          src="src/assets/person_analyzing.png"
+          alt="Opettaja tarkastelee saamaansa palautetta."
+        />
       </div>
+      <Footer />
     </div>
   );
 }
