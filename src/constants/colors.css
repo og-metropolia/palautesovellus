@@ -2,12 +2,17 @@
 ! If you edit this file, you must also edit the js file: `src/constants/colors.mjs`
 */
 
-:root{
-    --p-red: #F36A47;
-    --p-orange: #F17E18;
-    --p-yellow: #FBE462;
-    --p-green: #83E73B;
-    --p-blue: #557FE0;
+:root {
+  --p-white: #f4f6f9;
+  --p-gray: #dedede;
 
-    --p-beige: #D1C0A8;
+  --p-red: #f36a47;
+  --p-orange: #f17e18;
+  --p-yellow: #fbe462;
+  --p-green: #83e73b;
+  --p-blue: #557fe0;
+
+  --p-beige: #d1c0a8;
+
+  --landing-blue: #6798de;
 }

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -9,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -19,7 +17,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import routes from '../constants/routes.mjs';
 import { BASE_URL } from '../constants/api.mjs';
-import Copyright from '../components/Copyright'
+import Copyright from '../components/Copyright';
+import colors from '../constants/colors.mjs';
 
 const defaultTheme = createTheme();
 
@@ -60,22 +59,23 @@ export default function SignUp() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 2,
+            marginBottom: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            backgroundColor: colors.gray,
+            padding: '24px',
+            borderRadius: '10px',
           }}>
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Rekisteröidy
-          </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}>
+          <img
+            src="src/assets/logo_512x512.png"
+            alt="Palautepomppu Logo"
+            className="navbar-favicon"
+            width={48}
+          />
+          <h1>Rekisteröidy</h1>
+          <Box component="form" noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -136,7 +136,7 @@ export default function SignUp() {
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
-                  label="Haluan vastaanottaa päivityksiä sähköpostin välityksellä."
+                  label="Haluan päivityksiä sähköpostilla."
                 />
               </Grid>
             </Grid>
@@ -144,7 +144,7 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}>
+              sx={{ mt: 1, mb: 1 }}>
               Rekisteröidy
             </Button>
             <Grid container justifyContent="flex-end">
@@ -155,8 +155,8 @@ export default function SignUp() {
               </Grid>
             </Grid>
           </Box>
+          <Copyright sx={{ mt: 5 }} />
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

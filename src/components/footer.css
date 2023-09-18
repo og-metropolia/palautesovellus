@@ -1,0 +1,51 @@
+@import url('../constants/colors.css');
+
+footer {
+  background-color: var(--landing-blue);
+  padding: 0.1rem 5%;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-container {
+  width: 15%;
+  padding: 1rem 0;
+}
+
+.footer-logo {
+  width: 60%;
+  height: auto;
+}
+
+.footer-col-1,
+.footer-col-2 {
+  width: 25%;
+  padding: 1rem 0;
+}
+
+h4 {
+  margin-bottom: 1rem;
+  color: rgb(82, 80, 80);
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+a {
+  color: #fff;
+  transition: color 0.3s;
+  text-underline-offset: 0.2rem;
+}
+
+a:hover {
+  color: #007bff;
+}

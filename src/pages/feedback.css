@@ -1,5 +1,13 @@
-@import "../constants/colors.css";
+@import '../constants/colors.css';
+
+.feedback-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
 body {
-    background-color: var(--p-blue) !important;
+  background-color: var(--p-blue);
 }
