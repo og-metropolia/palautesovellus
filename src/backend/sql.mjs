@@ -29,16 +29,16 @@ export function insertRecord(
     conn.query(
       `INSERT INTO ${tableName} (${fieldNames}) VALUES (${placeholders})`,
       fieldValues,
-      (err) => {
+      (err, results) => {
         if (err) {
           console.log('Error while inserting a record into the database', err);
-          returnresponse
+          return response
             .status(400)
             .json({ code: 400, message: 'Record not found' });
         }
         return response
           .status(200)
-          .json({ code: 200, message: 'Record deleted successfully!' });
+          .json({ code: 200, message: 'Record created successfully!', 'user_id': results.insertId });
       },
     );
   } catch (err) {

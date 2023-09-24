@@ -39,8 +39,9 @@ export default function SignInSide() {
       body: JSON.stringify({ email, password }),
     })
       .then((response) => response.json())
-      .then((isAllowed) => {
-        if (isAllowed) {
+      .then((data) => {
+        if (data.successful) {
+          window.localStorage.setItem('teacherId', data.teacherId);
           window.location.href = routes.dashboard;
         } else {
           alert('Virheellinen sähköposti tai salasana');

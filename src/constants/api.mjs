@@ -1,6 +1,8 @@
 export const ENDPOINTS = Object.freeze({
   users: 'users',
   auth: 'auth',
+  question: 'question',
+  session: 'session',
 });
 
 export const API_PATH = 'api/v0'
