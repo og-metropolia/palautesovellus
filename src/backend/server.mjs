@@ -6,7 +6,7 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
-import { queryRecordsAll, insertRecord } from './sql.mjs';
+import { queryRecordsAll, insertRecord, queryRecordByAttribute } from './sql.mjs';
 
 const SALT_ROUNDS = 10;
 
@@ -75,9 +75,12 @@ function authorize() {
           user.password,
           function (err, result) {
             if (err) throw err;
-            res.send(result ? 'true' : 'false');
+            res.status(200).json({ code: 200, successful: result ? true : false, "user_id": results[0].teacher_id });
           },
         );
+      } else {
+        console.error('Database error: ', err);
+        return res.status(400).send('User not found');
       }
     });
   });
@@ -108,6 +111,48 @@ async function createUser() {
   });
 }
 
+async function createQuestion() {
+  app.post(`/${API_PATH}/${ENDPOINTS.question}`, (req, res) => {
+    const { theme, content, answer_type } = req.body;
+
+    try {
+      insertRecord(
+        conn,
+        res,
+        TABLES.question,
+        'theme, content, answer_type, session_id',
+        [theme, content, answer_type, 1], // TODO: vältä kovakoodaus
+      );
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ success: false, message: 'Server error' });
+    };
+  });
+}
+
+async function createSession() {
+  app.post(`/${API_PATH}/${ENDPOINTS.session}`, (req, res) => {
+    const { teacher_id } = req.body;
+    const moment = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    try {
+      insertRecord(
+        conn,
+        res,
+        TABLES.session,
+        'teacher_id, moment',
+        [teacher_id, moment],
+      );
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ success: false, message: 'Server error' });
+    };
+  });
+}
+
+
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);
 });
@@ -115,3 +160,5 @@ app.listen(port, () => {
 getRecordsAll(ENDPOINTS.users, TABLES.users);
 authorize();
 createUser();
+createQuestion();
+createSession();
