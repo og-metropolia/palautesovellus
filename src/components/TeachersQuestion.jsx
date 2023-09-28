@@ -83,6 +83,20 @@ export default function TeachersQuestion(props) {
   };
 
   const handleSubmit = () => {
+    if (!selectedTopic || selectedTopic === '') {
+      alert('Valitse aihe kysymyksille ennen lähettämistä');
+      return;
+    } else if (questions.length === 1) {
+      alert('Luo ainakin yksi kysymys ennen lähettämistä');
+      return;
+    } else if (questions.some((q) => q.content === '')) {
+      alert('Täytä kaikki kysymykset ennen lähettämistä');
+      return;
+    } else if (questions.some((q) => !q.emoji && !q.draw && !q.write)) {
+      alert('Valitse vastauksien tyypit ennen lähettämistä');
+      return;
+    }
+
     const userId = window.localStorage.getItem('teacherId');
 
     if (!userId) {
