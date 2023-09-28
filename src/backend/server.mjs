@@ -42,24 +42,6 @@ function getRecordsAll(endpoint, tableName) {
   });
 }
 
-function getRecordById(endpoint, table) {
-  app.get(`/${API_PATH}/${endpoint}/:id`, async (req, res) => {
-    queryRecordByAttribute(conn, res, table, 'id', req.params.id);
-  });
-}
-
-function getUserByUsername() {
-  app.get(`/${API_PATH}/${ENDPOINTS.users}/:username`, async (req, res) => {
-    queryRecordByAttribute(
-      conn,
-      res,
-      TABLES.users,
-      'username',
-      req.params.username,
-    );
-  });
-}
-
 function authorize() {
   app.post(`/${API_PATH}/${ENDPOINTS.auth}`, async (req, res) => {
     const { email, password: submittedPassword } = req.body;
