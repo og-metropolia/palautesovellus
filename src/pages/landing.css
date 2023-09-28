@@ -71,37 +71,6 @@ h1 {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/*Navabar*/
-.navbar {
-  display: flex;
-  justify-content: space-between; /* Jakaa sisällön kahden pään välillä */
-  align-items: center; /* Keskitä elementit pystysuunnassa */
-  padding: 1rem 2rem; /* Voit säätää tämän tarpeesi mukaan */
-  background-color: var(--landing-blue);
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); /* Lisää varjo yläpalkkiin */
-}
-
-.navbar-actions {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-login-btn {
-  display: flex;
-  align-items: center;
-  color: #333;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.navbar-login-btn:hover {
-  background-color: var(--p-white);
-}
-.navbar-login-btn {
-  background-color: var(--p-gray);
-}
-
 @media (max-width: 768px) {
   .landing-container {
     flex-direction: column;

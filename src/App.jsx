@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/Landing';
 import Feedback from './pages/Feedback';
+import Session from './pages/Session';
 import routes from './constants/routes.mjs';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path={routes.login} component={SignIn} />
           <Route path={routes.dashboard} component={Dashboard} />
           <Route path={routes.feedback} component={Feedback} />
+          <Route path="/session/:id" component={Session} />
           <Route path="*">
             <Redirect to="/" />
           </Route>

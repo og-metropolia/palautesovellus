@@ -12,7 +12,7 @@ export default Object.freeze({
   // purple: '#A14EBF',
   // pink: '#F36A9D',
   // brown: '#A14E2E',
-  // black: '#000000',
+  black: '#000000',
 
   white: '#f4f6f9',
   gray: '#dedede',

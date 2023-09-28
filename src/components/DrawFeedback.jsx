@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { FaPencilAlt, FaEraser, FaCircle, FaPaperPlane, FaTrash } from 'react-icons/fa';
 import colors from '../constants/colors.mjs';
+import './draw-feedback.css';  // Note the lowercase here
 
 const DrawFeedback = (props) => {
     const canvasRef = useRef(null);
@@ -8,22 +9,37 @@ const DrawFeedback = (props) => {
     const [color, setColor] = useState(colors.black);
     const [tool, setTool] = useState('pen');
 
+    const getCoordinates = (event) => {
+        if (event.type.startsWith("touch")) {
+            return {
+                x: event.touches[0].clientX - event.target.offsetLeft,
+                y: event.touches[0].clientY - event.target.offsetTop
+            };
+        } else {
+            return {
+                x: event.nativeEvent.offsetX,
+                y: event.nativeEvent.offsetY
+            };
+        }
+    };
+
     const startDrawing = (event) => {
+        const coordinates = getCoordinates(event);
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
 
         if (tool === 'eraser') {
             ctx.globalCompositeOperation = 'destination-out';
-            ctx.lineWidth = 15; // voit säätää leveyttä
+            ctx.lineWidth = 15;
         } else {
             ctx.globalCompositeOperation = 'source-over';
-            ctx.lineWidth = 3; // voit säätää leveyttä
+            ctx.lineWidth = 3;
         }
 
         ctx.strokeStyle = color;
         ctx.lineJoin = "round";
         ctx.beginPath();
-        ctx.moveTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY);
+        ctx.moveTo(coordinates.x, coordinates.y);
         setIsDrawing(true);
     };
 
@@ -36,9 +52,10 @@ const DrawFeedback = (props) => {
 
     const draw = (event) => {
         if (!isDrawing) return;
+        const coordinates = getCoordinates(event);
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        ctx.lineTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY);
+        ctx.lineTo(coordinates.x, coordinates.y);
         ctx.stroke();
     };
 
@@ -60,8 +77,8 @@ const DrawFeedback = (props) => {
     };
 
     return (
-        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: props.neutralColor }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
+        <div className="container" style={{ backgroundColor: props.neutralColor }}>
+            <div className="button-group">
                 <button style={{ color: colors.black, marginRight: '5px' }} onClick={() => { setTool('pen'); setColor(colors.black); }}><FaPencilAlt /></button>
                 <button style={{ marginRight: '5px' }} onClick={() => setTool('eraser')}><FaEraser /></button>
                 <button style={{ color: colors.red, marginRight: '5px' }} onClick={() => selectColor(colors.red)}><FaCircle /></button>
@@ -72,14 +89,17 @@ const DrawFeedback = (props) => {
                 ref={canvasRef}
                 width={400}
                 height={400}
-                style={{ border: '1px solid black', marginBottom: '20px', backgroundColor: 'white' }}
+                className="canvas"
                 onMouseDown={startDrawing}
                 onMouseUp={stopDrawing}
                 onMouseMove={draw}
+                onTouchStart={startDrawing}
+                onTouchEnd={stopDrawing}
+                onTouchMove={draw}
             ></canvas>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                <button style={{ fontSize: '24px', marginRight: '10px', backgroundColor: props.bgColor, color: props.fgColor }} onClick={sendDrawingToTeacher}><FaPaperPlane /> Lähetä</button>
-                <button style={{ fontSize: '24px', backgroundColor: props.bgColor, color: props.fgColor }} onClick={clearCanvas}><FaTrash /> Tyhjennä</button>
+            <div className="button-group">
+                <button className="button" style={{ backgroundColor: props.bgColor, color: props.fgColor }} onClick={sendDrawingToTeacher}><FaPaperPlane /> Lähetä</button>
+                <button className="button" style={{ backgroundColor: props.bgColor, color: props.fgColor }} onClick={clearCanvas}><FaTrash /> Tyhjennä</button>
             </div>
         </div>
     );

@@ -22,7 +22,7 @@ export default function Footer() {
           <h4>Yhteystiedot</h4>
 
           <p>
-            Email:{' '}
+            Sähköposti:{' '}
             <a href=" mailto: info@palautepomppu.fi">info@palautepomppu.fi</a>
           </p>
           <p>

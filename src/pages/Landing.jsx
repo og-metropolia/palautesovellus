@@ -2,28 +2,13 @@ import './landing.css';
 import { Person as PersonIcon } from '@mui/icons-material';
 import { Link } from '@mui/material';
 import routes from '../constants/routes.mjs';
+import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 
 export default function Landing() {
   return (
     <div className="landing-page">
-      {/* Yläpalkki */}
-      <div className="navbar">
-        <Link className="navbar-brand" href="/">
-          <img
-            src="src/assets/logo_512x512.png"
-            alt="Palautepomppu Logo"
-            className="navbar-favicon"
-            width={48}
-          />
-        </Link>
-        <div className="navbar-actions">
-          <Link className="navbar-login-btn" href={routes.login}>
-            <PersonIcon style={{ fontSize: '44px' }} />
-          </Link>
-        </div>
-      </div>
-      <h1>Palautepomppu</h1>
+     <Navbar/>
 
       <div className="landing-container">
         <div className="landing-content">

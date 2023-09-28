@@ -1,0 +1,14 @@
+.container {
+  font-size: 5vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: auto;
+}
+
+.emoji {
+  cursor: pointer;
+  margin: 1vw;
+  transition: opacity 0.3s;
+}

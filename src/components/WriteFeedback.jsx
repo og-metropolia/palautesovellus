@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
+import './write-feedback.css'; // Import the CSS
 
 const WriteFeedback = (props) => {
     const [feedback, setFeedback] = useState('');
@@ -13,15 +14,22 @@ const WriteFeedback = (props) => {
     };
 
     return (
-        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="container">
             <textarea
                 value={feedback}
                 onChange={handleFeedbackChange}
                 rows={5}
                 placeholder="Kirjoita palaute tähän..."
-                style={{ width: '100%', marginBottom: '20px', color: props.color, backgroundColor: props.backgroundColor }}
+                className="textArea"
+                style={{
+                    color: props.color,
+                    backgroundColor: props.backgroundColor
+                }}
             />
-            <button onClick={submitFeedback} style={{ display: 'flex', alignItems: 'center', fontSize: '18px', color: props.fgColor, backgroundColor: props.bgColor }}>
+            <button onClick={submitFeedback} className="button" style={{
+                color: props.fgColor,
+                backgroundColor: props.bgColor
+            }}>
                 <FaPaperPlane style={{ marginRight: '5px' }} />
                 Lähetä
             </button>
@@ -30,3 +38,4 @@ const WriteFeedback = (props) => {
 };
 
 export default WriteFeedback;
+

@@ -1,0 +1,113 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--landing-blue);
+}
+
+.navbar h1 {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-favicon {
+  background-color: var(--p-white);
+  width: 100px;
+  border-radius: 50%;
+}
+
+.navbar-login-btn {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.navbar-login-btn:hover {
+  background-color: var(--p-white);
+}
+
+.navbar-login-btn {
+  background-color: var(--p-gray);
+}
+
+.logout-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-button {
+  font-size: 12px;
+  color: var(--p-white);
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+.icon-background {
+  background-color: var(--p-white);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.icon-background:hover {
+  background-color: var(--p-gray);
+}
+
+.pallo-gif {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  margin-left: 65%;
+}
+
+/* Määrittele tyyli pienille näytöille */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  h1 {
+    letter-spacing: 10px;
+    margin: 1rem 0;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logout-button {
+    flex-direction: column;
+  }
+
+  .text-button {
+    margin-top: 10%;
+    margin-left: 1rem;
+  }
+
+  .pallo-gif {
+    position: absolute;
+    width: 150px;
+    margin-left: 0%;
+    margin-top: 2%;
+  }
+}
