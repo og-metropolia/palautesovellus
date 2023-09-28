@@ -43,12 +43,13 @@ export default function SignUp() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.code === 200) {
           window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.id);
           window.location.href = routes.dashboard;
+        } else if (data.code === 400) {
+          alert('Virheellinen sähköposti tai salasana.');
         } else {
-          alert('Virhe rekisteröityessä');
+          alert('Tuntematon virhe.');
         }
       })
       .catch((error) => {

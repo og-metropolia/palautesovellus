@@ -76,6 +76,15 @@ async function createUser() {
   app.post(`/${API_PATH}/${ENDPOINTS.users}`, (req, res) => {
     const { firstName, lastName, password: inputPassword, email } = req.body;
 
+    const userExists = checkExistingUser(email);
+
+    if (userExists) {
+      return res.status(400).json({
+        success: false,
+        message: 'User already exists with given email',
+      });
+    }
+
     bcrypt.hash(inputPassword, SALT_ROUNDS, function (err, hashedPassword) {
       if (err) {
         console.error('Error hashing password:', err);
@@ -132,6 +141,25 @@ async function createSession() {
     } catch (error) {
       res.status(500).json({ success: false, message: 'Server error' });
     }
+  });
+}
+
+function checkExistingUser(email) {
+  return new Promise((resolve, reject) => {
+    const queryString = `SELECT * FROM ${TABLES.users} WHERE email = ?`;
+
+    conn.query(queryString, [email], (err, results) => {
+      if (err) {
+        console.error('Database error: ', err);
+        reject(err);
+      }
+
+      if (results.length > 0) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    });
   });
 }
 
