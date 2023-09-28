@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaSmile, FaMeh, FaFrown, FaAngry, FaLaugh, FaSurprise, FaGrin, FaTired } from 'react-icons/fa';
 import colors from '../constants/colors.mjs';
+import './emoji-feedback.css';  // Import the CSS
 
 const EmojiFeedback = (props) => {
     const [selectedEmoji, setSelectedEmoji] = useState(null);
@@ -24,11 +25,15 @@ const EmojiFeedback = (props) => {
     };
 
     return (
-        <div style={{ fontSize: '48px', display: 'flex', justifyContent: 'center' }}>
+        <div className="container">
             {Object.entries(emojis).map(([key, iconComponent]) => (
                 <span
                     key={key}
-                    style={{ color: props.fgColor, cursor: 'pointer', margin: '0 15px', opacity: selectedEmoji && selectedEmoji !== key ? 0.5 : 1 }}
+                    className="emoji"
+                    style={{
+                        color: props.fgColor,
+                        opacity: selectedEmoji && selectedEmoji !== key ? 0.5 : 1
+                    }}
                     onClick={() => handleEmojiClick(key)}
                 >
                     {iconComponent}

@@ -163,6 +163,28 @@ function checkExistingUser(email) {
   });
 }
 
+function queryQuestionsBySessionId() {
+  app.get(`/${API_PATH}/${ENDPOINTS.question}/:sessionId`, (req, res) => {
+    const { session_id } = req.params.sessionId;
+
+    const queryString = `SELECT * FROM ${TABLES.question} WHERE session_id = ?`;
+
+    conn.query(queryString, [session_id], (err, results) => {
+      if (err) {
+        console.error('Database error: ', err);
+        return res.status(500).send('Internal Server Error');
+      }
+
+        return res.status(200).json({
+          code: 200,
+          questions: results,
+        });
+
+    });
+  });
+
+}
+
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);
 });
@@ -172,3 +194,4 @@ authorize();
 createUser();
 createQuestion();
 createSession();
+queryQuestionsBySessionId();

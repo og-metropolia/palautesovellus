@@ -1,5 +1,6 @@
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import routes from '../constants/routes.mjs'
 
 export default function Copyright(props) {
   return (
@@ -9,7 +10,7 @@ export default function Copyright(props) {
       align="center"
       {...props}>
       {'Tekijänoikeudet © '}
-      <Link color="inherit" href="https://palautepomppu.fi/">
+      <Link color="inherit" href='/'>
         Palautepomppu
       </Link>{' '}
       {new Date().getFullYear()}
