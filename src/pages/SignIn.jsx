@@ -41,7 +41,7 @@ export default function SignInSide() {
       .then((response) => response.json())
       .then((data) => {
         if (data.successful) {
-          window.localStorage.setItem('teacherId', data.teacherId);
+          window.localStorage.setItem('teacherId', data.user_id);
           window.location.href = routes.dashboard;
         } else {
           alert('Virheellinen sähköposti tai salasana');
