@@ -32,20 +32,23 @@ export function insertRecord(
       (err, results) => {
         if (err) {
           console.log('Error while inserting a record into the database', err);
-          return response
+          response
             .status(400)
-            .json({ code: 400, message: 'Record not found' });
+            .json({ code: 400, message: 'Record could not be created!' });
+          return null;
         }
-        return response
-          .status(200)
-          .json({ code: 200, message: 'Record created successfully!', 'user_id': results.insertId });
+        response.status(200).json({
+          code: 200,
+          message: 'Record created successfully!',
+          id: results.insertId,
+        });
+        return { id: results.insertId };
       },
     );
   } catch (err) {
     console.log(err);
-    return response
-      .status(500)
-      .json({ code: 500, message: 'Internal Server Error' });
+    response.status(500).json({ code: 500, message: 'Internal Server Error' });
+    return null;
   }
 }
 

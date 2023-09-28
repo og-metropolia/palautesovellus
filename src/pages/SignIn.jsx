@@ -18,6 +18,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
+import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 
 const defaultTheme = createTheme();
 
@@ -41,7 +42,7 @@ export default function SignInSide() {
       .then((response) => response.json())
       .then((data) => {
         if (data.successful) {
-          window.localStorage.setItem('teacherId', data.teacherId);
+          window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.user_id);
           window.location.href = routes.dashboard;
         } else {
           alert('Virheellinen sähköposti tai salasana');

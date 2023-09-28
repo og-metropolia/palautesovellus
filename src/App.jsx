@@ -1,6 +1,11 @@
 import './index.css';
 import './reset.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
@@ -12,11 +17,16 @@ function App() {
   return (
     <>
       <Router>
-        <Route path={routes.landing} component={Landing} />
-        <Route path={routes.signup} component={SignUp} />
-        <Route path={routes.login} component={SignIn} />
-        <Route path={routes.dashboard} component={Dashboard} />
-        <Route path={routes.feedback} component={Feedback} />
+        <Switch>
+          <Route path={routes.landing} component={Landing} />
+          <Route path={routes.signup} component={SignUp} />
+          <Route path={routes.login} component={SignIn} />
+          <Route path={routes.dashboard} component={Dashboard} />
+          <Route path={routes.feedback} component={Feedback} />
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
+        </Switch>
       </Router>
     </>
   );

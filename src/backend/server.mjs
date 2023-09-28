@@ -6,7 +6,11 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
-import { queryRecordsAll, insertRecord, queryRecordByAttribute } from './sql.mjs';
+import {
+  queryRecordsAll,
+  insertRecord,
+  queryRecordByAttribute,
+} from './sql.mjs';
 
 const SALT_ROUNDS = 10;
 
@@ -38,24 +42,6 @@ function getRecordsAll(endpoint, tableName) {
   });
 }
 
-function getRecordById(endpoint, table) {
-  app.get(`/${API_PATH}/${endpoint}/:id`, async (req, res) => {
-    queryRecordByAttribute(conn, res, table, 'id', req.params.id);
-  });
-}
-
-function getUserByUsername() {
-  app.get(`/${API_PATH}/${ENDPOINTS.users}/:username`, async (req, res) => {
-    queryRecordByAttribute(
-      conn,
-      res,
-      TABLES.users,
-      'username',
-      req.params.username,
-    );
-  });
-}
-
 function authorize() {
   app.post(`/${API_PATH}/${ENDPOINTS.auth}`, async (req, res) => {
     const { email, password: submittedPassword } = req.body;
@@ -70,14 +56,14 @@ function authorize() {
 
       if (results.length > 0) {
         const user = results[0];
-        bcrypt.compare(
-          submittedPassword,
-          user.password,
-          function (err, result) {
-            if (err) throw err;
-            res.status(200).json({ code: 200, successful: result ? true : false, "user_id": results[0].teacher_id });
-          },
-        );
+        bcrypt.compare(submittedPassword, user.password, (err, result) => {
+          if (err) throw err;
+          res.status(200).json({
+            code: 200,
+            successful: result ? true : false,
+            user_id: results[0].teacher_id,
+          });
+        });
       } else {
         console.error('Database error: ', err);
         return res.status(400).send('User not found');
@@ -89,6 +75,15 @@ function authorize() {
 async function createUser() {
   app.post(`/${API_PATH}/${ENDPOINTS.users}`, (req, res) => {
     const { firstName, lastName, password: inputPassword, email } = req.body;
+
+    const userExists = checkExistingUser(email);
+
+    if (userExists) {
+      return res.status(400).json({
+        success: false,
+        message: 'User already exists with given email',
+      });
+    }
 
     bcrypt.hash(inputPassword, SALT_ROUNDS, function (err, hashedPassword) {
       if (err) {
@@ -113,21 +108,19 @@ async function createUser() {
 
 async function createQuestion() {
   app.post(`/${API_PATH}/${ENDPOINTS.question}`, (req, res) => {
-    const { theme, content, answer_type } = req.body;
+    const { session_id, theme, content, answer_type } = req.body;
 
     try {
       insertRecord(
         conn,
         res,
         TABLES.question,
-        'theme, content, answer_type, session_id',
-        [theme, content, answer_type, 1], // TODO: vältä kovakoodaus
+        'session_id, theme, content, answer_type',
+        [session_id, theme, content, answer_type],
       );
     } catch (error) {
-      return res
-        .status(500)
-        .json({ success: false, message: 'Server error' });
-    };
+      return res.status(500).json({ success: false, message: 'Server error' });
+    }
   });
 }
 
@@ -137,21 +130,38 @@ async function createSession() {
     const moment = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
     try {
-      insertRecord(
+      const createdSession = insertRecord(
         conn,
         res,
         TABLES.session,
         'teacher_id, moment',
         [teacher_id, moment],
       );
+      return createdSession;
     } catch (error) {
-      return res
-        .status(500)
-        .json({ success: false, message: 'Server error' });
-    };
+      res.status(500).json({ success: false, message: 'Server error' });
+    }
   });
 }
 
+function checkExistingUser(email) {
+  return new Promise((resolve, reject) => {
+    const queryString = `SELECT * FROM ${TABLES.users} WHERE email = ?`;
+
+    conn.query(queryString, [email], (err, results) => {
+      if (err) {
+        console.error('Database error: ', err);
+        reject(err);
+      }
+
+      if (results.length > 0) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    });
+  });
+}
 
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);

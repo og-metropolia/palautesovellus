@@ -16,9 +16,10 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import routes from '../constants/routes.mjs';
-import { BASE_URL } from '../constants/api.mjs';
+import { BASE_URL, ENDPOINTS } from '../constants/api.mjs';
 import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
+import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 
 const defaultTheme = createTheme();
 
@@ -33,7 +34,7 @@ export default function SignUp() {
     const firstName = data.get('firstName');
     const lastName = data.get('lastName');
 
-    fetch(`${BASE_URL}/users`, {
+    fetch(`${BASE_URL}/${ENDPOINTS.users}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,9 +44,12 @@ export default function SignUp() {
       .then((response) => response.json())
       .then((data) => {
         if (data.code === 200) {
+          window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.id);
           window.location.href = routes.dashboard;
+        } else if (data.code === 400) {
+          alert('Virheellinen sähköposti tai salasana.');
         } else {
-          alert(data.error);
+          alert('Tuntematon virhe.');
         }
       })
       .catch((error) => {
