@@ -164,8 +164,8 @@ function checkExistingUser(email) {
 }
 
 function queryQuestionsBySessionId() {
-  app.get(`/${API_PATH}/${ENDPOINTS.question}/:sessionId`, (req, res) => {
-    const { session_id } = req.params.sessionId;
+  app.get(`/${API_PATH}/${ENDPOINTS.question}`, (req, res) => {
+    const { session_id } = req.query;
 
     const queryString = `SELECT * FROM ${TABLES.question} WHERE session_id = ?`;
 
@@ -175,14 +175,12 @@ function queryQuestionsBySessionId() {
         return res.status(500).send('Internal Server Error');
       }
 
-        return res.status(200).json({
-          code: 200,
-          questions: results,
-        });
-
+      return res.status(200).json({
+        code: 200,
+        questions: results,
+      });
     });
   });
-
 }
 
 app.listen(port, () => {
