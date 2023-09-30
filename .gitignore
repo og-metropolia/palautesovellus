@@ -24,3 +24,7 @@ dist-ssr
 # manually added
 .env
 vite.config.js.timestamp-*
+
+
+## test coverage
+coverage/*
