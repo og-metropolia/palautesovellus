@@ -1,0 +1,20 @@
+{
+  "editor.formatOnSave": true,
+  "files.encoding": "utf8",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[markdown]": { "editor.formatOnSave": false },
+  "markdown.extension.toc.unorderedList.marker": "-",
+  "markdown.updateLinksOnFileMove.enabled": "always"
+}
