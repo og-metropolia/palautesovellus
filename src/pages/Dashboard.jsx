@@ -10,18 +10,16 @@ function App() {
   if (userId) {
     return (
       <>
-      <Navbar/>
-      <div>
-        <TeachersQuestion
-          content="Opettajan kysymys"
-          color="black"
-          backgroundColor="lightgray"
-          userId={userId}
-        />
-        {/* <button className="logout-button" onClick={logout}>Kirjaudu ulos</button> */}
-      </div>
+        <Navbar />
+        <div>
+          <TeachersQuestion
+            content="Opettajan kysymys"
+            color="black"
+            backgroundColor="lightgray"
+            userId={userId}
+          />
+        </div>
       </>
-
     );
   } else {
     window.location.href = routes.login;

@@ -1,23 +1,33 @@
-.container {
+.draw-container {
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.button-group {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.button {
-  font-size: 24px;
-  margin-right: 10px;
-}
-
 .canvas {
-  border: 1px solid black;
+  border: 4px solid black;
   margin-bottom: 20px;
   background-color: white;
+}
+
+.button-group {
+  padding-bottom: 5px;
+}
+
+@media (max-width: 600px) {
+  .draw-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  .button-group button {
+    font-size: 14px; /* pienennä fontin kokoa */
+    margin-right: 2px; /* pienennä marginaalia */
+  }
 }
