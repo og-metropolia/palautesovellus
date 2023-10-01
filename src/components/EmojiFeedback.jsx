@@ -13,7 +13,7 @@ import colors from '../constants/colors.mjs';
 import './emoji-feedback.css';
 
 const EmojiFeedback = (props) => {
-  const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const [selectedEmoji, setSelectedEmoji] = props.state;
 
   const emojis = {
     happy: <FaSmile />,
@@ -29,8 +29,6 @@ const EmojiFeedback = (props) => {
   const handleEmojiClick = (emoji) => {
     setSelectedEmoji(emoji);
   };
-
-  console.log(props.fgColor);
 
   return (
     <div

@@ -71,16 +71,16 @@ const DrawFeedback = (props) => {
     const ctx = canvas.getContext('2d');
     ctx.lineTo(coordinates.x, coordinates.y);
     ctx.stroke();
+    sendDrawingToTeacher();
   };
 
   const sendDrawingToTeacher = () => {
     const canvas = canvasRef.current;
     const drawingData = canvas.toDataURL('image/png');
     if (props.onSave) {
-       props.onSave(drawingData);
+      props.onSave(drawingData);
     }
- };
-
+  };
 
   return (
     <div
