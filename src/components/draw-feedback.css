@@ -20,4 +20,7 @@
   border: 1px solid black;
   margin-bottom: 20px;
   background-color: white;
+  touch-action: none;
+  width: 400px;
+  height: 400px;
 }
