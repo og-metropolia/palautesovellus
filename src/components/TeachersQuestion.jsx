@@ -11,51 +11,7 @@ import {
 import { ENDPOINTS, BASE_URL } from '../constants/api.mjs';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
 import routes from '../constants/routes.mjs';
-
-export const QUESTION_THEMES = Object.freeze({
-  math: {
-    id: 1,
-    displayName: 'Matematiikka',
-    color: '#000',
-    backgroundColor: '#fff',
-  },
-  language: {
-    id: 2,
-    displayName: 'Äidinkieli',
-    color: '#000',
-    backgroundColor: '#fff',
-  },
-  play: {
-    id: 3,
-    displayName: 'Leikki',
-    color: '#000',
-    backgroundColor: '#fff',
-  },
-  journey: {
-    id: 4,
-    displayName: 'Retki',
-    color: '#000',
-    backgroundColor: '#fff',
-  },
-  sport: {
-    id: 5,
-    displayName: 'Liikunta',
-    color: '#000',
-    backgroundColor: '#fff',
-  },
-  task: {
-    id: 6,
-    displayName: 'Tuntitehtävä',
-    color: '#000',
-    backgroundColor: '#fff',
-  },
-  mood: {
-    id: 7,
-    displayName: 'Tunnekysely',
-    color: '#000',
-    backgroundColor: '#fff',
-  },
-});
+import { QUESTION_THEMES } from '../constants/questions.mjs';
 
 export default function TeachersQuestion(props) {
   const [questions, setQuestions] = useState([
@@ -86,7 +42,7 @@ export default function TeachersQuestion(props) {
     if (!selectedTopic || selectedTopic === '') {
       alert('Valitse aihe kysymyksille ennen lähettämistä');
       return;
-    } else if (questions.length === 1) {
+    } else if (questions.length === 0) {
       alert('Luo ainakin yksi kysymys ennen lähettämistä');
       return;
     } else if (questions.some((q) => q.content === '')) {
@@ -123,7 +79,7 @@ export default function TeachersQuestion(props) {
             : questions[i].draw
             ? QUESTION_TYPES.draw
             : questions[i].write
-            ? QUESTION_TYPES.draw
+            ? QUESTION_TYPES.write
             : null;
 
           fetch(`${BASE_URL}/${ENDPOINTS.question}`, {

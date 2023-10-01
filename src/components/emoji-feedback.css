@@ -1,10 +1,11 @@
-.container {
+.EmojiContainer {
   font-size: 5vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
   margin: auto;
+  flex-direction: row;
 }
 
 .emoji {

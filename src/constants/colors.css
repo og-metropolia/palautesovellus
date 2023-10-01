@@ -3,16 +3,17 @@
 */
 
 :root {
-  --p-white: #f4f6f9;
-  --p-gray: #dedede;
-
-  --p-red: #f36a47;
   --p-orange: #f17e18;
   --p-yellow: #fbe462;
   --p-green: #83e73b;
+  --p-cyan: #57acac;
   --p-blue: #557fe0;
-  --black: #000000;
   --p-beige: #d1c0a8;
+  --purple: #a14ebf;
+  --pink: #f36a9d;
+  --p-white: #f4f6f9;
+  --p-gray: #dedede;
+  --black: #000000;
 
   --landing-blue: #6798de;
 }

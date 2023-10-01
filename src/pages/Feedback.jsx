@@ -1,7 +1,6 @@
 import './feedback.css';
 import WriteFeedback from '../components/WriteFeedback';
 import DrawFeedback from '../components/DrawFeedback';
-import ReadFeedback from '../components/ReadFeedback';
 import Question from '../components/Question';
 import colors from '../constants/colors.mjs';
 import EmojiFeedback from '../components/EmojiFeedback';
@@ -14,12 +13,7 @@ export default function Feedback() {
         fgColor={colors.yellow}
         bgColor={colors.orange}
       />
-      <DrawFeedback
-        fgColor={colors.yellow}
-        bgColor={colors.orange}
-        neutralColor={colors.beige}
-      />
-      <ReadFeedback />
+      <DrawFeedback fgColor={colors.yellow} bgColor={colors.orange} />
       <WriteFeedback fgColor={colors.yellow} bgColor={colors.orange} />
       <EmojiFeedback fgColor={colors.yellow} bgColor={colors.yellow} />
     </div>

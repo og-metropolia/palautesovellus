@@ -14,8 +14,7 @@ export default function Landing() {
         <div className="landing-content">
           <h2>Moderni palautejärjestelmä opetukseen</h2>
           <p>
-            Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen
-            väliseen yhteyteen... [muu sisältö pysyy samana]
+            Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen väliseen yhteyteen, luoden innovatiivisen ja tehokkaan alustan sekä opettajille että opiskelijoille. Tämä järjestelmä virtaviivaistaa palauteprosessia, mahdollistaen opettajille helpon tavan kerätä, analysoida ja toimia saadun palautteen pohjalta. Palautepomppun kautta opettajat voivat parantaa opetusmenetelmiään, mukauttaa lähestymistapaansa vastaamaan opiskelijoiden tarpeita ja ennen kaikkea edistää koulutuskokemusten yleistä parantamista. Omaksu Palautepomppu ja astu opetuksen palautteen tulevaisuuteen.
           </p>
         </div>
 
