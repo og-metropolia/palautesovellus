@@ -66,7 +66,10 @@ function authorize() {
         });
       } else {
         console.error('Database error: ', err);
-        return res.status(400).send('User not found');
+        return res.status(400).json({
+          code: 400,
+          successful: false,
+        });
       }
     });
   });

@@ -33,11 +33,13 @@ h4 {
   margin-bottom: 1rem;
   color: rgb(82, 80, 80);
   font-weight: 700;
+  font-size: 20px;
 }
 
 p {
   margin-bottom: 0.5rem;
   color: #fff;
+  font-size: 15px;
 }
 
 a {
@@ -48,4 +50,25 @@ a {
 
 a:hover {
   color: #007bff;
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-container,
+  .footer-col-1,
+  .footer-col-2 {
+    width: 50%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .footer-logo {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 0;
+  }
 }
