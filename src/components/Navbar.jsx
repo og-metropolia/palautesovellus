@@ -33,7 +33,7 @@ export default function Navbar() {
         alt="Pallo kuva"
         className="pallo-gif"
       />
-      <h1>PALAUTEPOMPPU</h1>
+      <h1 className="navbar-heading">PALAUTEPOMPPU</h1>
       <div className="navbar-actions">
           <Button className="logout-button" onClick={handleButtonClick}>
           <PersonIcon className="icon-background" style={{ fontSize: '44px' }} />

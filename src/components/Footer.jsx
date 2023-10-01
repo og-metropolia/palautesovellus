@@ -22,11 +22,10 @@ export default function Footer() {
           <h4>Yhteystiedot</h4>
 
           <p>
-            Sähköposti:{' '}
             <a href=" mailto: info@palautepomppu.fi">info@palautepomppu.fi</a>
           </p>
           <p>
-            Puhelin: <a href=" tel: +358401234567">+358 40 123 4567</a>
+           <a href=" tel: +358401234567">+358 40 123 4567</a>
           </p>
         </div>
         <div className="footer-col-2">

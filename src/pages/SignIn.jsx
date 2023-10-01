@@ -19,11 +19,14 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
+import { isValidEmail } from '../utils/input-validation.mjs';
+import './signup.css';
 
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [showError, setShowError] = React.useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,6 +34,11 @@ export default function SignInSide() {
 
     const email = data.get('email');
     const password = data.get('password');
+
+    if (!isValidEmail(email)) {
+      setShowError(true);
+      return;
+    }
 
     fetch(`${BASE_URL}/auth`, {
       method: 'POST',
@@ -42,14 +50,17 @@ export default function SignInSide() {
       .then((response) => response.json())
       .then((data) => {
         if (data.successful) {
+          setShowError(false);
           window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.user_id);
           window.location.href = routes.dashboard;
+        } else if (data.code === 400) {
+          setShowError(true);
         } else {
-          alert('Virheellinen sähköposti tai salasana');
+          setShowError(true);
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
+        setShowError(true);
       });
   };
 
@@ -96,8 +107,9 @@ export default function SignInSide() {
               alt="Palautepomppu Logo"
               className="navbar-favicon"
               width={56}
-            />
+              />
             <h1>Kirjaudu sisään</h1>
+              {showError && <span style={{ color: 'red' }}>Tunnukset eivät täsmää olemassa olevaan käyttäjään.</span>}
             <Box component="form" noValidate onSubmit={handleSubmit}>
               <TextField
                 margin="normal"

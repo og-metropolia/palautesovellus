@@ -20,10 +20,12 @@ import { BASE_URL, ENDPOINTS } from '../constants/api.mjs';
 import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
+import { isValidEmail } from '../utils/input-validation.mjs';
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const [showError, setShowError] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleSubmit = (event) => {
@@ -33,6 +35,11 @@ export default function SignUp() {
     const password = data.get('password');
     const firstName = data.get('firstName');
     const lastName = data.get('lastName');
+
+    if (!isValidEmail(email)) {
+      setShowError(true);
+      return;
+    }
 
     fetch(`${BASE_URL}/${ENDPOINTS.users}`, {
       method: 'POST',
@@ -44,22 +51,38 @@ export default function SignUp() {
       .then((response) => response.json())
       .then((data) => {
         if (data.code === 200) {
+          setShowError(false);
           window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.id);
           window.location.href = routes.dashboard;
         } else if (data.code === 400) {
-          alert('Virheellinen sähköposti tai salasana.');
+          setShowError(true);
         } else {
-          alert('Tuntematon virhe.');
+          setShowError(true);
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
+        setShowError(true);
       });
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <div className="background-video">
+        <video autoPlay loop muted playsInline className="bg-video">
+          <source src="src/assets/animatedBackground.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <Container
+        className="signup-container"
+        component="main"
+        maxWidth="xs"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}>
         <CssBaseline />
         <Box
           sx={{
@@ -78,7 +101,13 @@ export default function SignUp() {
             className="navbar-favicon"
             width={48}
           />
+
           <h1>Rekisteröidy</h1>
+          {showError && (
+            <span style={{ color: 'red', 'margin-bottom': '20px' }}>
+              Virheellinen syöte.
+            </span>
+          )}
           <Box component="form" noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
