@@ -1,3 +1,5 @@
+@import '../constants/colors.css';
+
 .draw-container {
   padding: 20px;
   display: flex;
@@ -30,7 +32,7 @@
   }
 
   .button-group button {
-    font-size: 14px; /* pienennä fontin kokoa */
-    margin-right: 2px; /* pienennä marginaalia */
+    font-size: 14px;
+    margin-right: 2px;
   }
 }

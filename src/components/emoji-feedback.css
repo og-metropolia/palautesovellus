@@ -1,4 +1,6 @@
-.EmojiContainer {
+@import '../constants/colors.css';
+
+.emoji-container {
   font-size: 5vw;
   display: flex;
   justify-content: center;

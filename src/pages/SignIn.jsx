@@ -1,3 +1,4 @@
+import './signup.css';
 import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -20,7 +21,6 @@ import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import { isValidEmail } from '../utils/input-validation.mjs';
-import './signup.css';
 
 const defaultTheme = createTheme();
 
@@ -107,9 +107,13 @@ export default function SignInSide() {
               alt="Palautepomppu Logo"
               className="navbar-favicon"
               width={56}
-              />
+            />
             <h1>Kirjaudu sisään</h1>
-              {showError && <span style={{ color: 'red' }}>Tunnukset eivät täsmää olemassa olevaan käyttäjään.</span>}
+            {showError && (
+              <span style={{ color: 'red' }}>
+                Tunnukset eivät täsmää olemassa olevaan käyttäjään.
+              </span>
+            )}
             <Box component="form" noValidate onSubmit={handleSubmit}>
               <TextField
                 margin="normal"

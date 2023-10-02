@@ -1,14 +1,18 @@
 import './session.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { QUESTION_THEMES } from '../constants/questions.mjs';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
 import colors from '../constants/colors.mjs';
 import { BASE_URL, ENDPOINTS } from '../constants/api';
 import { FaPaperPlane } from 'react-icons/fa';
-
+import AnwserContext from '../components/AnswerContext';
 import DrawFeedback from '../components/DrawFeedback';
 import EmojiFeedback from '../components/EmojiFeedback';
 import WriteFeedback from '../components/WriteFeedback';
+import { v4 as uuidv4 } from 'uuid';
+
+export const answerContext = createContext([]);
+const answers = [];
 
 function getThemeForValue(value) {
   for (const theme in QUESTION_THEMES) {
@@ -23,59 +27,104 @@ export default function Session(props) {
   const [data, setData] = useState();
   const id = props.match.params.id;
 
+  const moment = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  const responder = uuidv4();
+
+  const submitAnswer = async () => {
+    try {
+      for (let i = 0; i < answers.length; ++i) {
+        if (!answers[i]) continue;
+        fetch(`${BASE_URL}/${ENDPOINTS.answer}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            question_id: answers[i].question_id,
+            message: answers[i].content,
+            responder: responder,
+            moment: moment,
+          }),
+        });
+      }
+    } catch (error) {
+      alert('Virhe vastauksien tallennuksessa:');
+    }
+
+    alert('Vastaukset tallennettu!');
+    window.location.href = '/';
+  };
+
   useEffect(() => {
     const dataFetch = async () => {
-      const data = await (
+      const fetchedData = await (
         await fetch(`${BASE_URL}/${ENDPOINTS.question}?session_id=${id}`)
       ).json();
 
-      setData(data);
+      setData(fetchedData);
     };
 
     dataFetch();
-  }, []);
+  }, [id]);
 
   return (
     <>
-      {data &&
-        data.questions.map((question) => {
-          const theme = getThemeForValue(question.theme);
+      <AnwserContext.Provider value={answers}>
+        {data &&
+          data.questions.map((question, index) => {
+            const theme = getThemeForValue(question.theme);
 
-          return (
-            <div
-              className="question"
-              key={question.question_id}
-              style={{ backgroundColor: theme.backgroundColor }}>
-              <h1 style={{ color: theme.color }}>{data && question.content}</h1>
+            return (
+              <div
+                className="question"
+                key={question.question_id}
+                style={{ backgroundColor: theme.backgroundColor }}>
+                <h1 style={{ color: theme.color }}>
+                  {data && question.content}
+                </h1>
 
-              {question.answer_type === QUESTION_TYPES.draw && (
-                <DrawFeedback fgColor={theme.color} bgColor={theme.bgColor} />
-              )}
+                {question.answer_type === QUESTION_TYPES.draw && (
+                  <DrawFeedback
+                    fgColor={theme.color}
+                    bgColor={theme.bgColor}
+                    index={index}
+                    question_id={question.question_id}
+                  />
+                )}
 
-              {question.answer_type === QUESTION_TYPES.emoji && (
-                <EmojiFeedback fgColor={theme.color} bgColor={theme.bgColor} />
-              )}
+                {question.answer_type === QUESTION_TYPES.emoji && (
+                  <EmojiFeedback
+                    fgColor={theme.color}
+                    bgColor={theme.bgColor}
+                    index={index}
+                    question_id={question.question_id}
+                  />
+                )}
 
-              {question.answer_type === QUESTION_TYPES.write && (
-                <WriteFeedback fgColor={theme.color} bgColor={theme.bgColor} />
-              )}
-            </div>
-          );
-        })}
-      <div className="submit-container">
-        <button
-          className="session-button"
-          style={{
-            backgroundColor:
-              // getThemeForValue(data?.questions[0]?.theme).neutralColor ||
-              colors.white,
-            color: colors.black,
-          }}
-          onClick={() => {}}>
-          <FaPaperPlane style={{ marginRight: '5px' }} />
-          Lähetä
-        </button>
-      </div>
+                {question.answer_type === QUESTION_TYPES.write && (
+                  <WriteFeedback
+                    fgColor={theme.color}
+                    bgColor={theme.bgColor}
+                    index={index}
+                    question_id={question.question_id}
+                  />
+                )}
+              </div>
+            );
+          })}
+        <div className="submit-container">
+          <button
+            className="session-button"
+            style={{
+              backgroundColor: colors.white,
+              color: colors.black,
+            }}
+            onClick={submitAnswer}>
+            <FaPaperPlane style={{ marginRight: '5px' }} />
+            Lähetä
+          </button>
+        </div>
+      </AnwserContext.Provider>
     </>
   );
 }

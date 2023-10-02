@@ -1,3 +1,5 @@
+@import '../constants/colors.css';
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -77,7 +79,6 @@
   margin-left: 65%;
 }
 
-/* Määrittele tyyli pienille näytöille */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;

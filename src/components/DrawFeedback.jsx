@@ -1,13 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react';
+import './draw-feedback.css';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import { FaPencilAlt, FaEraser, FaCircle, FaTrash } from 'react-icons/fa';
 import colors from '../constants/colors.mjs';
-import './draw-feedback.css';
+import AnswerContext from './AnswerContext.jsx';
 
 const DrawFeedback = (props) => {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState(colors.black);
   const [tool, setTool] = useState('pen');
+  const answerContext = useContext(AnswerContext);
 
   const getCoordinates = (event) => {
     const canvas = canvasRef.current;
@@ -71,16 +73,20 @@ const DrawFeedback = (props) => {
     const ctx = canvas.getContext('2d');
     ctx.lineTo(coordinates.x, coordinates.y);
     ctx.stroke();
+    saveDrawing();
   };
 
-  const sendDrawingToTeacher = () => {
+  const saveDrawing = () => {
     const canvas = canvasRef.current;
     const drawingData = canvas.toDataURL('image/png');
+    answerContext[props.index] = {
+      question_id: props.question_id,
+      content: drawingData,
+    };
     if (props.onSave) {
-       props.onSave(drawingData);
+      props.onSave(drawingData);
     }
- };
-
+  };
 
   return (
     <div

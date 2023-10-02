@@ -1,11 +1,5 @@
-import React from 'react';
 import './footer.css';
-
-/**
- * Footer komponentti Palautepomppu-sovellukselle.
- * @component
- * @returns {JSX.Element} Footer-komponentti.
- */
+import React from 'react';
 
 export default function Footer() {
   return (
@@ -25,7 +19,7 @@ export default function Footer() {
             <a href=" mailto: info@palautepomppu.fi">info@palautepomppu.fi</a>
           </p>
           <p>
-           <a href=" tel: +358401234567">+358 40 123 4567</a>
+            <a href=" tel: +358401234567">+358 40 123 4567</a>
           </p>
         </div>
         <div className="footer-col-2">

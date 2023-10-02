@@ -1,20 +1,25 @@
 import './landing.css';
-import { Person as PersonIcon } from '@mui/icons-material';
-import { Link } from '@mui/material';
-import routes from '../constants/routes.mjs';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 
 export default function Landing() {
   return (
     <div className="landing-page">
-     <Navbar/>
+      <Navbar />
 
       <div className="landing-container">
         <div className="landing-content">
           <h2>Moderni palautejärjestelmä opetukseen</h2>
           <p>
-            Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen väliseen yhteyteen, luoden innovatiivisen ja tehokkaan alustan sekä opettajille että opiskelijoille. Tämä järjestelmä virtaviivaistaa palauteprosessia, mahdollistaen opettajille helpon tavan kerätä, analysoida ja toimia saadun palautteen pohjalta. Palautepomppun kautta opettajat voivat parantaa opetusmenetelmiään, mukauttaa lähestymistapaansa vastaamaan opiskelijoiden tarpeita ja ennen kaikkea edistää koulutuskokemusten yleistä parantamista. Omaksu Palautepomppu ja astu opetuksen palautteen tulevaisuuteen.
+            Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen
+            väliseen yhteyteen, luoden innovatiivisen ja tehokkaan alustan sekä
+            opettajille että opiskelijoille. Tämä järjestelmä virtaviivaistaa
+            palauteprosessia, mahdollistaen opettajille helpon tavan kerätä,
+            analysoida ja toimia saadun palautteen pohjalta. Palautepomppun
+            kautta opettajat voivat parantaa opetusmenetelmiään, mukauttaa
+            lähestymistapaansa vastaamaan opiskelijoiden tarpeita ja ennen
+            kaikkea edistää koulutuskokemusten yleistä parantamista. Omaksu
+            Palautepomppu ja astu opetuksen palautteen tulevaisuuteen.
           </p>
         </div>
 
