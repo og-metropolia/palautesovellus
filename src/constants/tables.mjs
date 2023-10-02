@@ -1,5 +1,6 @@
 export default Object.freeze({
   users: 'Teacher',
-  question: 'Question',
   session: 'Session',
+  question: 'Question',
+  answer: 'Answer',
 });

@@ -6,10 +6,7 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
-import {
-  queryRecordsAll,
-  insertRecord
-} from './sql.mjs';
+import { queryRecordsAll, insertRecord } from './sql.mjs';
 
 const SALT_ROUNDS = 10;
 
@@ -125,6 +122,23 @@ async function createQuestion() {
     }
   });
 }
+async function createAnswer() {
+  app.post(`/${API_PATH}/${ENDPOINTS.answer}`, (req, res) => {
+    const { question_id, message, responder, moment } = req.body;
+
+    try {
+      insertRecord(
+        conn,
+        res,
+        TABLES.answer,
+        'question_id, message, responder, moment',
+        [question_id, message, responder, moment],
+      );
+    } catch (error) {
+      return res.status(500).json({ success: false, message: 'Server error' });
+    }
+  });
+}
 
 async function createSession() {
   app.post(`/${API_PATH}/${ENDPOINTS.session}`, (req, res) => {
@@ -193,5 +207,6 @@ getRecordsAll(ENDPOINTS.users, TABLES.users);
 authorize();
 createUser();
 createQuestion();
+createAnswer();
 createSession();
 queryQuestionsBySessionId();
