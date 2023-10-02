@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   FaSmile,
   FaMeh,
@@ -11,39 +11,43 @@ import {
 } from 'react-icons/fa';
 import colors from '../constants/colors.mjs';
 import './emoji-feedback.css';
+import AnswerContext from './AnswerContext.jsx';
 
 const EmojiFeedback = (props) => {
-  const [selectedEmoji, setSelectedEmoji] = props.state;
+  const [selectedEmoji, setSelectedEmoji] = useState(null);
 
-  const emojis = {
-    happy: <FaSmile />,
-    smile: <FaLaugh />,
-    wink: <FaGrin />,
-    neutral: <FaMeh />,
-    sad: <FaFrown />,
-    angry: <FaAngry />,
-    surprised: <FaSurprise />,
-    tired: <FaTired />,
-  };
+  const emojis = [
+    { icon: <FaSmile />, name: 'happy' },
+    { icon: <FaLaugh />, name: 'smile' },
+    { icon: <FaGrin />, name: 'wink' },
+    { icon: <FaMeh />, name: 'neutral' },
+    { icon: <FaFrown />, name: 'sad' },
+    { icon: <FaAngry />, name: 'angry' },
+    { icon: <FaSurprise />, name: 'surprised' },
+    { icon: <FaTired />, name: 'tired' },
+  ];
 
-  const handleEmojiClick = (emoji) => {
-    setSelectedEmoji(emoji);
+  const answerContext = useContext(AnswerContext);
+
+  const handleEmojiClick = (emojiIndex) => {
+    answerContext[props.index] = emojiIndex;
+    setSelectedEmoji(emojiIndex);
   };
 
   return (
     <div
       className="EmojiContainer"
       style={{ backgroundColor: props.bgColor || colors.white }}>
-      {Object.entries(emojis).map(([key, iconComponent]) => (
+      {Object.entries(emojis).map(([index, { icon, name }]) => (
         <span
-          key={key}
+          key={index}
           className="emoji"
           style={{
             color: props.fgColor || colors.black,
-            opacity: selectedEmoji && selectedEmoji !== key ? 0.5 : 1,
+            opacity: selectedEmoji && selectedEmoji !== index ? 0.5 : 1,
           }}
-          onClick={() => handleEmojiClick(key)}>
-          {iconComponent}
+          onClick={() => handleEmojiClick(index)}>
+          {icon}
         </span>
       ))}
     </div>
