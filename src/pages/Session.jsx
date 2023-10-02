@@ -70,9 +70,6 @@ export default function Session(props) {
                     fgColor={theme.color}
                     bgColor={theme.bgColor}
                     index={index}
-                    onSave={(drawingData) => {
-                      setAnswer(...answers, drawingData);
-                    }}
                   />
                 )}
 
