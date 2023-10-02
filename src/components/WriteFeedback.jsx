@@ -11,10 +11,6 @@ const WriteFeedback = (props) => {
     setFeedback(event.target.value);
   };
 
-  const submitFeedback = () => {
-    console.log('Palaute lähetetty:', feedback);
-  };
-
   return (
     <div className="WriteContainer">
       <textarea
