@@ -5,5 +5,5 @@ export const ENDPOINTS = Object.freeze({
   session: 'session',
 });
 
-export const API_PATH = 'api/v0'
-export const BASE_URL = `http://localhost:3000/${API_PATH}`
+export const API_PATH = 'api/v0';
+export const BASE_URL = `http://localhost:3000/${API_PATH}`;

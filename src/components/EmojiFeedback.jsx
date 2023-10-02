@@ -1,3 +1,4 @@
+import './emoji-feedback.css';
 import React, { useState, useContext } from 'react';
 import {
   FaSmile,
@@ -10,11 +11,11 @@ import {
   FaTired,
 } from 'react-icons/fa';
 import colors from '../constants/colors.mjs';
-import './emoji-feedback.css';
 import AnswerContext from './AnswerContext.jsx';
 
 const EmojiFeedback = (props) => {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const answerContext = useContext(AnswerContext);
 
   const emojis = [
     { icon: <FaSmile />, name: 'happy' },
@@ -27,8 +28,6 @@ const EmojiFeedback = (props) => {
     { icon: <FaTired />, name: 'tired' },
   ];
 
-  const answerContext = useContext(AnswerContext);
-
   const handleEmojiClick = (emojiIndex) => {
     answerContext[props.index] = emojis[emojiIndex].name;
     setSelectedEmoji(emojiIndex);
@@ -36,7 +35,7 @@ const EmojiFeedback = (props) => {
 
   return (
     <div
-      className="EmojiContainer"
+      className="emoji-container"
       style={{ backgroundColor: props.bgColor || colors.white }}>
       {Object.entries(emojis).map(([index, { icon, name }]) => (
         <span

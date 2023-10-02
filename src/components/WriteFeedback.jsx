@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
 import './write-feedback.css';
+import React, { useState, useContext } from 'react';
 import AnswerContext from './AnswerContext.jsx';
 
 const WriteFeedback = (props) => {
@@ -12,13 +12,13 @@ const WriteFeedback = (props) => {
   };
 
   return (
-    <div className="WriteContainer">
+    <div className="write-container">
       <textarea
         value={feedback}
         onChange={handleFeedbackChange}
         rows={5}
         placeholder="Kirjoita palaute tähän..."
-        className="textArea"
+        className="text-area"
         style={{
           color: props.color,
           backgroundColor: props.backgroundColor,

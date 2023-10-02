@@ -1,3 +1,5 @@
+@import '../constants/colors.css';
+
 .question {
   display: flex;
   flex-direction: column;

@@ -8,8 +8,7 @@ import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
 import {
   queryRecordsAll,
-  insertRecord,
-  queryRecordByAttribute,
+  insertRecord
 } from './sql.mjs';
 
 const SALT_ROUNDS = 10;
