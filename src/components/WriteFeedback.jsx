@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { FaPaperPlane } from 'react-icons/fa';
-import './write-feedback.css'; // Import the CSS
+import React, { useState, useContext } from 'react';
+import './write-feedback.css';
+import AnswerContext from './AnswerContext.jsx';
 
 const WriteFeedback = (props) => {
   const [feedback, setFeedback] = useState('');
+  const answerContext = useContext(AnswerContext);
 
   const handleFeedbackChange = (event) => {
+    answerContext[props.index] = event.target.value;
     setFeedback(event.target.value);
   };
 

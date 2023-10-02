@@ -69,6 +69,7 @@ export default function Session(props) {
                   <DrawFeedback
                     fgColor={theme.color}
                     bgColor={theme.bgColor}
+                    index={index}
                     onSave={(drawingData) => {
                       setAnswer(...answers, drawingData);
                     }}
@@ -87,6 +88,7 @@ export default function Session(props) {
                   <WriteFeedback
                     fgColor={theme.color}
                     bgColor={theme.bgColor}
+                    index={index}
                   />
                 )}
               </div>
