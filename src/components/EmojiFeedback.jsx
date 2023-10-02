@@ -30,7 +30,7 @@ const EmojiFeedback = (props) => {
   const answerContext = useContext(AnswerContext);
 
   const handleEmojiClick = (emojiIndex) => {
-    answerContext[props.index] = emojiIndex;
+    answerContext[props.index] = emojis[emojiIndex].name;
     setSelectedEmoji(emojiIndex);
   };
 
