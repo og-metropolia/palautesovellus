@@ -6,10 +6,10 @@ import colors from '../constants/colors.mjs';
 import { BASE_URL, ENDPOINTS } from '../constants/api';
 import { FaPaperPlane } from 'react-icons/fa';
 import AnwserContext from '../components/AnswerContext';
-
 import DrawFeedback from '../components/DrawFeedback';
 import EmojiFeedback from '../components/EmojiFeedback';
 import WriteFeedback from '../components/WriteFeedback';
+import { v4 as uuidv4 } from 'uuid';
 
 export const answerContext = createContext([]);
 const answers = [];
@@ -27,14 +27,32 @@ export default function Session(props) {
   const [data, setData] = useState();
   const id = props.match.params.id;
 
+  const moment = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  const responder = uuidv4();
+
   const submitAnswer = async () => {
     try {
-      console.log('Answers to send:', answers);
-
-      // TODO: loop through answers and send them to the backend
+      for (let i = 0; i < answers.length; ++i) {
+        if (!answers[i]) continue;
+        fetch(`${BASE_URL}/${ENDPOINTS.answer}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            question_id: answers[i].question_id,
+            message: answers[i].content,
+            responder: responder,
+            moment: moment,
+          }),
+        });
+      }
     } catch (error) {
-      console.error('Virhe vastauksien tallennuksessa:', error);
+      alert('Virhe vastauksien tallennuksessa:');
     }
+
+    alert('Vastaukset tallennettu!');
+    window.location.href = '/';
   };
 
   useEffect(() => {
@@ -70,6 +88,7 @@ export default function Session(props) {
                     fgColor={theme.color}
                     bgColor={theme.bgColor}
                     index={index}
+                    question_id={question.question_id}
                   />
                 )}
 
@@ -78,6 +97,7 @@ export default function Session(props) {
                     fgColor={theme.color}
                     bgColor={theme.bgColor}
                     index={index}
+                    question_id={question.question_id}
                   />
                 )}
 
@@ -86,6 +106,7 @@ export default function Session(props) {
                     fgColor={theme.color}
                     bgColor={theme.bgColor}
                     index={index}
+                    question_id={question.question_id}
                   />
                 )}
               </div>

@@ -79,7 +79,10 @@ const DrawFeedback = (props) => {
   const saveDrawing = () => {
     const canvas = canvasRef.current;
     const drawingData = canvas.toDataURL('image/png');
-    answerContext[props.index] = drawingData;
+    answerContext[props.index] = {
+      question_id: props.question_id,
+      content: drawingData,
+    };
     if (props.onSave) {
       props.onSave(drawingData);
     }

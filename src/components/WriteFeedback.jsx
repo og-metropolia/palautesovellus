@@ -7,7 +7,10 @@ const WriteFeedback = (props) => {
   const answerContext = useContext(AnswerContext);
 
   const handleFeedbackChange = (event) => {
-    answerContext[props.index] = event.target.value;
+    answerContext[props.index] = {
+      question_id: props.question_id,
+      content: event.target.value,
+    };
     setFeedback(event.target.value);
   };
 

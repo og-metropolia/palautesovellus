@@ -29,7 +29,10 @@ const EmojiFeedback = (props) => {
   ];
 
   const handleEmojiClick = (emojiIndex) => {
-    answerContext[props.index] = emojis[emojiIndex].name;
+    answerContext[props.index] = {
+      question_id: props.question_id,
+      content: emojis[emojiIndex].name,
+    };
     setSelectedEmoji(emojiIndex);
   };
 
