@@ -83,9 +83,6 @@ const DrawFeedback = (props) => {
       question_id: props.question_id,
       content: drawingData,
     };
-    if (props.onSave) {
-      props.onSave(drawingData);
-    }
   };
 
   return (
