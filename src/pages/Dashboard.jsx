@@ -1,29 +1,44 @@
-import React from 'react';
+import './dashboard.css';
+import React, { useEffect, useState } from 'react';
 import TeachersQuestion from '../components/TeachersQuestion';
 import routes from '../constants/routes.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import Navbar from '../components/Navbar.jsx';
+import SessionList from '../components/SessionList.jsx';
+import { BASE_URL, ENDPOINTS } from '../constants/api';
 
-function App() {
+export default function Dashboard() {
   const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
+  const [data, setData] = useState();
 
-  if (userId) {
-    return (
-      <>
-        <Navbar />
-        <div>
-          <TeachersQuestion
-            content="Opettajan kysymys"
-            color="black"
-            backgroundColor="lightgray"
-            userId={userId}
-          />
-        </div>
-      </>
-    );
-  } else {
+  useEffect(() => {
+    const dataFetch = async () => {
+      const fetchedData = await (
+        await fetch(`${BASE_URL}/${ENDPOINTS.session}?teacher_id=${userId}`)
+      ).json();
+
+      setData(fetchedData.results);
+    };
+
+    dataFetch();
+  }, [userId]);
+
+  if (!userId) {
     window.location.href = routes.login;
   }
-}
 
-export default App;
+  return (
+    <>
+      <Navbar />
+      <div className="dashboard-container">
+        <TeachersQuestion
+          content="Opettajan kysymys"
+          color="black"
+          backgroundColor="lightgray"
+          userId={userId}
+        />
+        <SessionList data={data} />
+      </div>
+    </>
+  );
+}

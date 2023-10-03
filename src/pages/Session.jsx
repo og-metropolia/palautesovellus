@@ -1,18 +1,15 @@
 import './session.css';
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { QUESTION_THEMES } from '../constants/questions.mjs';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
 import colors from '../constants/colors.mjs';
 import { BASE_URL, ENDPOINTS } from '../constants/api';
 import { FaPaperPlane } from 'react-icons/fa';
-import AnwserContext from '../components/AnswerContext';
+import AnswerContext from '../components/AnswerContext';
 import DrawFeedback from '../components/DrawFeedback';
 import EmojiFeedback from '../components/EmojiFeedback';
 import WriteFeedback from '../components/WriteFeedback';
 import { v4 as uuidv4 } from 'uuid';
-
-export const answerContext = createContext([]);
-const answers = [];
 
 function getThemeForValue(value) {
   for (const theme in QUESTION_THEMES) {
@@ -24,6 +21,8 @@ function getThemeForValue(value) {
 }
 
 export default function Session(props) {
+  const answers = [];
+
   const [data, setData] = useState();
   const id = props.match.params.id;
 
@@ -69,9 +68,11 @@ export default function Session(props) {
 
   return (
     <>
-      <AnwserContext.Provider value={answers}>
+      <AnswerContext.Provider value={answers}>
         {data &&
-          data.questions.map((question, index) => {
+          data.results &&
+          data.results.length > 0 &&
+          data.results.map((question, index) => {
             const theme = getThemeForValue(question.theme);
 
             return (
@@ -124,7 +125,7 @@ export default function Session(props) {
             Lähetä
           </button>
         </div>
-      </AnwserContext.Provider>
+      </AnswerContext.Provider>
     </>
   );
 }

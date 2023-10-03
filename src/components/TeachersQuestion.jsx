@@ -103,47 +103,58 @@ export default function TeachersQuestion(props) {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', width: '60%', borderRadius: '20px' }}>
       <h1
-        style={{ color: props.color, backgroundColor: props.backgroundColor }}>
+        style={{
+          color: props.color,
+          backgroundColor: props.backgroundColor,
+          borderRadius: '10px',
+        }}>
         Kysymykset
       </h1>
 
-      <FormControl fullWidth variant="filled" style={{ marginBottom: '20px' }}>
-        <InputLabel id="topic-label" style={{ color: 'white' }}>
-          Yhteinen aihe kaikille kysymyksille
-        </InputLabel>
-        <Select
-          labelId="topic-label"
-          value={selectedTopic}
-          onChange={(e) => setSelectedTopic(e.target.value)}
-          sx={{ color: 'white' }}>
-          <MenuItem value="">
-            <em>Valitse aihe...</em>
-          </MenuItem>
-          <MenuItem value={QUESTION_THEMES.math.id}>
-            {QUESTION_THEMES.math.displayName}
-          </MenuItem>
-          <MenuItem value={QUESTION_THEMES.language.id}>
-            {QUESTION_THEMES.language.displayName}
-          </MenuItem>
-          <MenuItem value={QUESTION_THEMES.play.id}>
-            {QUESTION_THEMES.play.displayName}
-          </MenuItem>
-          <MenuItem value={QUESTION_THEMES.journey.id}>
-            {QUESTION_THEMES.journey.displayName}
-          </MenuItem>
-          <MenuItem value={QUESTION_THEMES.sport.id}>
-            {QUESTION_THEMES.sport.displayName}
-          </MenuItem>
-          <MenuItem value={QUESTION_THEMES.task.id}>
-            {QUESTION_THEMES.task.displayName}
-          </MenuItem>
-          <MenuItem value={QUESTION_THEMES.mood.id}>
-            {QUESTION_THEMES.mood.displayName}
-          </MenuItem>
-        </Select>
-      </FormControl>
+      <div style={{ marginBottom: '20px' }}>
+        <p style={{ margin: 0, color: 'black', fontWeight: 'bold' }}>
+          Valitse aihe
+        </p>
+        <FormControl fullWidth variant="filled">
+          <Select
+            displayEmpty
+            labelId="topic-label"
+            value={selectedTopic}
+            onChange={(e) => setSelectedTopic(e.target.value)}
+            sx={{
+              color: '#a9a9a9',
+              backgroundColor: '#f0f0f0',
+            }}
+            placeholder="aihe">
+            <MenuItem value="" disabled>
+              Aihe...
+            </MenuItem>
+            <MenuItem value={QUESTION_THEMES.math.id}>
+              {QUESTION_THEMES.math.displayName}
+            </MenuItem>
+            <MenuItem value={QUESTION_THEMES.language.id}>
+              {QUESTION_THEMES.language.displayName}
+            </MenuItem>
+            <MenuItem value={QUESTION_THEMES.play.id}>
+              {QUESTION_THEMES.play.displayName}
+            </MenuItem>
+            <MenuItem value={QUESTION_THEMES.journey.id}>
+              {QUESTION_THEMES.journey.displayName}
+            </MenuItem>
+            <MenuItem value={QUESTION_THEMES.sport.id}>
+              {QUESTION_THEMES.sport.displayName}
+            </MenuItem>
+            <MenuItem value={QUESTION_THEMES.task.id}>
+              {QUESTION_THEMES.task.displayName}
+            </MenuItem>
+            <MenuItem value={QUESTION_THEMES.mood.id}>
+              {QUESTION_THEMES.mood.displayName}
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </div>
 
       {questions.map((q, index) => (
         <div key={index} style={{ marginBottom: '20px' }}>
@@ -158,44 +169,70 @@ export default function TeachersQuestion(props) {
             sx={{ backgroundColor: 'white', marginBottom: '10px' }} // Asetetaan taustaväri valkoiseksi
           />
 
-          <FormControl component="fieldset" style={{ marginTop: '10px' }}>
-            <p>Vastauksen tyyppi:</p>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <label style={{ order: 2 }} htmlFor={`emoji-${index}`}>
-                Emoji-vastaus
-              </label>
-              <Checkbox
-                style={{ order: 1 }}
-                checked={q.emoji}
-                onChange={() => handleCheckboxChange(index, 'emoji')}
-                name={`emoji-${index}`}
-              />
-            </div>
+          <div
+            style={{
+              padding: '20px',
+              backgroundColor: '#eaeaea',
+              borderRadius: '10px',
+              color: props.color,
+              marginBottom: '20px',
+            }}>
+            <FormControl component="fieldset" style={{ marginTop: '10px' }}>
+              <p style={{ margin: 0, color: 'black', fontWeight: 'bold' }}>
+                Valitse vastauksen tyyppi:
+              </p>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginTop: '10px',
+                }}>
+                <label style={{ order: 2 }} htmlFor={`emoji-${index}`}>
+                  Emoji-vastaus
+                </label>
+                <Checkbox
+                  style={{ order: 1 }}
+                  checked={q.emoji}
+                  onChange={() => handleCheckboxChange(index, 'emoji')}
+                  name={`emoji-${index}`}
+                />
+              </div>
 
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <label style={{ order: 2 }} htmlFor={`draw-${index}`}>
-                Piirto-vastaus
-              </label>
-              <Checkbox
-                style={{ order: 1 }}
-                checked={q.draw}
-                onChange={() => handleCheckboxChange(index, 'draw')}
-                name={`draw-${index}`}
-              />
-            </div>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginTop: '10px',
+                }}>
+                <label style={{ order: 2 }} htmlFor={`draw-${index}`}>
+                  Piirto-vastaus
+                </label>
+                <Checkbox
+                  style={{ order: 1 }}
+                  checked={q.draw}
+                  onChange={() => handleCheckboxChange(index, 'draw')}
+                  name={`draw-${index}`}
+                />
+              </div>
 
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <label style={{ order: 2 }} htmlFor={`write-${index}`}>
-                Kirjoitus-vastaus
-              </label>
-              <Checkbox
-                style={{ order: 1 }}
-                checked={q.write}
-                onChange={() => handleCheckboxChange(index, 'write')}
-                name={`write-${index}`}
-              />
-            </div>
-          </FormControl>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginTop: '10px',
+                }}>
+                <label style={{ order: 2 }} htmlFor={`write-${index}`}>
+                  Kirjoitus-vastaus
+                </label>
+                <Checkbox
+                  style={{ order: 1 }}
+                  checked={q.write}
+                  onChange={() => handleCheckboxChange(index, 'write')}
+                  name={`write-${index}`}
+                />
+              </div>
+            </FormControl>
+          </div>
         </div>
       ))}
 

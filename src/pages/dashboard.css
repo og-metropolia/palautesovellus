@@ -1,0 +1,9 @@
+.dashboard-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+body {
+  background-color: #fff9e6;
+}
