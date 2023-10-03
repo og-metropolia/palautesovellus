@@ -219,6 +219,26 @@ function querySessionsByTeacherId() {
   });
 }
 
+function queryAnswersByQuestionId() {
+  app.get(`/${API_PATH}/${ENDPOINTS.answer}`, (req, res) => {
+    const { question_id } = req.query;
+
+    const queryString = `SELECT * FROM ${TABLES.answer} WHERE question_id = ?`;
+
+    conn.query(queryString, [question_id], (err, results) => {
+      if (err) {
+        console.error('Database error: ', err);
+        return res.status(500).send('Internal Server Error');
+      }
+
+      return res.status(200).json({
+        code: 200,
+        questions: results,
+      });
+    });
+  });
+}
+
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);
 });
@@ -231,3 +251,4 @@ createAnswer();
 createSession();
 querySessionsByTeacherId();
 querySessionsByTeacherId();
+queryAnswersByQuestionId();
