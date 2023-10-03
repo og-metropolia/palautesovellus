@@ -10,8 +10,8 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/Landing';
-import Feedback from './pages/Feedback';
 import Session from './pages/Session';
+import SessionResults from './pages/SessionResults';
 import routes from './constants/routes.mjs';
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
           <Route path={routes.signup} component={SignUp} />
           <Route path={routes.login} component={SignIn} />
           <Route path={routes.dashboard} component={Dashboard} />
-          <Route path={routes.feedback} component={Feedback} />
           <Route path="/session/:id" component={Session} />
+          <Route path="/results/session/:id" component={SessionResults} />
           <Route path="*">
             <Redirect to="/" />
           </Route>

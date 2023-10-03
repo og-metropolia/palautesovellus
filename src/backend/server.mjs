@@ -193,7 +193,7 @@ function queryQuestionsBySessionId() {
 
       return res.status(200).json({
         code: 200,
-        questions: results,
+        results: results,
       });
     });
   });
@@ -213,7 +213,7 @@ function querySessionsByTeacherId() {
 
       return res.status(200).json({
         code: 200,
-        questions: results,
+        results: results,
       });
     });
   });
@@ -233,7 +233,7 @@ function queryAnswersByQuestionId() {
 
       return res.status(200).json({
         code: 200,
-        questions: results,
+        results: results,
       });
     });
   });

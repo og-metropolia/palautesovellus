@@ -70,7 +70,9 @@ export default function Session(props) {
     <>
       <AnswerContext.Provider value={answers}>
         {data &&
-          data.questions.map((question, index) => {
+          data.results &&
+          data.results.length > 0 &&
+          data.results.map((question, index) => {
             const theme = getThemeForValue(question.theme);
 
             return (
