@@ -249,6 +249,6 @@ createUser();
 createQuestion();
 createAnswer();
 createSession();
-querySessionsByTeacherId();
+queryQuestionsBySessionId();
 querySessionsByTeacherId();
 queryAnswersByQuestionId();
