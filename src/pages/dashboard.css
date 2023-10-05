@@ -7,3 +7,11 @@
 body {
   background-color: #fff9e6;
 }
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+}

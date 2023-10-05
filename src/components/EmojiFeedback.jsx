@@ -13,20 +13,20 @@ import {
 import colors from '../constants/colors.mjs';
 import AnswerContext from './AnswerContext.jsx';
 
+export const emojis = [
+  { icon: <FaSmile />, name: 'happy' },
+  { icon: <FaLaugh />, name: 'smile' },
+  { icon: <FaGrin />, name: 'wink' },
+  { icon: <FaMeh />, name: 'neutral' },
+  { icon: <FaFrown />, name: 'sad' },
+  { icon: <FaAngry />, name: 'angry' },
+  { icon: <FaSurprise />, name: 'surprised' },
+  { icon: <FaTired />, name: 'tired' },
+];
+
 const EmojiFeedback = (props) => {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const answerContext = useContext(AnswerContext);
-
-  const emojis = [
-    { icon: <FaSmile />, name: 'happy' },
-    { icon: <FaLaugh />, name: 'smile' },
-    { icon: <FaGrin />, name: 'wink' },
-    { icon: <FaMeh />, name: 'neutral' },
-    { icon: <FaFrown />, name: 'sad' },
-    { icon: <FaAngry />, name: 'angry' },
-    { icon: <FaSurprise />, name: 'surprised' },
-    { icon: <FaTired />, name: 'tired' },
-  ];
 
   const handleEmojiClick = (emojiIndex) => {
     answerContext[props.index] = {

@@ -1,7 +1,7 @@
 .sessionlist-container {
   top: 0;
   right: 0;
-  width: 250px;
+  width: 500px;
   height: 100vh;
   overflow-y: auto;
   background-color: #f7f7f7;
@@ -51,4 +51,44 @@
 .sessionlist-container ul {
   list-style: none;
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .sessionlist-container {
+    width: 95%;
+    padding: 2%;
+  }
+
+  .sessionlist-container h2 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+  }
+
+  .sessionlist-container li {
+    margin-bottom: 8px;
+  }
+
+  .sessionlist-container li a {
+    padding: 8px;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sessionlist-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  .sessionlist-container {
+    max-width: 100%;
+    width: 90%;
+    align-items: center;
+  }
 }
