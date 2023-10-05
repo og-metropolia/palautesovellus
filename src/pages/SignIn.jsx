@@ -50,6 +50,7 @@ export default function SignInSide() {
       .then((response) => response.json())
       .then((data) => {
         if (data.successful) {
+          console.log(data);
           setShowError(false);
           window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.user_id);
           window.location.href = routes.dashboard;

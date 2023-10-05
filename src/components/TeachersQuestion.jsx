@@ -7,6 +7,10 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  FormLabel,
 } from '@mui/material';
 import { ENDPOINTS, BASE_URL } from '../constants/api.mjs';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
@@ -27,7 +31,13 @@ export default function TeachersQuestion(props) {
 
   const handleCheckboxChange = (index, type) => {
     const newQuestions = [...questions];
-    newQuestions[index][type] = !newQuestions[index][type];
+
+    newQuestions[index].emoji = false;
+    newQuestions[index].draw = false;
+    newQuestions[index].write = false;
+
+    newQuestions[index][type] = true;
+
     setQuestions(newQuestions);
   };
 
@@ -103,7 +113,7 @@ export default function TeachersQuestion(props) {
   };
 
   return (
-    <div style={{ padding: '20px', width: '60%', borderRadius: '20px' }}>
+    <div style={{ padding: '20px', width: '90%', borderRadius: '20px' }}>
       <h1
         style={{
           color: props.color,
@@ -117,6 +127,7 @@ export default function TeachersQuestion(props) {
         <p style={{ margin: 0, color: 'black', fontWeight: 'bold' }}>
           Valitse aihe
         </p>
+
         <FormControl fullWidth variant="filled">
           <Select
             displayEmpty
@@ -124,7 +135,7 @@ export default function TeachersQuestion(props) {
             value={selectedTopic}
             onChange={(e) => setSelectedTopic(e.target.value)}
             sx={{
-              color: '#a9a9a9',
+              color: selectedTopic ? 'black' : '#a9a9a9',
               backgroundColor: '#f0f0f0',
             }}
             placeholder="aihe">
@@ -166,7 +177,7 @@ export default function TeachersQuestion(props) {
             value={q.content}
             onChange={(e) => handleQuestionChange(index, e.target.value)}
             placeholder="Kirjoita kysymys tähän..."
-            sx={{ backgroundColor: 'white', marginBottom: '10px' }} // Asetetaan taustaväri valkoiseksi
+            sx={{ backgroundColor: 'white', marginBottom: '10px' }}
           />
 
           <div
@@ -190,7 +201,7 @@ export default function TeachersQuestion(props) {
                 <label style={{ order: 2 }} htmlFor={`emoji-${index}`}>
                   Emoji-vastaus
                 </label>
-                <Checkbox
+                <Radio
                   style={{ order: 1 }}
                   checked={q.emoji}
                   onChange={() => handleCheckboxChange(index, 'emoji')}
@@ -207,7 +218,7 @@ export default function TeachersQuestion(props) {
                 <label style={{ order: 2 }} htmlFor={`draw-${index}`}>
                   Piirto-vastaus
                 </label>
-                <Checkbox
+                <Radio
                   style={{ order: 1 }}
                   checked={q.draw}
                   onChange={() => handleCheckboxChange(index, 'draw')}
@@ -224,7 +235,7 @@ export default function TeachersQuestion(props) {
                 <label style={{ order: 2 }} htmlFor={`write-${index}`}>
                   Kirjoitus-vastaus
                 </label>
-                <Checkbox
+                <Radio
                   style={{ order: 1 }}
                   checked={q.write}
                   onChange={() => handleCheckboxChange(index, 'write')}
