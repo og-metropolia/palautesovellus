@@ -4,4 +4,5 @@ export default Object.freeze({
   signup: '/signup',
   dashboard: '/dashboard',
   feedback: '/feedback',
+  admin: '/admin',
 });

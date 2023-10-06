@@ -16,6 +16,7 @@ import { ENDPOINTS, BASE_URL } from '../constants/api.mjs';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
 import routes from '../constants/routes.mjs';
 import { QUESTION_THEMES } from '../constants/questions.mjs';
+import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 
 export default function TeachersQuestion(props) {
   const [questions, setQuestions] = useState([
@@ -63,7 +64,7 @@ export default function TeachersQuestion(props) {
       return;
     }
 
-    const userId = window.localStorage.getItem('teacherId');
+    const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
 
     if (!userId) {
       alert('Et ole kirjautunut sisään');
