@@ -68,7 +68,7 @@ export default function SignUp() {
     <ThemeProvider theme={defaultTheme}>
       <div className="background-video">
         <video autoPlay loop muted playsInline className="bg-video">
-          <source src="src/assets/animatedBackground.mp4" type="video/mp4" />
+          <source src="/assets/animatedBackground.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -95,7 +95,7 @@ export default function SignUp() {
             borderRadius: '10px',
           }}>
           <img
-            src="src/assets/logo_512x512.png"
+            src="/assets/logo_512x512.png"
             alt="Palautepomppu Logo"
             className="navbar-favicon"
             width={48}

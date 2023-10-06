@@ -1,5 +1,5 @@
 /*
-! If you edit this file, you must also edit the css file: `src/assets/colors.css`
+! If you edit this file, you must also edit the css file: `src/constants/colors.css`
 */
 
 export default Object.freeze({

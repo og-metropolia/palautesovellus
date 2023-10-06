@@ -103,7 +103,7 @@ export default function SignInSide() {
               alignItems: 'center',
             }}>
             <img
-              src="src/assets/logo_512x512.png"
+              src="/assets/logo_512x512.png"
               alt="Palautepomppu Logo"
               className="navbar-favicon"
               width={56}

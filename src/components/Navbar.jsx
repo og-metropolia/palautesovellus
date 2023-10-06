@@ -21,13 +21,13 @@ export default function Navbar() {
     <div className="navbar">
       <Link className="navbar-brand" href="/">
         <img
-          src="src/assets/logo_512x512.png"
+          src="/assets/logo_512x512.png"
           alt="Palautepomppu Logo"
           className="navbar-favicon"
           width={48}
         />
       </Link>
-      <img src="src/assets/pallot.gif" alt="Pallo kuva" className="pallo-gif" />
+      <img src="/assets/pallot.gif" alt="Pallo kuva" className="pallo-gif" />
       <h1 className="navbar-heading">PALAUTEPOMPPU</h1>
       <div className="navbar-actions">
         <Button className="logout-button" onClick={handleButtonClick}>
