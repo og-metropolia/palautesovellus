@@ -95,11 +95,13 @@ export function queryRecordsAll(conn, response, tableName) {
         console.log(err);
         return response
           .status(400)
-          .json({ code: 400, message: 'Record not found' });
+          .json({ code: 400, message: 'Records not found' });
       }
-      response
-        .status(200)
-        .json({ code: 200, message: 'Record deleted successfully!' });
+      response.status(200).json({
+        code: 200,
+        message: 'Records fetched successfully',
+        results: results,
+      });
     });
   } catch (err) {
     console.log(err);
