@@ -9,8 +9,7 @@
     "start": "npm-run-all --parallel start:client start:server",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "build": "vite build",
-    "serve": "serve -s dist -l 80"
+    "build": "vite build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
