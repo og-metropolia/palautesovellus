@@ -72,24 +72,24 @@ function authorize() {
 }
 
 async function createUser() {
-  app.post(`/${API_PATH}/${ENDPOINTS.users}`, (req, res) => {
+  app.post(`/${API_PATH}/${ENDPOINTS.users}`, async (req, res) => {
     const { firstName, lastName, password: inputPassword, email } = req.body;
 
-    const userExists = checkExistingUser(email);
-
+    const userExists = await checkExistingUser(email);
     if (userExists) {
       return res.status(400).json({
         success: false,
         message: 'User already exists with given email',
+        code: 400,
       });
     }
 
-    bcrypt.hash(inputPassword, SALT_ROUNDS, function (err, hashedPassword) {
+    bcrypt.hash(inputPassword, SALT_ROUNDS, (err, hashedPassword) => {
       if (err) {
         console.error('Error hashing password:', err);
         return res
           .status(500)
-          .json({ success: false, message: 'Server error' });
+          .json({ success: false, message: 'Server error', code: 500 });
       }
 
       const createdAt = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -118,7 +118,9 @@ async function createQuestion() {
         [session_id, theme, content, answer_type],
       );
     } catch (error) {
-      return res.status(500).json({ success: false, message: 'Server error' });
+      return res
+        .status(500)
+        .json({ success: false, message: 'Server error', code: 500 });
     }
   });
 }
@@ -135,7 +137,9 @@ async function createAnswer() {
         [question_id, message, responder, moment],
       );
     } catch (error) {
-      return res.status(500).json({ success: false, message: 'Server error' });
+      return res
+        .status(500)
+        .json({ success: false, message: 'Server error', code: 500 });
     }
   });
 }
@@ -155,7 +159,9 @@ async function createSession() {
       );
       return createdSession;
     } catch (error) {
-      res.status(500).json({ success: false, message: 'Server error' });
+      res
+        .status(500)
+        .json({ success: false, message: 'Server error', code: 500 });
     }
   });
 }
@@ -164,10 +170,12 @@ function checkExistingUser(email) {
   return new Promise((resolve, reject) => {
     const queryString = `SELECT * FROM ${TABLES.users} WHERE email = ?`;
 
+    console.log('Checking if user exists with email: ', email);
+
     conn.query(queryString, [email], (err, results) => {
       if (err) {
         console.error('Database error: ', err);
-        reject(err);
+        resolve(true);
       }
 
       if (results.length > 0) {
