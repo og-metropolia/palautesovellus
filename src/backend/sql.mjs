@@ -59,20 +59,25 @@ export function insertRecord(
  * @param {Object} response - HTTP-vastaus
  * @param {string} tableName - Tietokantataulun nimi
  * @param {number} id - Poistettavan tietueen id
+ * @param {number} columnName - Vaihtoehtoinen kentän nimi, joka sisältää id:n
  */
-export function deleteRecord(conn, response, tableName, id) {
+export function deleteRecord(conn, response, tableName, id, columnName = 'id') {
   try {
-    conn.query(`DELETE FROM ${tableName} WHERE id = ?`, id, (err) => {
-      if (err) {
-        console.log('Error while deleting a record from the database', err);
+    conn.query(
+      `DELETE FROM ${tableName} WHERE ${columnName} = ?`,
+      id,
+      (err) => {
+        if (err) {
+          console.log('Error while deleting a record from the database', err);
+          return response
+            .status(400)
+            .json({ code: 400, message: 'Record not found' });
+        }
         return response
-          .status(400)
-          .json({ code: 400, message: 'Record not found' });
-      }
-      return response
-        .status(200)
-        .json({ code: 200, message: 'Record deleted successfully!' });
-    });
+          .status(200)
+          .json({ code: 200, message: 'Record deleted successfully!' });
+      },
+    );
   } catch (err) {
     console.log(err);
     return response

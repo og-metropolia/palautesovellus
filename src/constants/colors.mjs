@@ -18,4 +18,5 @@ export default Object.freeze({
   gray: '#dedede',
 
   landingBlue: '#6798de',
+  nyanBlue: '#2d545e',
 });

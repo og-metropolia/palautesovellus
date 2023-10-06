@@ -6,7 +6,7 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
-import { queryRecordsAll, insertRecord } from './sql.mjs';
+import { queryRecordsAll, insertRecord, deleteRecord } from './sql.mjs';
 
 const SALT_ROUNDS = 10;
 
@@ -247,6 +247,12 @@ function queryAnswersByQuestionId() {
   });
 }
 
+function deleteUser() {
+  app.delete(`/${API_PATH}/${ENDPOINTS.users}/:id`, (req, res) => {
+    deleteRecord(conn, res, TABLES.users, req.params.id, 'teacher_id');
+  });
+}
+
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);
 });
@@ -260,3 +266,4 @@ createSession();
 queryQuestionsBySessionId();
 querySessionsByTeacherId();
 queryAnswersByQuestionId();
+deleteUser();

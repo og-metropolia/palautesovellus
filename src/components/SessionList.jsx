@@ -1,4 +1,5 @@
 import './sessionlist.css';
+import { CircularProgress } from '@mui/material';
 
 export default function Sessionlist(props) {
   const sessions = props.data || [];
@@ -6,8 +7,9 @@ export default function Sessionlist(props) {
   if (!Array.isArray(sessions) || sessions.length === 0) {
     return (
       <div className="session-wrapper">
-        <div className="sessionlist-container">
+        <div className="sessionlist-container" style={{ color: 'white' }}>
           Ei kyselyjä saatavilla tai ladataan kyselyitä...
+          <CircularProgress style={{ display: 'block', margin: '20px auto' }} />
         </div>
       </div>
     );
