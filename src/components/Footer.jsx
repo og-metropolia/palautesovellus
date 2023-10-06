@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="logo-container">
           <img
-            src="src/assets/logo_512x512.png"
+            src="/assets/logo_512x512.png"
             alt="Palautepomppu Logo"
             className="footer-logo"
           />

@@ -25,7 +25,7 @@ export default function Landing() {
 
         <img
           className="landing-image"
-          src="src/assets/student_drawing_on_tablet.jpg"
+          src="/assets/student_drawing_on_tablet.jpg"
           alt="Lapsi antamassa palautetta."
         />
       </div>
@@ -33,7 +33,7 @@ export default function Landing() {
       <div className="landing-container">
         <img
           className="landing-image"
-          src="src/assets/drawfeedback.jpg"
+          src="/assets/drawfeedback.jpg"
           alt="Oppilas piirtää palautettaan."
         />
         <div className="landing-content">
@@ -74,7 +74,7 @@ export default function Landing() {
         </div>
         <img
           className="landing-image"
-          src="src/assets/person_analyzing.png"
+          src="/assets/person_analyzing.png"
           alt="Opettaja tarkastelee saamaansa palautetta."
         />
       </div>
