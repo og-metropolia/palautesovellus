@@ -8,7 +8,9 @@
     "start:server": "node src/backend/server.mjs",
     "start": "npm-run-all --parallel start:client start:server",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "build": "vite build",
+    "serve": "serve -s build -l 443"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
