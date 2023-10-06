@@ -10,7 +10,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "build": "vite build",
-    "serve": "serve -s build -l 443"
+    "serve": "serve -s dist -l 80"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
