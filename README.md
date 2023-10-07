@@ -1,6 +1,7 @@
 
 # Palautepomppu
 
+- [Diagrams](#diagrams)
 - [Endpoints](#endpoints)
   - [Auth](#auth)
   - [Users](#users)
@@ -48,6 +49,16 @@ npm start
 # REST API Documentation
 
 **Production URL**: http://10.120.33.52/api/v0/
+
+## Diagrams
+> Note that the PDF files are not up to date, but the source files should be.
+* [Activity diagram](/docs/diagrams/activity-diagram.pdf)
+* [Class diagram](/docs/diagrams/class-diagram.pdf)
+* [Deployment diagram](/docs/diagrams/deployment-diagram.pdf)
+* [ER diagram](/docs/diagrams/er-diagram.pdf)
+* [Package diagram](/docs/diagrams/package-diagram.pdf)
+* [Sequence diagram](/docs/diagrams/sequence-diagram.pdf)
+* [Use case diagram](/docs/diagrams/use-case-diagram.pdf)
 
 ## Endpoints
 
