@@ -12,8 +12,16 @@ import {
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
+import ROUTES from '../constants/routes.mjs';
 
 export default function AdminDashboard() {
+  const adminId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.adminId);
+
+  if (!adminId) {
+    window.location.href = ROUTES.login + '?admin=true';
+    return null;
+  }
+
   const [users, setUsers] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [searchTerm, setSearchTerm] = React.useState('');

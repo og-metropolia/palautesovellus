@@ -51,17 +51,6 @@
   align-items: center;
 }
 
-.text-button {
-  font-size: 12px;
-  color: var(--p-white);
-  margin-top: 15px;
-  text-decoration: none;
-}
-
-.text-button:hover {
-  text-decoration: underline;
-}
-
 .icon-background {
   background-color: var(--p-white);
   border-radius: 50%;
@@ -104,10 +93,6 @@
     flex-direction: column;
   }
 
-  .text-button {
-    display: none;
-  }
-
   .pallo-gif {
     display: none;
   }
@@ -132,10 +117,6 @@
   .logout-button {
     flex-direction: row;
     align-items: center;
-  }
-
-  .text-button {
-    display: none;
   }
 
   .pallo-gif {

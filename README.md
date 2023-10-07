@@ -1,21 +1,22 @@
 
 # Palautepomppu
-
-* [Endpoints](#endpoints)
-  * [Auth](#auth)
-  * [Users](#users)
-    * [Get users](#get-users)
-    * [Create user](#create-user)
-    * [Delete user](#delete-user)
-  * [Session](#session)
-    * [Create session](#create-session)
-    * [Get Sessions](#get-sessions)
-  * [Question](#question)
-    * [Create Question](#create-question)
-    * [Get Questions](#get-questions)
-  * [Answer](#answer)
-    * [Create Answer](#create-answer)
-    * [Get Answers](#get-answers)
+- [Showcase](#showcase)
+- [Diagrams](#diagrams)
+- [Endpoints](#endpoints)
+  - [Auth](#auth)
+  - [Users](#users)
+    - [Get users](#get-users)
+    - [Create user](#create-user)
+    - [Delete user](#delete-user)
+  - [Session](#session)
+    - [Create session](#create-session)
+    - [Get Sessions](#get-sessions)
+  - [Question](#question)
+    - [Create Question](#create-question)
+    - [Get Questions](#get-questions)
+  - [Answer](#answer)
+    - [Create Answer](#create-answer)
+    - [Get Answers](#get-answers)
 
 
 
@@ -31,8 +32,8 @@ npm install
 npm start
 ```
 
-* http://localhost:5173 for React website: 
-* http://localhost:3000 for Express REST API: 
+* http://localhost:5173 for React website:
+* http://localhost:3000 for Express REST API:
 
 
 # Tech and Tools
@@ -48,6 +49,16 @@ npm start
 # REST API Documentation
 
 **Production URL**: http://10.120.33.52/api/v0/
+
+## Diagrams
+> Note that the PDF files are not up to date, but the source files should be.
+* [Activity diagram](/docs/diagrams/activity-diagram.pdf)
+* [Class diagram](/docs/diagrams/class-diagram.pdf)
+* [Deployment diagram](/docs/diagrams/deployment-diagram.pdf)
+* [ER diagram](/docs/diagrams/er-diagram.pdf)
+* [Package diagram](/docs/diagrams/package-diagram.pdf)
+* [Sequence diagram](/docs/diagrams/sequence-diagram.pdf)
+* [Use case diagram](/docs/diagrams/use-case-diagram.pdf)
 
 ## Endpoints
 
@@ -134,7 +145,9 @@ Payload
   "teacher_id": 1,
   "moment": "2023-04-21T14:30:56.000Z"
 }
+```
 Response
+```json
 {
   "message": "Record created successfully!",
   "code": 200,
@@ -144,7 +157,7 @@ Response
 #### Get Sessions
 Endpoint: `GET /session/`
 
-Query parameters: 
+Query parameters:
 * `teacher_id=2`
 
 Response
@@ -196,7 +209,7 @@ Response
 
 Endpoint: `GET /question/`
 
-Query parameters: 
+Query parameters:
 * `session_id=1`
 Response
 ```json
@@ -249,7 +262,7 @@ Response
 #### Get Answers
 Endpoint: `GET /answer/`
 
-Query parameters: 
+Query parameters:
 * `question_id=30`
 
 Response
@@ -274,3 +287,5 @@ Response
     ]
 }
 ```
+
+#Showcase
