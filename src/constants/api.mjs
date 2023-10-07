@@ -4,6 +4,7 @@ export const ENDPOINTS = Object.freeze({
   session: 'session',
   question: 'question',
   answer: 'answer',
+  print: 'print',
 });
 
 export const API_PATH = 'api/v0';

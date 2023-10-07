@@ -253,6 +253,46 @@ function deleteUser() {
   });
 }
 
+function printResults() {
+  app.get(
+    `/${API_PATH}/${ENDPOINTS.print}/:teacher_id/:session_id`,
+    (req, res) => {
+      const teacher_id = req.params.teacher_id;
+      const session_id = req.params.session_id;
+      console.log([teacher_id]);
+      console.log([session_id]);
+
+      const queryString = `
+      SELECT
+      s.teacher_id,
+      s.session_id AS session,
+      q.question_id,
+      q.content AS question,
+      q.answer_type,
+      a.answer_id,
+      a.message AS response
+      FROM Session s
+      JOIN Question q ON s.session_id = q.session_id
+      LEFT JOIN Answer a ON q.question_id = a.question_id
+      WHERE s.teacher_id = ?
+      AND s.session_id = ?
+    `;
+
+      conn.query(queryString, [teacher_id, session_id], (err, results) => {
+        if (err) {
+          console.error('Database error: ', err);
+          return res.status(500).send('Internal Server Error');
+        }
+
+        return res.status(200).json({
+          code: 200,
+          results: results,
+        });
+      });
+    },
+  );
+}
+
 app.listen(port, () => {
   console.log(`Express server is listening on port ${port}`);
 });
@@ -267,3 +307,4 @@ queryQuestionsBySessionId();
 querySessionsByTeacherId();
 queryAnswersByQuestionId();
 deleteUser();
+printResults();
