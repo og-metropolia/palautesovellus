@@ -7,9 +7,9 @@
     "start:client": "vite",
     "start:server": "node src/backend/server.mjs",
     "start": "npm-run-all --parallel start:client start:server",
-    "test": "vitest",
+    "test": "vitest --no-color",
     "coverage": "vitest run --coverage --no-color",
-    "build": "vite build --no-color"
+    "build": "vite build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
