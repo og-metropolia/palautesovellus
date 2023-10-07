@@ -1,6 +1,14 @@
 
 # Palautepomppu
 - [Showcase](#showcase)
+  - [Front Page](#front-page)
+  - [Login page](#login-page)
+  - [Sign up page](#sign-up-page)
+  - [Teachers Dashboard](#teachers-dashboard)
+  - [Session page](#session-page)
+  - [Result page](#result-page)
+  - [Admin page](#admin-page)
+  - [Thank you page](#thank-you-page)
 - [Diagrams](#diagrams)
 - [Endpoints](#endpoints)
   - [Auth](#auth)
@@ -288,4 +296,52 @@ Response
 }
 ```
 
-#Showcase
+## Showcase
+
+### Front Page 
+
+Front page is shown when the user is not logged in.
+
+![Front Page](/images/frontpage.jpg)
+![Front Page](/images/frontpage2.jpg)
+
+### Login page
+
+Login page is shown when the user is not logged in and clicks the login button.
+
+![Login](/images/signin.jpg)
+
+### Sign up page
+
+Sign up page is shown when the user is not logged in and clicks "Ei käyttäjätunnusta? Rekisteröidy" link from the login page.
+
+![Sign up](/images/signup.jpg)
+
+### Teachers Dashboard 
+
+Teachers dashboard is shown after the user has logged in with teacher credentials. Teacher can create new sessions and see the results of the previous sessions.
+
+![Dashboard](/images/dashboard.jpg)
+
+### Session page
+
+Session page is shown after teacher has created a new session and shared the session QR-code or the link to the students. Students can answer the questions in the session.
+
+![Session](/images/session.jpg)
+
+### Result page
+
+Result page is shown after the teacher clicks one session from "Aikaisemmat kyselyt". Teacher can see the results of the session.
+
+![Result](/images/resultSession.jpg)
+
+### Admin page
+
+Admin page is shown after the user has logged in with admin credentials. Admin can delete users.
+
+![Admin](/images/admin.jpg)
+
+### Thank you page
+Thank you page is shown after the user has answered the questions in the session and clicked "Lähetä".
+
+![Thank you](/images/thankyou.jpg)
