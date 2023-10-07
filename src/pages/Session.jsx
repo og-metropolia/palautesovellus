@@ -50,8 +50,6 @@ export default function Session(props) {
     } catch (error) {
       alert('Virhe vastauksien tallennuksessa:');
     }
-
-    alert('Vastaukset tallennettu!');
     window.location.href = ROUTES.thanks;
   };
 
