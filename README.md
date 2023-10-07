@@ -1,21 +1,21 @@
 
 # Palautepomppu
 
-* [Endpoints](#endpoints)
-  * [Auth](#auth)
-  * [Users](#users)
-    * [Get users](#get-users)
-    * [Create user](#create-user)
-    * [Delete user](#delete-user)
-  * [Session](#session)
-    * [Create session](#create-session)
-    * [Get Sessions](#get-sessions)
-  * [Question](#question)
-    * [Create Question](#create-question)
-    * [Get Questions](#get-questions)
-  * [Answer](#answer)
-    * [Create Answer](#create-answer)
-    * [Get Answers](#get-answers)
+- [Endpoints](#endpoints)
+  - [Auth](#auth)
+  - [Users](#users)
+    - [Get users](#get-users)
+    - [Create user](#create-user)
+    - [Delete user](#delete-user)
+  - [Session](#session)
+    - [Create session](#create-session)
+    - [Get Sessions](#get-sessions)
+  - [Question](#question)
+    - [Create Question](#create-question)
+    - [Get Questions](#get-questions)
+  - [Answer](#answer)
+    - [Create Answer](#create-answer)
+    - [Get Answers](#get-answers)
 
 
 
@@ -31,8 +31,8 @@ npm install
 npm start
 ```
 
-* http://localhost:5173 for React website: 
-* http://localhost:3000 for Express REST API: 
+* http://localhost:5173 for React website:
+* http://localhost:3000 for Express REST API:
 
 
 # Tech and Tools
@@ -134,7 +134,9 @@ Payload
   "teacher_id": 1,
   "moment": "2023-04-21T14:30:56.000Z"
 }
+```
 Response
+```json
 {
   "message": "Record created successfully!",
   "code": 200,
@@ -144,7 +146,7 @@ Response
 #### Get Sessions
 Endpoint: `GET /session/`
 
-Query parameters: 
+Query parameters:
 * `teacher_id=2`
 
 Response
@@ -196,7 +198,7 @@ Response
 
 Endpoint: `GET /question/`
 
-Query parameters: 
+Query parameters:
 * `session_id=1`
 Response
 ```json
@@ -249,7 +251,7 @@ Response
 #### Get Answers
 Endpoint: `GET /answer/`
 
-Query parameters: 
+Query parameters:
 * `question_id=30`
 
 Response
