@@ -1,4 +1,8 @@
 .emoji-stats {
-  display: inline;
+  display: flex;
+  gap: 20px;
   margin: 20px;
+}
+.emoji-stats p {
+  color: black;
 }

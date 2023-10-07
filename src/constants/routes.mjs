@@ -5,4 +5,5 @@ export default Object.freeze({
   dashboard: '/dashboard',
   feedback: '/feedback',
   admin: '/admin',
+  thanks: '/thank-you',
 });

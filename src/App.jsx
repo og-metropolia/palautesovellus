@@ -12,19 +12,21 @@ import Dashboard from './pages/Dashboard';
 import Landing from './pages/Landing';
 import Session from './pages/Session';
 import SessionResults from './pages/SessionResults';
-import routes from './constants/routes.mjs';
+import ROUTES from './constants/routes.mjs';
 import AdminDashboard from './pages/AdminDashboard';
+import ThankYou from './pages/ThankYou';
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route path={routes.landing} component={Landing} />
-          <Route path={routes.signup} component={SignUp} />
-          <Route path={routes.login} component={SignIn} />
-          <Route path={routes.dashboard} component={Dashboard} />
-          <Route path={routes.admin} component={AdminDashboard} />
+          <Route path={ROUTES.landing} component={Landing} />
+          <Route path={ROUTES.signup} component={SignUp} />
+          <Route path={ROUTES.login} component={SignIn} />
+          <Route path={ROUTES.dashboard} component={Dashboard} />
+          <Route path={ROUTES.admin} component={AdminDashboard} />
+          <Route path={ROUTES.thanks} component={ThankYou} />
           <Route path="/session/:id" component={Session} />
           <Route path="/results/session/:id" component={SessionResults} />
           <Route path="*">

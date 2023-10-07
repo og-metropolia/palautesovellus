@@ -1,10 +1,9 @@
 import './sessionresults.css';
 import React, { useEffect, useState } from 'react';
-import routes from '../constants/routes.mjs';
+import ROUTES from '../constants/routes.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import { BASE_URL, ENDPOINTS } from '../constants/api';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
-import { QUESTION_THEMES } from '../constants/questions.mjs';
 import { getQrCodeForUrl } from '../utils/qr-code.mjs';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Button from '@mui/material/Button';
@@ -43,9 +42,14 @@ export default function SessionResults(props) {
   const id = props.match.params.id;
   const [questions, setQuestions] = useState();
   const [answerMarkup, setAnswerMarkup] = useState();
-  const [prevQuestionType, setPrevQuestionType] = useState();
+  const [selectedQuestion, setSelectedQuestion] = useState();
   const [emojiStats, setEmojiStats] = useState({});
   const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
+
+  if (!userId) {
+    window.location.href = ROUTES.login;
+    return null;
+  }
 
   function incrementEmojiStat(emojiName) {
     const emojiId = getEmojiIdFromName(emojiName);
@@ -53,7 +57,7 @@ export default function SessionResults(props) {
   }
 
   useEffect(() => {
-    const dataFetch = async () => {
+    const fetchSessionQuestions = async () => {
       const fetchedQuestionData = await (
         await fetch(`${BASE_URL}/${ENDPOINTS.question}?session_id=${id}`)
       ).json();
@@ -61,18 +65,17 @@ export default function SessionResults(props) {
       setQuestions(fetchedQuestionData.results);
     };
 
-    dataFetch();
+    fetchSessionQuestions();
   }, [id]);
 
-  const dataFetch = async (id) => {
+  const dataFetch = async (questionId) => {
     const fetchedData = await (
-      await fetch(`${BASE_URL}/${ENDPOINTS.answer}?question_id=${id}`)
+      await fetch(`${BASE_URL}/${ENDPOINTS.answer}?question_id=${questionId}`)
     ).json();
 
     let prevQuestionTypeLocal;
     for (let i = 0; i < questions.length; i++) {
-      if (questions[i].question_id === id) {
-        setPrevQuestionType(questions[i].answer_type);
+      if (questions[i].question_id === questionId) {
         prevQuestionTypeLocal = questions[i].answer_type;
         break;
       }
@@ -110,6 +113,25 @@ export default function SessionResults(props) {
       setAnswerMarkup(<EmojiRating stats={emojiStats} />);
   };
 
+  function triggerSelectQuestion(questionId) {
+    setSelectedQuestion(questionId);
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set('question', questionId);
+    window.history.replaceState(
+      {},
+      '',
+      `${window.location.pathname}?${searchParams}`,
+    );
+    dataFetch(questionId);
+  }
+
+  const searchParams = new URLSearchParams(window.location.search);
+  if (!searchParams.get('question')) {
+    if (questions && questions.length > 0) {
+      triggerSelectQuestion(questions[0].question_id);
+    }
+  }
+
   if (!Array.isArray(questions) || questions.length === 0) {
     return (
       <div className="questionlist-container">
@@ -121,15 +143,11 @@ export default function SessionResults(props) {
 
   if (!Array.isArray(questions) || questions.length === 0) {
     return (
-      <div>
+      <div className="questionlist-container">
         Ei kysymyksiä saatavilla tai ladataan kysymyksiä...
         <CircularProgress style={{ display: 'block', margin: '20px auto' }} />
       </div>
     );
-  }
-
-  if (!userId) {
-    window.location.href = routes.login;
   }
 
   return (
@@ -139,7 +157,7 @@ export default function SessionResults(props) {
           <Tooltip title="Takaisin">
             <Button
               className="custom-back-button"
-              onClick={() => (window.location.href = routes.dashboard)}
+              onClick={() => (window.location.href = ROUTES.dashboard)}
               style={{ color: 'white' }}>
               <ArrowBackIcon />
             </Button>
@@ -171,7 +189,7 @@ export default function SessionResults(props) {
               onClick={() => {
                 setTimeout(() => {
                   window.print();
-                }, 1000); // 1 sekunnin viive
+                }, 1000);
               }}
               style={{ color: 'white' }}>
               <PrintIcon />
@@ -184,7 +202,21 @@ export default function SessionResults(props) {
             <li key={question.question_id}>
               <button
                 onClick={() => {
-                  dataFetch(question.question_id);
+                  triggerSelectQuestion(question.question_id);
+                }}
+                style={{
+                  backgroundColor:
+                    new URLSearchParams(window.location.search).get(
+                      'question',
+                    ) === `${question.question_id}`
+                      ? 'var(--landing-blue)'
+                      : 'white',
+                  color:
+                    new URLSearchParams(window.location.search).get(
+                      'question',
+                    ) === `${question.question_id}`
+                      ? 'white'
+                      : 'black',
                 }}>
                 {question.content}
               </button>

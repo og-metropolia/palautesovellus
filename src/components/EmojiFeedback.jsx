@@ -14,13 +14,13 @@ import colors from '../constants/colors.mjs';
 import AnswerContext from './AnswerContext.jsx';
 
 export const emojis = [
-  { icon: <FaSmile />, name: 'happy' },
   { icon: <FaLaugh />, name: 'smile' },
   { icon: <FaGrin />, name: 'wink' },
+  { icon: <FaSurprise />, name: 'surprised' },
+  { icon: <FaSmile />, name: 'happy' },
   { icon: <FaMeh />, name: 'neutral' },
   { icon: <FaFrown />, name: 'sad' },
   { icon: <FaAngry />, name: 'angry' },
-  { icon: <FaSurprise />, name: 'surprised' },
   { icon: <FaTired />, name: 'tired' },
 ];
 

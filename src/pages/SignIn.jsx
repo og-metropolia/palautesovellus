@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import routes from '../constants/routes.mjs';
+import ROUTES from '../constants/routes.mjs';
 import { BASE_URL } from '../constants/api.mjs';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
@@ -24,7 +24,7 @@ import { isValidEmail } from '../utils/input-validation.mjs';
 
 const defaultTheme = createTheme();
 
-export default function SignInSide() {
+export default function SignIn() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
 
@@ -40,27 +40,44 @@ export default function SignInSide() {
       return;
     }
 
+    const is_admin = new URLSearchParams(window.location.search).get('admin');
+
     fetch(`${BASE_URL}/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({
+        email,
+        password,
+        is_admin: is_admin ? true : false,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.successful) {
-          console.log(data);
           setShowError(false);
-          window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.user_id);
-          window.location.href = routes.dashboard;
+          console.log(data);
+          if (is_admin) {
+            window.localStorage.setItem(
+              LOCAL_STORAGE_KEYS.adminId,
+              data.user_id,
+            );
+            window.location.href = ROUTES.admin;
+          } else {
+            window.localStorage.setItem(
+              LOCAL_STORAGE_KEYS.userId,
+              data.user_id,
+            );
+            window.location.href = ROUTES.dashboard;
+          }
         } else if (data.code === 400) {
           setShowError(true);
         } else {
           setShowError(true);
         }
       })
-      .catch((error) => {
+      .catch((e) => {
         setShowError(true);
       });
   };
@@ -163,7 +180,7 @@ export default function SignInSide() {
                 <Grid item>
                   <Link
                     component={RouterLink}
-                    to={routes.signup}
+                    to={ROUTES.signup}
                     variant="body2">
                     {'Ei käyttäjätunnusta? Rekisteröidy'}
                   </Link>

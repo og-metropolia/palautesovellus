@@ -40,34 +40,63 @@ function getRecordsAll(endpoint, tableName) {
 
 function authorize() {
   app.post(`/${API_PATH}/${ENDPOINTS.auth}`, async (req, res) => {
-    const { email, password: submittedPassword } = req.body;
+    const { email, password: submittedPassword, is_admin } = req.body;
 
-    const queryString = `SELECT * FROM ${TABLES.users} WHERE email = ?`;
+    if (is_admin) {
+      const queryString = `SELECT * FROM ${TABLES.admin} WHERE email = ?`;
 
-    conn.query(queryString, [email], async (err, results) => {
-      if (err) {
-        console.error('Database error: ', err);
-        return res.status(500).send('Internal Server Error');
-      }
+      conn.query(queryString, [email], async (err, results) => {
+        if (err) {
+          console.error('Database error: ', err);
+          return res.status(500).send('Internal Server Error');
+        }
 
-      if (results.length > 0) {
-        const user = results[0];
-        bcrypt.compare(submittedPassword, user.password, (err, result) => {
-          if (err) throw err;
-          res.status(200).json({
-            code: 200,
-            successful: result ? true : false,
-            user_id: results[0].teacher_id,
+        if (results.length > 0) {
+          const user = results[0];
+          bcrypt.compare(submittedPassword, user.password, (err, result) => {
+            if (err) throw err;
+            res.status(200).json({
+              code: 200,
+              successful: result ? true : false,
+              user_id: results[0].admin_id,
+            });
           });
-        });
-      } else {
-        console.error('Database error: ', err);
-        return res.status(400).json({
-          code: 400,
-          successful: false,
-        });
-      }
-    });
+        } else {
+          console.error('Database error: ', err);
+          return res.status(400).json({
+            code: 400,
+            successful: false,
+          });
+        }
+      });
+    } else {
+      const queryString = `SELECT * FROM ${TABLES.users} WHERE email = ?`;
+
+      conn.query(queryString, [email], async (err, results) => {
+        if (err) {
+          console.error('Database error: ', err);
+          return res.status(500).send('Internal Server Error');
+        }
+
+        if (results.length > 0) {
+          const user = results[0];
+          bcrypt.compare(submittedPassword, user.password, (err, result) => {
+            if (err) throw err;
+            res.status(200).json({
+              code: 200,
+              successful: result ? true : false,
+              user_id: results[0].teacher_id,
+            });
+          });
+        } else {
+          console.error('Database error: ', err);
+          return res.status(400).json({
+            code: 400,
+            successful: false,
+          });
+        }
+      });
+    }
   });
 }
 
@@ -195,8 +224,10 @@ function queryQuestionsBySessionId() {
 
     conn.query(queryString, [session_id], (err, results) => {
       if (err) {
-        console.error('Database error: ', err);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).json({
+          code: 500,
+          message: 'Internal Server Error',
+        });
       }
 
       return res.status(200).json({
@@ -215,8 +246,10 @@ function querySessionsByTeacherId() {
 
     conn.query(queryString, [teacher_id], (err, results) => {
       if (err) {
-        console.error('Database error: ', err);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).json({
+          code: 500,
+          message: 'Internal Server Error',
+        });
       }
 
       return res.status(200).json({
@@ -235,8 +268,10 @@ function queryAnswersByQuestionId() {
 
     conn.query(queryString, [question_id], (err, results) => {
       if (err) {
-        console.error('Database error: ', err);
-        return res.status(500).send('Internal Server Error');
+        return res.status(500).json({
+          code: 500,
+          message: 'Internal Server Error',
+        });
       }
 
       return res.status(200).json({
