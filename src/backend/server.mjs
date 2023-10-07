@@ -265,12 +265,12 @@ function printResults() {
       const queryString = `
       SELECT
       s.teacher_id,
-      s.session_id AS session,
+      s.session_id,
       q.question_id,
-      q.content AS question,
+      q.content,
       q.answer_type,
       a.answer_id,
-      a.message AS response
+      a.message
       FROM Session s
       JOIN Question q ON s.session_id = q.session_id
       LEFT JOIN Answer a ON q.question_id = a.question_id
