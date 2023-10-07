@@ -40,7 +40,7 @@ describe('auth', () => {
 });
 
 describe('get users', async () => {
-  const response = fetch(`${API_URL}/users`).then((res) => res.json());
+  const response = fetch(`${API_URL}/user`).then((res) => res.json());
   const results = (await response).results;
 
   it('valid user', () => {
@@ -55,7 +55,7 @@ describe('get users', async () => {
 describe('create user', async () => {
   it('valid new user', async () => {
     const timestamp = new Date().getTime(); // used to make email unique
-    const response = fetch(`${API_URL}/users`, {
+    const response = fetch(`${API_URL}/user`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -69,7 +69,7 @@ describe('create user', async () => {
   });
 
   it('existing user', async () => {
-    const response = fetch(`${API_URL}/users`, {
+    const response = fetch(`${API_URL}/user`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -217,7 +217,7 @@ describe('get answers by session', async () => {
 describe('delete user', async () => {
   it('valid session id', async () => {
     const timestamp = new Date().getTime(); // used to make email unique
-    const createUserResponse = fetch(`${API_URL}/users`, {
+    const createUserResponse = fetch(`${API_URL}/user`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -229,7 +229,7 @@ describe('delete user', async () => {
     }).then((res) => res.json());
 
     const deleteUserResponse = fetch(
-      `${API_URL}/users/${(await createUserResponse).id}`,
+      `${API_URL}/user/${(await createUserResponse).id}`,
       {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
