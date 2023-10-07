@@ -1,5 +1,5 @@
 export const ENDPOINTS = Object.freeze({
-  users: 'users',
+  users: 'user',
   auth: 'auth',
   session: 'session',
   question: 'question',

@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { ENDPOINTS, BASE_URL } from '../constants/api.mjs';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
-import routes from '../constants/routes.mjs';
+import ROUTES from '../constants/routes.mjs';
 import { QUESTION_THEMES } from '../constants/questions.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 
@@ -68,7 +68,7 @@ export default function TeachersQuestion(props) {
 
     if (!userId) {
       alert('Et ole kirjautunut sisään');
-      window.location.href = routes.dashboard;
+      window.location.href = ROUTES.dashboard;
     }
 
     fetch(`${BASE_URL}/${ENDPOINTS.session}`, {

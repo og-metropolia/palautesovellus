@@ -5,32 +5,30 @@ import { emojis } from './EmojiFeedback.jsx';
 export default function EmojiRating(props) {
   const getStat = (idx) => stats[idx] || 0;
 
+  const getMaxStat = () => {
+    let max = 0;
+    for (let i = 0; i < stats.length; i++) {
+      if (stats[i] > max) {
+        max = stats[i];
+      }
+    }
+    return max;
+  };
+
   const stats = props.stats;
+  const maxStat = Math.max(getMaxStat(stats));
+  const maxSize = 100;
+
   return (
     <div className="emoji-stats">
-      <div className="emoji-stat-container" key={0}>
-        {emojis[0].icon} <p>{getStat(0)}</p>
-      </div>
-      <div className="emoji-stat-container" key={1}>
-        {emojis[1].icon} <p>{getStat(1)}</p>
-      </div>
-      <div className="emoji-stat-container" key={2}>
-        {emojis[2].icon} <p>{getStat(2)}</p>
-      </div>
-      <div className="emoji-stat-container" key={3}>
-        {emojis[3].icon} <p>{getStat(3)}</p>
-      </div>
-      <div className="emoji-stat-container" key={4}>
-        {emojis[4].icon} <p>{getStat(4)}</p>
-      </div>
-      <div className="emoji-stat-container" key={5}>
-        {emojis[5].icon} <p>{getStat(5)}</p>
-      </div>
-      <div className="emoji-stat-container" key={6}>
-        {emojis[6].icon} <p>{getStat(6)}</p>
-      </div>
-      <div className="emoji-stat-container" key={7}>
-        {emojis[7].icon} <p>{getStat(7)}</p>
+      <div className="emoji-stats">
+        {emojis.map((emoji, idx) => {
+          return (
+            <div className="emoji-stat-container" key={idx}>
+              {emoji.icon} <p>{getStat(idx)}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

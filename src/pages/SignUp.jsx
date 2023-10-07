@@ -14,7 +14,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import routes from '../constants/routes.mjs';
+import ROUTES from '../constants/routes.mjs';
 import { BASE_URL, ENDPOINTS } from '../constants/api.mjs';
 import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
@@ -52,7 +52,7 @@ export default function SignUp() {
         if (data.code === 200) {
           setShowError(false);
           window.localStorage.setItem(LOCAL_STORAGE_KEYS.userId, data.id);
-          window.location.href = routes.dashboard;
+          window.location.href = ROUTES.dashboard;
         } else if (data.code === 400) {
           setShowError(true);
         } else {
@@ -80,7 +80,8 @@ export default function SignUp() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100vh',
+          width: '100vw',
+          height: 'auto',
         }}>
         <CssBaseline />
         <Box
@@ -181,7 +182,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link component={RouterLink} to={routes.login} variant="body2">
+                <Link component={RouterLink} to={ROUTES.login} variant="body2">
                   On jo käyttäjä? Kirjaudu
                 </Link>
               </Grid>

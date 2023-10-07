@@ -7,7 +7,7 @@ export default function Sessionlist(props) {
   if (!Array.isArray(sessions) || sessions.length === 0) {
     return (
       <div className="session-wrapper">
-        <div className="sessionlist-container" style={{ color: 'white' }}>
+        <div className="sessionlist-container" style={{ color: 'black' }}>
           Ei kyselyjä saatavilla tai ladataan kyselyitä...
           <CircularProgress style={{ display: 'block', margin: '20px auto' }} />
         </div>

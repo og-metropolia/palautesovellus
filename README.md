@@ -1,6 +1,6 @@
 
 # Palautepomppu
-
+- [Showcase](#showcase)
 - [Diagrams](#diagrams)
 - [Endpoints](#endpoints)
   - [Auth](#auth)
@@ -287,3 +287,5 @@ Response
     ]
 }
 ```
+
+#Showcase

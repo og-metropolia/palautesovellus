@@ -1,5 +1,11 @@
 @import '../constants/colors.css';
 
+.question-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .question {
   display: flex;
   flex-direction: column;
@@ -9,7 +15,7 @@
   background-color: white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
-  margin: 1rem 2rem;
+  margin: 2.5rem 2rem;
 }
 
 .submit-container {
@@ -29,4 +35,22 @@
   max-width: 200px;
   text-align: center;
   justify-content: center;
+}
+
+.session-background img {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  .session-background img {
+    position: fixed;
+    width: 1400px;
+    height: 100vh;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
