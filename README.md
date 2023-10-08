@@ -77,7 +77,8 @@ Payload
 ```json
 {
   "email": "john.doe@example.com",
-  "password": "foobar"
+  "password": "foobar",
+  "is_admin": false
 }
 ```
 Response
