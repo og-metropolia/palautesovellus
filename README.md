@@ -71,6 +71,14 @@ npm start
 
 ## Testing
 
+### Unit Testing
+- Connect to Metropolia VPN.
+- Log in to Jenkins.
+- Run the palautepomppu-testing-unit job.
+- View results:
+http://10.120.33.63:8080/job/palautepomppu-testing-unit/ws/vitest/index.html#/
+
+### End-to-end Testing
 - Connect to Metropolia VPN.
 - Log in to Jenkins.
 - Run the palautepomppu-testing-e2e job.
