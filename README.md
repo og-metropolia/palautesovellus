@@ -10,6 +10,7 @@
   - [Admin page](#admin-page)
   - [Thank you page](#thank-you-page)
 - [Diagrams](#diagrams)
+- [Testing](#testing)
 - [Endpoints](#endpoints)
   - [Auth](#auth)
   - [Users](#users)
@@ -67,6 +68,14 @@ npm start
 * [Package diagram](/docs/diagrams/package-diagram.pdf)
 * [Sequence diagram](/docs/diagrams/sequence-diagram.pdf)
 * [Use case diagram](/docs/diagrams/use-case-diagram.pdf)
+
+## Testing
+
+- Connect to Metropolia VPN.
+- Log in to Jenkins.
+- Run the palautepomppu-testing-e2e job.
+- View results:
+http://10.120.33.63:8080/job/palautepomppu-testing-e2e/ws/playwright-report/index.html/
 
 ## Endpoints
 
@@ -299,7 +308,7 @@ Response
 
 ## Showcase
 
-### Front Page 
+### Front Page
 
 Front page is shown when the user is not logged in.
 
@@ -318,7 +327,7 @@ Sign up page is shown when the user is not logged in and clicks "Ei käyttäjät
 
 ![Sign up](/images/signup.jpg)
 
-### Teachers Dashboard 
+### Teachers Dashboard
 
 Teachers dashboard is shown after the user has logged in with teacher credentials. Teacher can create new sessions and see the results of the previous sessions.
 
