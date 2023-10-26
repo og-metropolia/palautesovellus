@@ -7,8 +7,10 @@
     "start:client": "vite",
     "start:server": "node src/backend/server.mjs",
     "start": "npm-run-all --parallel start:client start:server",
-    "test": "vitest --no-color",
-    "coverage": "vitest run --coverage --no-color",
+    "test": "npx playwright test && vitest --no-color",
+    "test:unit": "vitest --no-color",
+    "test:e2e": "npx playwright test",
+    "coverage:unit": "vitest run --coverage --no-color",
     "build": "vite build"
   },
   "dependencies": {
@@ -29,9 +31,11 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.39.0",
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
+    "@types/node": "^20.8.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
