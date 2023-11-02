@@ -4,8 +4,11 @@ import { Person as PersonIcon } from '@mui/icons-material';
 import { Link, Button, Tooltip } from '@mui/material';
 import ROUTES from '../constants/routes.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
+import LangSelector from '../components/LanguageSelector.jsx';
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
+  const { t } = useTranslation(); // Step 1: Get the translation function
   const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
 
   const handleButtonClick = () => {
@@ -29,7 +32,8 @@ export default function Navbar() {
         />
       </Link>
       <img src="/assets/pallot.gif" alt="Pallo kuva" className="pallo-gif" />
-      <h1 className="navbar-heading">PALAUTEPOMPPU</h1>
+      <h1 className="navbar-heading">{t('navbar.mainTitle')}</h1>{' '}
+      {/* Step 2: Use the translation function */}
       <div className="navbar-actions">
         <Tooltip title={userId ? 'Kirjaudu ulos' : 'Kirjaudu sisään'}>
           <Button className="logout-button" onClick={handleButtonClick}>

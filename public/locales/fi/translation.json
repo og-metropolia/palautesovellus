@@ -1,0 +1,91 @@
+{
+  "login": {
+    "login": "Kirjaudu sisään",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "rememberMe": "Muista minut",
+    "noAccount": "Ei käyttäjätunnusta? Rekisteröidy",
+    "footer": "Tekijänoikeudet @ FeedbackBounce 2023"
+  },
+  "signup": {
+    "signup": "Rekisteröidy",
+    "firstName": "Etunimi",
+    "lastName": "Sukunimi",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "getEmails": "Haluan päivityksiä sähköpostilla",
+    "signupButton": "REKISTERÖIDY",
+    "alreadyAccount": "On jo käyttäjä? Kirjaudu",
+    "footer": "Tekijänoikeudet @ FeedbackBounce 2023"
+  },
+  "navbar": {
+    "mainTitle": "FEEDBACKBOUNCE"
+  },
+  "dashboard": {
+    "questionsHeading": "Kysymykset",
+    "pickQuestionHeading": "Valitse aihe",
+    "questionPickHint": "Aihe...",
+    "questionType": {
+      "math": "Matematiikka",
+      "grammar": "Äidinkieli",
+      "play": "Leikki",
+      "trip": "Retki",
+      "sport": "Liikunta",
+      "exercise": "Tuntitehtävä"
+    },
+    "emotionquestion": "Tunnekysely",
+    "questionContentFieldHint": "Kirjoita kysymys tähän...",
+    "pickAnswerTypeHeading": "Valitse vastauksen tyyppi:",
+    "answerType": {
+      "emoji": "Emoji-vastaus",
+      "draw": "Piirto-vastaus",
+      "write": "Kirjoitus-vastaus"
+    },
+    "addQuestionButton": "LISÄÄ KYSYMYS",
+    "createSession": "LÄHETÄ VASTAUKSET",
+    "previousQuestionHeading": "Aikaisemmat kysymykset",
+    "questionsSent": "Kysymykset lähetetty",
+    "sessionN": "Kysely {n}",
+    "confirm": "Ok"
+  },
+  "admin": {
+    "adminTitle": "Admin hallintosivusto",
+    "searchUser": "Etsi käyttäjää.."
+  },
+  "session": {
+    "writeHereHint": "Kirjoita palaute tähän..",
+    "sendButton": "Lähetä"
+  },
+  "thankyou": {
+    "thanksTitle": "Kiitos vastauksesta."
+  },
+  "landing": {
+    "feedbackSystem": {
+      "title": "Moderni palautejärjestelmä opetukseen",
+      "content": "Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen väliseen yhteyteen, luoden innovatiivisen ja tehokkaan alustan sekä opettajille että opiskelijoille. Tämä järjestelmä virtaviivaistaa palauteprosessia, mahdollistaen opettajille helpon tavan kerätä, analysoida ja toimia saadun palautteen pohjalta. Palautepomppun kautta opettajat voivat parantaa opetusmenetelmiään, mukauttaa lähestymistapaansa vastaamaan opiskelijoiden tarpeita ja ennen kaikkea edistää koulutuskokemusten yleistä parantamista. Omaksu Palautepomppu ja astu opetuksen palautteen tulevaisuuteen."
+    },
+    "draw": {
+      "title": "Piirrä palaute",
+      "content": "Palautepomppu mahdollistaa palautteen antamisen myös piirrosten muodossa. Visuaalinen palaute on voimakas työkalu, joka voi auttaa ymmärtämään oppilaiden tuntemuksia ja ajatuksia syvemmin kuin perinteiset tekstit. Piirtämällä oppilaat voivat ilmaista tunteitaan, ajatuksiaan ja käsityksiään opetuksen sisällöstä ja menetelmistä. Se antaa heille mahdollisuuden kommunikoida eri tavalla ja tuoda esille näkökulmia, jotka saattavat jäädä tekstipohjaisessa palautteessa huomaamatta."
+    },
+    "analyzing": {
+      "title": "Tulosten analysointi ja toiminnan parantaminen",
+      "content": "Saatu palaute on arvokasta vain, jos sen pohjalta voidaan tehdä toimenpiteitä. Feedbackbounce antaa opettajille selkeän katsauksen saatuun palautteeseen visuaalisten kaavioiden ja analyysityökalujen avulla. Olipa kyse yksittäisen oppitunnin palautteesta tai pitkän aikavälin trendeistä, Feedbackbounce tarjoaa ratkaisut tiedon keräämiseen ja analysointiin. Anna Feedbacbounce auttaa sinua tehostamaan opetustasi ja tarjoamaan oppilaillesi parhaan mahdollisen oppimiskokemuksen."
+    },
+    "footer": {
+      "altText": "Palautepomppu Logo",
+      "contact": {
+        "title": "Yhteystiedot",
+        "email": "info@palautepomppu.fi",
+        "phone": "+358 40 123 4567"
+      },
+      "links": {
+        "title": "Linkit",
+        "terms": "Käyttöehdot",
+        "dataProtection": "Tietosuoja",
+        "termsLink": "https://tietosuoja.fi/henkilotietojen-kasittely",
+        "dataProtectionLink": "https://europa.eu/youreurope/business/dealing-with-customers/data-protection/data-protection-gdpr/index_fi.htm"
+      }
+    }
+  }
+}
