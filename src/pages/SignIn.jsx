@@ -21,6 +21,8 @@ import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import { isValidEmail } from '../utils/input-validation.mjs';
+import Navbar from '../components/Navbar.jsx';
+import LangSelector from '../components/LanguageSelector.jsx';
 
 const defaultTheme = createTheme();
 
@@ -84,6 +86,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <LangSelector />
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid

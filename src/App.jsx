@@ -6,6 +6,7 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
@@ -15,25 +16,39 @@ import SessionResults from './pages/SessionResults';
 import ROUTES from './constants/routes.mjs';
 import AdminDashboard from './pages/AdminDashboard';
 import ThankYou from './pages/ThankYou';
+import { useTranslation } from 'react-i18next';
 
 function App() {
+  const { i18n } = useTranslation();
+  const [contentDirection, setContentDirection] = useState('ltr');
+
+  useEffect(() => {
+    setContentDirection(i18n.language !== 'ar' ? 'ltr' : 'rtl');
+  }, []);
+
+  i18n.on('languageChanged', () => {
+    setContentDirection(i18n.language !== 'ar' ? 'ltr' : 'rtl');
+  });
+
   return (
     <>
-      <Router>
-        <Switch>
-          <Route path={ROUTES.landing} component={Landing} />
-          <Route path={ROUTES.signup} component={SignUp} />
-          <Route path={ROUTES.login} component={SignIn} />
-          <Route path={ROUTES.dashboard} component={Dashboard} />
-          <Route path={ROUTES.admin} component={AdminDashboard} />
-          <Route path={ROUTES.thanks} component={ThankYou} />
-          <Route path="/session/:id" component={Session} />
-          <Route path="/results/session/:id" component={SessionResults} />
-          <Route path="*">
-            <Redirect to="/" />
-          </Route>
-        </Switch>
-      </Router>
+      <div dir={contentDirection ?? 'ltr'}>
+        <Router>
+          <Switch>
+            <Route path={ROUTES.landing} component={Landing} />
+            <Route path={ROUTES.signup} component={SignUp} />
+            <Route path={ROUTES.login} component={SignIn} />
+            <Route path={ROUTES.dashboard} component={Dashboard} />
+            <Route path={ROUTES.admin} component={AdminDashboard} />
+            <Route path={ROUTES.thanks} component={ThankYou} />
+            <Route path="/session/:id" component={Session} />
+            <Route path="/results/session/:id" component={SessionResults} />
+            <Route path="*">
+              <Redirect to="/" />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     </>
   );
 }

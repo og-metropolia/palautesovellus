@@ -1,26 +1,21 @@
 import './landing.css';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
+import LangSelector from '../components/LanguageSelector.jsx';
+import { useTranslation } from 'react-i18next';
 
 export default function Landing() {
+  const { t } = useTranslation();
+
   return (
     <div className="landing-page">
       <Navbar />
+      <LangSelector />
 
       <div className="landing-container">
         <div className="landing-content">
-          <h2>Moderni palautejärjestelmä opetukseen</h2>
-          <p>
-            Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen
-            väliseen yhteyteen, luoden innovatiivisen ja tehokkaan alustan sekä
-            opettajille että opiskelijoille. Tämä järjestelmä virtaviivaistaa
-            palauteprosessia, mahdollistaen opettajille helpon tavan kerätä,
-            analysoida ja toimia saadun palautteen pohjalta. Palautepomppun
-            kautta opettajat voivat parantaa opetusmenetelmiään, mukauttaa
-            lähestymistapaansa vastaamaan opiskelijoiden tarpeita ja ennen
-            kaikkea edistää koulutuskokemusten yleistä parantamista. Omaksu
-            Palautepomppu ja astu opetuksen palautteen tulevaisuuteen.
-          </p>
+          <h2>{t('landing.feedbackSystem.title')}</h2>
+          <p>{t('landing.feedbackSystem.content')}</p>
         </div>
 
         <img
@@ -37,40 +32,15 @@ export default function Landing() {
           alt="Oppilas piirtää palautettaan."
         />
         <div className="landing-content">
-          <h2>Piirrä palaute</h2>
-          <p>
-            Palautepomppu mahdollistaa palautteen antamisen myös piirrosten
-            muodossa. Visuaalinen palaute on voimakas työkalu, joka voi auttaa
-            ymmärtämään oppilaiden tuntemuksia ja ajatuksia syvemmin kuin
-            perinteiset tekstit.
-          </p>
-          <p>
-            Piirtämällä oppilaat voivat ilmaista tunteitaan, ajatuksiaan ja
-            käsityksiään opetuksen sisällöstä ja menetelmistä. Se antaa heille
-            mahdollisuuden kommunikoida eri tavalla ja tuoda esille näkökulmia,
-            jotka saattavat jäädä tekstipohjaisessa palautteessa huomaamatta.
-          </p>
+          <h2>{t('landing.draw.title')}</h2>
+          <p>{t('landing.draw.content')}</p>
         </div>
       </div>
 
       <div className="landing-container">
         <div className="landing-content">
-          <h2>Tulosten analysointi ja toiminnan parantaminen</h2>
-          <p>
-            Saatu palaute on arvokasta vain, jos sen pohjalta voidaan tehdä
-            toimenpiteitä. Palautepomppu antaa opettajille selkeän katsauksen
-            saatuun palautteeseen visuaalisten kaavioiden ja analyysityökalujen
-            avulla.
-          </p>
-          <p>
-            Olipa kyse yksittäisen oppitunnin palautteesta tai pitkän aikavälin
-            trendeistä, Palautepomppu tarjoaa ratkaisut tiedon keräämiseen ja
-            analysointiin.
-          </p>
-          <p>
-            Anna Palautepomppun auttaa sinua tehostamaan opetustasi ja
-            tarjoamaan oppilaillesi parhaan mahdollisen oppimiskokemuksen.
-          </p>
+          <h2>{t('landing.analyzing.title')}</h2>
+          <p>{t('landing.analyzing.content')}</p>
         </div>
         <img
           className="landing-image"

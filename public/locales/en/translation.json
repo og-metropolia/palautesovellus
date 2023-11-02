@@ -1,0 +1,91 @@
+{
+  "login": {
+    "login": "Log in",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "noAccount": "No username? Register",
+    "footer": "Copyright @ FeedbackBounce 2023"
+  },
+  "signup": {
+    "signup": "Register",
+    "firstName": "First name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "getEmails": "I want updates by email",
+    "signupButton": "Register",
+    "alreadyAccount": "Already user? Log in",
+    "footer": "Copyright @ FeedbackBounce 2023"
+  },
+  "navbar": {
+    "mainTitle": "FEEDBACKBOUNCE"
+  },
+  "dashboard": {
+    "questionsHeading": "Questions",
+    "pickQuestionHeading": "Choose a topic",
+    "questionPickHint": "Topic...",
+    "questionType": {
+      "math": "Mathematics",
+      "grammar": "Mother tongue",
+      "play": "Play",
+      "trip": "Excursion",
+      "sport": "Exercise",
+      "exercise": "Hourly task"
+    },
+    "emotionquestion": "Emotional survey",
+    "questionContentFieldHint": "Write the question here..",
+    "pickAnswerTypeHeading": "Choose the type of answer...",
+    "answerType": {
+      "emoji": "Emoji answer",
+      "draw": "Drawing answer",
+      "write": "Writing answer"
+    },
+    "addQuestionButton": "ADD QUESTION",
+    "createSession": "SEND ANSWERS",
+    "previousQuestionHeading": "Previous questions",
+    "questionsSent": "Question sent",
+    "sessionN": "Questionnaire {n} | Survey {n}",
+    "confirm": "Ok"
+  },
+  "admin": {
+    "adminTitle": "Admin management site",
+    "searchUser": "Search user.."
+  },
+  "session": {
+    "writeHereHint": "Write feedback here..",
+    "sendButton": "Send"
+  },
+  "thankyou": {
+    "thanksTitle": "Thank you for the answer"
+  },
+  "landing": {
+    "feedbackSystem": {
+      "title": "Modern feedback system for education",
+      "content": "FeedbackBounce introduces a new dimension to the connection between teaching and feedback, creating an innovative and efficient platform for both teachers and students. This system streamlines the feedback process, allowing teachers an easy way to collect, analyze, and act based on received feedback. Through FeedbackBounce, teachers can improve their teaching methods, adapt their approach to meet students' needs, and most importantly, enhance the overall educational experience. Adopt FeedbackBounce and step into the future of educational feedback."
+    },
+    "draw": {
+      "title": "Draw feedback",
+      "content": "FeedbackBounce allows giving feedback in the form of drawings as well. Visual feedback is a powerful tool that can help understand students' feelings and thoughts more deeply than traditional texts. By drawing, students can express their emotions, thoughts, and perceptions about the content and methods of teaching. It gives them the opportunity to communicate in a different way and to highlight perspectives that might go unnoticed in text-based feedback."
+    },
+    "analyzing": {
+      "title": "Analysis of results and improvement of actions",
+      "content": "Feedback received is valuable only if actions can be taken based on it. FeedbackBounce gives teachers a clear overview of the feedback received through visual diagrams and analysis tools. Whether it's feedback from a single lesson or long-term trends, FeedbackBounce provides solutions for collecting and analyzing information. Let FeedbackBounce help you enhance your teaching and offer your students the best possible learning experience."
+    },
+    "footer": {
+      "altText": "Feedback Bounce Logo",
+      "contact": {
+        "title": "Contact Information",
+        "email": "info@feedbackbounce.com",
+        "phone": "+358 40 123 4567"
+      },
+      "links": {
+        "title": "Links",
+        "terms": "Terms of Use",
+        "dataProtection": "Data Protection",
+        "termsLink": "https://dataprotection.com/terms-of-use",
+        "dataProtectionLink": "https://dataprotection.com/data-protection"
+      }
+    }
+  }
+}
