@@ -13,8 +13,10 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import ROUTES from '../constants/routes.mjs';
+import { useTranslation } from 'react-i18next';
 
 export default function AdminDashboard() {
+  const { t } = useTranslation();
   const adminId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.adminId);
 
   if (!adminId) {
@@ -59,24 +61,23 @@ export default function AdminDashboard() {
 
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1 className="admin-header">Admin hallintosivusto</h1>
+      <h1 className="admin-header">{t('admin.adminTitle')}</h1>
 
       <TextField
         className="search-user-field"
-        label="Etsi käyttäjää..."
+        label={t('admin.searchUser')}
         variant="outlined"
         fullWidth
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         style={{ marginBottom: '20px', width: '50%' }}
       />
-      <Tooltip title="Kirjaudu ulos">
+      <Tooltip title={t('admin.logout')}>
         <IconButton
           className="admin-logout-button"
           onClick={() => {
             window.localStorage.removeItem(LOCAL_STORAGE_KEYS.userId);
             window.location.href = '/';
-            console.log('Logout');
           }}
           color="inherit">
           <ExitToAppIcon fontSize="large" />

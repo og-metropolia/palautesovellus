@@ -20,12 +20,14 @@ import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import { isValidEmail } from '../utils/input-validation.mjs';
+import { useTranslation } from 'react-i18next';
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [showError, setShowError] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
+  const { t } = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -69,7 +71,7 @@ export default function SignUp() {
       <div className="background-video">
         <video autoPlay loop muted playsInline className="bg-video">
           <source src="/assets/animatedBackground.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          {t('_general.videoTagNotSupported')}
         </video>
       </div>
       <Container
@@ -102,10 +104,10 @@ export default function SignUp() {
             width={48}
           />
 
-          <h1>Rekisteröidy</h1>
+          <h1>{t('signup.signup')}</h1>
           {showError && (
             <span style={{ color: 'red', 'margin-bottom': '20px' }}>
-              Virheellinen syöte.
+              {t('_general.invalidInputError')}
             </span>
           )}
           <Box component="form" noValidate onSubmit={handleSubmit}>
@@ -117,7 +119,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label="Etunimi"
+                  label={t('signup.firstName')}
                   autoFocus
                 />
               </Grid>
@@ -126,7 +128,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Sukunimi"
+                  label={t('signup.lastName')}
                   name="lastName"
                   autoComplete="family-name"
                 />
@@ -136,7 +138,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Sähköposti"
+                  label={t('signup.email')}
                   name="email"
                   autoComplete="email"
                 />
@@ -146,7 +148,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Salasana"
+                  label={t('signup.password')}
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   autoComplete="new-password"
@@ -169,7 +171,7 @@ export default function SignUp() {
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
-                  label="Haluan päivityksiä sähköpostilla."
+                  label={t('signup.getEmails')}
                 />
               </Grid>
             </Grid>
@@ -178,12 +180,12 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 1, mb: 1 }}>
-              Rekisteröidy
+              {t('signup.signupButton')}
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link component={RouterLink} to={ROUTES.login} variant="body2">
-                  On jo käyttäjä? Kirjaudu
+                  {t('signup.alreadyUser')}
                 </Link>
               </Grid>
             </Grid>

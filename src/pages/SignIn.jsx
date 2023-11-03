@@ -23,10 +23,13 @@ import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import { isValidEmail } from '../utils/input-validation.mjs';
 import Navbar from '../components/Navbar.jsx';
 import LangSelector from '../components/LanguageSelector.jsx';
+import { useTranslation } from 'react-i18next';
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const { t } = useTranslation();
+
   const [showPassword, setShowPassword] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
 
@@ -125,11 +128,11 @@ export default function SignIn() {
             }}>
             <img
               src="/assets/logo_512x512.png"
-              alt="Palautepomppu Logo"
+              alt={t('login.logo')}
               className="navbar-favicon"
               width={56}
             />
-            <h1>Kirjaudu sisään</h1>
+            <h1>{t('login.login')}</h1>
             {showError && (
               <span style={{ color: 'red' }}>
                 Tunnukset eivät täsmää olemassa olevaan käyttäjään.
@@ -141,7 +144,7 @@ export default function SignIn() {
                 required
                 fullWidth
                 id="email"
-                label="Sähköposti"
+                label={t('login.email')}
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -151,7 +154,7 @@ export default function SignIn() {
                 required
                 fullWidth
                 name="password"
-                label="Salasana"
+                label={t('login.password')}
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
@@ -170,14 +173,14 @@ export default function SignIn() {
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Muista minut"
+                label={t('login.rememberMe')}
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 2, mb: 2 }}>
-                Kirjaudu sisään
+                {t('login.login')}
               </Button>
               <Grid container>
                 <Grid item>
@@ -185,7 +188,7 @@ export default function SignIn() {
                     component={RouterLink}
                     to={ROUTES.signup}
                     variant="body2">
-                    {'Ei käyttäjätunnusta? Rekisteröidy'}
+                    {t('login.noAccount')}
                   </Link>
                 </Grid>
               </Grid>

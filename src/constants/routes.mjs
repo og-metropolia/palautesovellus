@@ -6,4 +6,6 @@ export default Object.freeze({
   feedback: '/feedback',
   admin: '/admin',
   thanks: '/thank-you',
+  session: '/session',
+  sessionResults: '/results/session',
 });

@@ -1,11 +1,15 @@
 {
+  "copyright": {
+    "prefix": "Copyright © ",
+    "name": "FeedbackBounce",
+    "suffix": "{YYYY}."
+  },
   "login": {
     "login": "Log in",
     "email": "Email",
     "password": "Password",
     "rememberMe": "Remember me",
-    "noAccount": "No username? Register",
-    "footer": "Copyright @ FeedbackBounce 2023"
+    "noAccount": "No username? Register"
   },
   "signup": {
     "signup": "Register",
@@ -15,13 +19,18 @@
     "password": "Password",
     "getEmails": "I want updates by email",
     "signupButton": "Register",
-    "alreadyAccount": "Already user? Log in",
-    "footer": "Copyright @ FeedbackBounce 2023"
+    "alreadyUser": "Already user? Log in"
   },
   "navbar": {
-    "mainTitle": "FEEDBACKBOUNCE"
+    "mainTitle": "FEEDBACKBOUNCE",
+    "login": "Log in",
+    "logout": "Log out"
   },
   "dashboard": {
+    "loadingMessages": {
+      "waitingSessions": "No sessions available or loading them...",
+      "waitingQuestions": "No questions available or loading them..."
+    },
     "questionsHeading": "Questions",
     "pickQuestionHeading": "Choose a topic",
     "questionPickHint": "Topic...",
@@ -31,33 +40,49 @@
       "play": "Play",
       "trip": "Excursion",
       "sport": "Exercise",
-      "exercise": "Hourly task"
+      "exercise": "Hourly task",
+      "mood": "Emotional survey"
     },
-    "emotionquestion": "Emotional survey",
-    "questionContentFieldHint": "Write the question here..",
-    "pickAnswerTypeHeading": "Choose the type of answer...",
+    "questionContentFieldHint": "Write the question here...",
+    "pickAnswerTypeHeading": "Choose the type of answer:",
     "answerType": {
       "emoji": "Emoji answer",
       "draw": "Drawing answer",
       "write": "Writing answer"
     },
     "addQuestionButton": "ADD QUESTION",
-    "createSession": "SEND ANSWERS",
+    "createSession": "SEND QUESTIONS",
     "previousQuestionHeading": "Previous questions",
-    "questionsSent": "Question sent",
-    "sessionN": "Questionnaire {n} | Survey {n}",
-    "confirm": "Ok"
+    "sessionN": "Survey {N}",
+    "confirm": "Ok",
+    "alerts": {
+      "selectTopic": "Select a topic for the questions before submitting",
+      "createQuestion": "Create at least one question before submitting",
+      "fillAllQuestions": "Fill in all questions before submitting",
+      "chooseAnswerType": "Select the type of answers before submitting",
+      "notLoggedIn": "You are not logged in",
+      "questionsSent": "Question sent"
+    },
+    "results": {
+      "backNavigation": "Back",
+      "copyUrl": "Copy survey link",
+      "copyQrCodeUrl": "Copy survey QR code link",
+      "printSession": "Print",
+      "drawingAltText": "Drawing"
+    }
   },
   "admin": {
-    "adminTitle": "Admin management site",
-    "searchUser": "Search user.."
+    "adminTitle": "User Management",
+    "searchUser": "Search user...",
+    "logout": "Logout"
   },
   "session": {
     "writeHereHint": "Write feedback here..",
-    "sendButton": "Send"
+    "sendButton": "Send",
+    "errorSavingAnswers": "Error while saving answers!"
   },
   "thankyou": {
-    "thanksTitle": "Thank you for the answer"
+    "thanksTitle": "Thank you for the answer!"
   },
   "landing": {
     "feedbackSystem": {
@@ -71,21 +96,25 @@
     "analyzing": {
       "title": "Analysis of results and improvement of actions",
       "content": "Feedback received is valuable only if actions can be taken based on it. FeedbackBounce gives teachers a clear overview of the feedback received through visual diagrams and analysis tools. Whether it's feedback from a single lesson or long-term trends, FeedbackBounce provides solutions for collecting and analyzing information. Let FeedbackBounce help you enhance your teaching and offer your students the best possible learning experience."
-    },
-    "footer": {
-      "altText": "Feedback Bounce Logo",
-      "contact": {
-        "title": "Contact Information",
-        "email": "info@feedbackbounce.com",
-        "phone": "+358 40 123 4567"
-      },
-      "links": {
-        "title": "Links",
-        "terms": "Terms of Use",
-        "dataProtection": "Data Protection",
-        "termsLink": "https://dataprotection.com/terms-of-use",
-        "dataProtectionLink": "https://dataprotection.com/data-protection"
-      }
     }
+  },
+  "footer": {
+    "altText": "FeedbackBounce Logo",
+    "contact": {
+      "title": "Contact Information",
+      "email": "info@feedbackbounce.com",
+      "phone": "+358 40 123 4567"
+    },
+    "links": {
+      "title": "Links",
+      "terms": "Terms of Use",
+      "dataProtection": "Data Protection",
+      "termsLink": "https://tietosuoja.fi/henkilotietojen-kasittely",
+      "dataProtectionLink": "https://europa.eu/youreurope/business/dealing-with-customers/data-protection/data-protection-gdpr/index_fi.htm"
+    }
+  },
+  "_general": {
+    "videoTagNotSupported": "Your browser does not support the video tag.",
+    "invalidInputError": "Invalid input."
   }
 }

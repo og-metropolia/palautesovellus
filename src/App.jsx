@@ -41,8 +41,11 @@ function App() {
             <Route path={ROUTES.dashboard} component={Dashboard} />
             <Route path={ROUTES.admin} component={AdminDashboard} />
             <Route path={ROUTES.thanks} component={ThankYou} />
-            <Route path="/session/:id" component={Session} />
-            <Route path="/results/session/:id" component={SessionResults} />
+            <Route path={`${ROUTES.session}/:id`} component={Session} />
+            <Route
+              path={`${ROUTES.sessionResults}/:id`}
+              component={SessionResults}
+            />
             <Route path="*">
               <Redirect to="/" />
             </Route>

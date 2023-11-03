@@ -17,8 +17,10 @@ import { QUESTION_TYPES } from '../constants/question-types.mjs';
 import ROUTES from '../constants/routes.mjs';
 import { QUESTION_THEMES } from '../constants/questions.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
+import { useTranslation } from 'react-i18next';
 
 export default function TeachersQuestion(props) {
+  const { t } = useTranslation();
   const [questions, setQuestions] = useState([
     { content: '', emoji: false, draw: false, write: false },
   ]);
@@ -51,23 +53,23 @@ export default function TeachersQuestion(props) {
 
   const handleSubmit = () => {
     if (!selectedTopic || selectedTopic === '') {
-      alert('Valitse aihe kysymyksille ennen lähettämistä');
+      alert(t('dashboard.alerts.selectTopic'));
       return;
     } else if (questions.length === 0) {
-      alert('Luo ainakin yksi kysymys ennen lähettämistä');
+      alert(t('dashboard.alerts.createQuestion'));
       return;
     } else if (questions.some((q) => q.content === '')) {
-      alert('Täytä kaikki kysymykset ennen lähettämistä');
+      alert(t('dashboard.alerts.fillAllQuestions'));
       return;
     } else if (questions.some((q) => !q.emoji && !q.draw && !q.write)) {
-      alert('Valitse vastauksien tyypit ennen lähettämistä');
+      alert(t('dashboard.alerts.chooseAnswerType'));
       return;
     }
 
     const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
 
     if (!userId) {
-      alert('Et ole kirjautunut sisään');
+      alert(t('dashboard.alerts.notLoggedIn'));
       window.location.href = ROUTES.dashboard;
     }
 
@@ -108,7 +110,7 @@ export default function TeachersQuestion(props) {
           });
         }
 
-        alert('Kysymykset lähetetty');
+        alert(t('dashboard.alerts.questionsSent'));
         window.location.reload();
       });
   };
@@ -121,12 +123,12 @@ export default function TeachersQuestion(props) {
           backgroundColor: props.backgroundColor,
           borderRadius: '10px',
         }}>
-        Kysymykset
+        {t('dashboard.questionsHeading')}
       </h1>
 
       <div style={{ marginBottom: '20px' }}>
         <p style={{ margin: 0, color: 'black', fontWeight: 'bold' }}>
-          Valitse aihe
+          {t('dashboard.pickQuestionHeading')}
         </p>
 
         <FormControl fullWidth variant="filled">
@@ -141,28 +143,28 @@ export default function TeachersQuestion(props) {
             }}
             placeholder="aihe">
             <MenuItem value="" disabled>
-              Aihe...
+              {t('dashboard.questionPickHint')}
             </MenuItem>
             <MenuItem value={QUESTION_THEMES.math.id}>
-              {QUESTION_THEMES.math.displayName}
+              {t(QUESTION_THEMES.math.textId)}
             </MenuItem>
             <MenuItem value={QUESTION_THEMES.language.id}>
-              {QUESTION_THEMES.language.displayName}
+              {t(QUESTION_THEMES.language.textId)}
             </MenuItem>
             <MenuItem value={QUESTION_THEMES.play.id}>
-              {QUESTION_THEMES.play.displayName}
+              {t(QUESTION_THEMES.play.textId)}
             </MenuItem>
             <MenuItem value={QUESTION_THEMES.journey.id}>
-              {QUESTION_THEMES.journey.displayName}
+              {t(QUESTION_THEMES.journey.textId)}
             </MenuItem>
             <MenuItem value={QUESTION_THEMES.sport.id}>
-              {QUESTION_THEMES.sport.displayName}
+              {t(QUESTION_THEMES.sport.textId)}
             </MenuItem>
             <MenuItem value={QUESTION_THEMES.task.id}>
-              {QUESTION_THEMES.task.displayName}
+              {t(QUESTION_THEMES.task.textId)}
             </MenuItem>
             <MenuItem value={QUESTION_THEMES.mood.id}>
-              {QUESTION_THEMES.mood.displayName}
+              {t(QUESTION_THEMES.mood.textId)}
             </MenuItem>
           </Select>
         </FormControl>
@@ -177,7 +179,7 @@ export default function TeachersQuestion(props) {
             variant="filled"
             value={q.content}
             onChange={(e) => handleQuestionChange(index, e.target.value)}
-            placeholder="Kirjoita kysymys tähän..."
+            placeholder={t('dashboard.questionContentFieldHint')}
             sx={{ backgroundColor: 'white', marginBottom: '10px' }}
           />
 
@@ -191,7 +193,7 @@ export default function TeachersQuestion(props) {
             }}>
             <FormControl component="fieldset" style={{ marginTop: '10px' }}>
               <p style={{ margin: 0, color: 'black', fontWeight: 'bold' }}>
-                Valitse vastauksen tyyppi:
+                {t('dashboard.pickAnswerTypeHeading')}
               </p>
               <div
                 style={{
@@ -200,7 +202,7 @@ export default function TeachersQuestion(props) {
                   marginTop: '10px',
                 }}>
                 <label style={{ order: 2 }} htmlFor={`emoji-${index}`}>
-                  Emoji-vastaus
+                  {t('dashboard.answerType.emoji')}
                 </label>
                 <Radio
                   style={{ order: 1 }}
@@ -217,7 +219,7 @@ export default function TeachersQuestion(props) {
                   marginTop: '10px',
                 }}>
                 <label style={{ order: 2 }} htmlFor={`draw-${index}`}>
-                  Piirto-vastaus
+                  {t('dashboard.answerType.draw')}
                 </label>
                 <Radio
                   style={{ order: 1 }}
@@ -234,7 +236,7 @@ export default function TeachersQuestion(props) {
                   marginTop: '10px',
                 }}>
                 <label style={{ order: 2 }} htmlFor={`write-${index}`}>
-                  Kirjoitus-vastaus
+                  {t('dashboard.answerType.write')}
                 </label>
                 <Radio
                   style={{ order: 1 }}
@@ -253,14 +255,14 @@ export default function TeachersQuestion(props) {
         color="primary"
         style={{ marginTop: '20px', marginRight: '10px' }}
         onClick={addQuestion}>
-        Lisää kysymys
+        {t('dashboard.addQuestionButton')}
       </Button>
       <Button
         variant="contained"
         color="secondary"
         style={{ marginTop: '20px' }}
         onClick={handleSubmit}>
-        Lähetä kysymykset
+        {t('dashboard.createSession')}
       </Button>
     </div>
   );
