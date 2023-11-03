@@ -1,11 +1,15 @@
 {
+  "copyright": {
+    "prefix": "حقوق النشر © ",
+    "name": "FeedbackBounce",
+    "suffix": "{YYYY}."
+  },
   "login": {
     "login": "تسجيل الدخول",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "rememberMe": "تذكرني",
-    "noAccount": "ليس لديك حساب؟ تسجيل",
-    "footer": "حقوق النشر @ FeedbackBounce 2023"
+    "noAccount": "ليس لديك حساب؟ تسجيل"
   },
   "signup": {
     "signup": "تسجيل",
@@ -15,13 +19,18 @@
     "password": "كلمة المرور",
     "getEmails": "أريد التحديثات عبر البريد الإلكتروني",
     "signupButton": "تسجيل",
-    "alreadyAccount": "هل لديك حساب بالفعل؟ تسجيل الدخول",
-    "footer": "حقوق النشر @ FeedbackBounce 2023"
+    "alreadyUser": "هل لديك حساب بالفعل؟ تسجيل الدخول"
   },
   "navbar": {
-    "mainTitle": "FEEDBACKBOUNCE"
+    "mainTitle": "FEEDBACKBOUNCE",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل خروج"
   },
   "dashboard": {
+    "loadingMessages": {
+      "waitingSessions": "لا توجد جلسات متاحة أو جارٍ تحميلها...",
+      "waitingQuestions": "لا توجد أسئلة متاحة أو تحميلها..."
+    },
     "questionsHeading": "الأسئلة",
     "pickQuestionHeading": "اختر موضوع",
     "questionPickHint": "موضوع...",
@@ -31,7 +40,8 @@
       "play": "لعب",
       "trip": "رحلة",
       "sport": "رياضة",
-      "exercise": "مهمة ساعية"
+      "exercise": "مهمة ساعية",
+      "mood": "استبيان العواطف"
     },
     "emotionquestion": "استبيان العواطف",
     "questionContentFieldHint": "اكتب السؤال هنا...",
@@ -41,8 +51,41 @@
       "draw": "إجابة بالرسم",
       "write": "إجابة كتابية"
     },
-    "addQuestionButton": "أضف سؤال"
+    "addQuestionButton": "أضف سؤال",
+    "createSession": "أنشئ جلسة",
+    "previousQuestionHeading": "الأسئلة السابقة",
+    "sessionN": "الجلسة {N}",
+    "confirm": "تأكيد",
+    "alerts": {
+      "selectTopic": "اختر موضوعًا للأسئلة قبل الإرسال",
+      "createQuestion": "أنشئ سؤالًا واحدًا على الأقل قبل الإرسال",
+      "fillAllQuestions": "املأ جميع الأسئلة قبل الإرسال",
+      "chooseAnswerType": "اختر نوع الإجابات قبل الإرسال",
+      "notLoggedIn": "لم تقم بتسجيل الدخول",
+      "questionsSent": "تم إرسال الأسئلة"
+    },
+    "results": {
+      "backNavigation": "خلف",
+      "copyUrl": "نسخ الوصلة",
+      "copyQrCodeUrl": "انسخ رابط رمز الاستجابة السريعة",
+      "printSession": "مطبعة",
+      "drawingAltText": "رسم"
+    }
   },
+  "admin": {
+    "adminTitle": "إدارةالمستخدم",
+    "searchUser": "مستخدم البحث...",
+    "logout": "تسجيل خروج"
+  },
+  "session": {
+    "writeHereHint": "اكتب ردودك هنا...",
+    "sendButton": "يرسل",
+    "errorSavingAnswers": "حدث خطأ أثناء حفظ الإجابات!"
+  },
+  "thankyou": {
+    "thanksTitle": "شكرا لإجابتك!"
+  },
+
   "settings": {
     "settings": "الإعدادات",
     "changeLang": "تغيير اللغة",
@@ -61,21 +104,25 @@
     "analyzing": {
       "title": "تحليل النتائج وتحسين الأداء",
       "content": "التغذية الراجعة المستلمة ذات قيمة فقط إذا كان بإمكاننا اتخاذ إجراءات استنادًا إليها. \"بالوتيبومبو\" يقدم للمعلمين نظرة واضحة على التغذية الراجعة المستلمة من خلال الرسوم البيانية وأدوات التحليل. سواء كانت التغذية الراجعة عن درس فردي أو عن التوجهات طويلة الأمد، \"بالوتيبومبو\" يوفر الحلول لجمع البيانات وتحليلها. دع \"بالوتيبومبو\" يساعدك في تحسين التدريس وتقديم أفضل تجربة تعلم ممكنة للطلاب."
-    },
-    "footer": {
-      "altText": "شعار Feedback Bounce",
-      "contact": {
-        "title": "معلومات الاتصال",
-        "email": "info@feedbackbounce.com",
-        "phone": "+358 40 123 4567"
-      },
-      "links": {
-        "title": "الروابط",
-        "terms": "شروط الاستخدام",
-        "dataProtection": "حماية البيانات",
-        "termsLink": "https://dataprotection.com/terms-of-use",
-        "dataProtectionLink": "https://dataprotection.com/data-protection"
-      }
     }
+  },
+  "footer": {
+    "altText": "شعار FeedbackBounce",
+    "contact": {
+      "title": "معلومات الاتصال",
+      "email": "info@feedbackbounce.com",
+      "phone": "+853 40 321 7654"
+    },
+    "links": {
+      "title": "الروابط",
+      "terms": "شروط الاستخدام",
+      "dataProtection": "حماية البيانات",
+      "termsLink": "https://tietosuoja.fi/henkilotietojen-kasittely",
+      "dataProtectionLink": "https://europa.eu/youreurope/business/dealing-with-customers/data-protection/data-protection-gdpr/index_fi.htmn"
+    }
+  },
+  "_general": {
+    "videoTagNotSupported": "متصفحك الحالي لا يدعم تشغيل الفيديو.",
+    "invalidInputError": "مدخل غير صالح."
   }
 }

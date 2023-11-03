@@ -6,8 +6,10 @@ import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import Navbar from '../components/Navbar.jsx';
 import SessionList from '../components/SessionList.jsx';
 import { BASE_URL, ENDPOINTS } from '../constants/api';
+import { useTranslation } from 'react-i18next';
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
   if (!userId) {
     window.location.href = ROUTES.login;
@@ -33,7 +35,7 @@ export default function Dashboard() {
       <Navbar />
       <div className="dashboard-container">
         <TeachersQuestion
-          content="Opettajan kysymys"
+          content={t('dashboard.questionsHeading')}
           color="black"
           backgroundColor="lightgray"
           userId={userId}

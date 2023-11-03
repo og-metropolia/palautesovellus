@@ -1,7 +1,6 @@
 import './landing.css';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
-import LangSelector from '../components/LanguageSelector.jsx';
 import { useTranslation } from 'react-i18next';
 
 export default function Landing() {
@@ -10,7 +9,6 @@ export default function Landing() {
   return (
     <div className="landing-page">
       <Navbar />
-      <LangSelector />
 
       <div className="landing-container">
         <div className="landing-content">

@@ -14,6 +14,7 @@ import PrintIcon from '@mui/icons-material/Print';
 import { emojis } from '../components/EmojiFeedback.jsx';
 import EmojiRating from '../components/EmojiRating.jsx';
 import { CircularProgress, Tooltip } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 function getSessionUrl(id) {
   return `${window.location.protocol}//${window.location.hostname}${
@@ -45,6 +46,7 @@ export default function SessionResults(props) {
   const [selectedQuestion, setSelectedQuestion] = useState();
   const [emojiStats, setEmojiStats] = useState({});
   const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
+  const { t } = useTranslation();
 
   if (!userId) {
     window.location.href = ROUTES.login;
@@ -93,7 +95,7 @@ export default function SessionResults(props) {
               <img
                 src={answer.message}
                 className="answer-drawing"
-                alt="piirros"
+                alt={t('dashboard.results.drawingAltText')}
                 key={answer.answer_id}
               />
             ) : prevQuestionTypeLocal === QUESTION_TYPES.emoji ? (
@@ -135,7 +137,7 @@ export default function SessionResults(props) {
   if (!Array.isArray(questions) || questions.length === 0) {
     return (
       <div className="questionlist-container">
-        Ei kyselyjä saatavilla tai ladataan kyselyitä...
+        {t('admindashboard.loadingMessages.waitingSessions')}
         <CircularProgress style={{ display: 'block', margin: '20px auto' }} />
       </div>
     );
@@ -144,7 +146,7 @@ export default function SessionResults(props) {
   if (!Array.isArray(questions) || questions.length === 0) {
     return (
       <div className="questionlist-container">
-        Ei kysymyksiä saatavilla tai ladataan kysymyksiä...
+        {t('admindashboard.loadingMessages.waitingQuestions')}
         <CircularProgress style={{ display: 'block', margin: '20px auto' }} />
       </div>
     );
@@ -154,7 +156,7 @@ export default function SessionResults(props) {
     <div className="question-container">
       <div className="questionlist-container">
         <ButtonGroup variant="text" aria-label="text button group">
-          <Tooltip title="Takaisin">
+          <Tooltip title={t('dashboard.results.backNavigation')}>
             <Button
               className="custom-back-button"
               onClick={() => (window.location.href = ROUTES.dashboard)}
@@ -162,7 +164,7 @@ export default function SessionResults(props) {
               <ArrowBackIcon />
             </Button>
           </Tooltip>
-          <Tooltip title="Kopioi kyselyn linkki">
+          <Tooltip title={t('dashboard.results.copyUrl')}>
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(
@@ -173,7 +175,7 @@ export default function SessionResults(props) {
               <LinkIcon />
             </Button>
           </Tooltip>
-          <Tooltip title="Kopioi kyselyn QR-koodin linkki">
+          <Tooltip title={t('dashboard.results.copyQrCodeUrl')}>
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(
@@ -184,7 +186,7 @@ export default function SessionResults(props) {
               <QrCodeIcon />
             </Button>
           </Tooltip>
-          <Tooltip title="Tulosta kysely">
+          <Tooltip title={t('dashboard.results.printSession')}>
             <Button
               onClick={() => {
                 setTimeout(() => {
@@ -196,7 +198,7 @@ export default function SessionResults(props) {
             </Button>
           </Tooltip>
         </ButtonGroup>
-        <h2>Kysymykset</h2>
+        <h2>{t('dashboard.questionsHeading')}</h2>
         <ul>
           {questions.map((question) => (
             <li key={question.question_id}>

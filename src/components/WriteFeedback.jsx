@@ -1,10 +1,12 @@
 import './write-feedback.css';
 import React, { useState, useContext } from 'react';
 import AnswerContext from './AnswerContext.jsx';
+import { useTranslation } from 'react-i18next';
 
 const WriteFeedback = (props) => {
   const [feedback, setFeedback] = useState('');
   const answerContext = useContext(AnswerContext);
+  const { t } = useTranslation();
 
   const handleFeedbackChange = (event) => {
     answerContext[props.index] = {
@@ -20,7 +22,7 @@ const WriteFeedback = (props) => {
         value={feedback}
         onChange={handleFeedbackChange}
         rows={5}
-        placeholder="Kirjoita palaute tähän..."
+        placeholder={t('dashboard.session.writeHereHint')}
         className="text-area"
         style={{
           color: props.color,

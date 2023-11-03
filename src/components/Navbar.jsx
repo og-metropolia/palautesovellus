@@ -8,7 +8,7 @@ import LangSelector from '../components/LanguageSelector.jsx';
 import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
-  const { t } = useTranslation(); // Step 1: Get the translation function
+  const { t } = useTranslation();
   const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
 
   const handleButtonClick = () => {
@@ -32,10 +32,9 @@ export default function Navbar() {
         />
       </Link>
       <img src="/assets/pallot.gif" alt="Pallo kuva" className="pallo-gif" />
-      <h1 className="navbar-heading">{t('navbar.mainTitle')}</h1>{' '}
-      {/* Step 2: Use the translation function */}
+      <h1 className="navbar-heading">{t('navbar.mainTitle')}</h1>
       <div className="navbar-actions">
-        <Tooltip title={userId ? 'Kirjaudu ulos' : 'Kirjaudu sisään'}>
+        <Tooltip title={userId ? t('navbar.logout') : t('navbar.login')}>
           <Button className="logout-button" onClick={handleButtonClick}>
             <PersonIcon
               className="icon-background"
@@ -46,6 +45,7 @@ export default function Navbar() {
             />
           </Button>
         </Tooltip>
+        <LangSelector />
       </div>
     </div>
   );

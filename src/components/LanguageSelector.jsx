@@ -37,5 +37,4 @@ export default function Landing() {
       </Menu>
     </div>
   );
-  console.log(i18n.language);
 }

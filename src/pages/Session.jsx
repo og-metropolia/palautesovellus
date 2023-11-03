@@ -11,6 +11,7 @@ import DrawFeedback from '../components/DrawFeedback';
 import EmojiFeedback from '../components/EmojiFeedback';
 import WriteFeedback from '../components/WriteFeedback';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 function getThemeForValue(value) {
   for (const theme in QUESTION_THEMES) {
@@ -22,6 +23,7 @@ function getThemeForValue(value) {
 }
 
 export default function Session(props) {
+  const { t } = useTranslation();
   const answers = [];
 
   const [data, setData] = useState();
@@ -48,7 +50,7 @@ export default function Session(props) {
         });
       }
     } catch (error) {
-      alert('Virhe vastauksien tallennuksessa:');
+      alert(t('session.errorSavingAnswers'));
     }
     window.location.href = ROUTES.thanks;
   };
@@ -126,7 +128,7 @@ export default function Session(props) {
             }}
             onClick={submitAnswer}>
             <FaPaperPlane style={{ marginRight: '5px' }} />
-            Lähetä
+            {t('session.sendButton')}
           </button>
         </div>
       </AnswerContext.Provider>

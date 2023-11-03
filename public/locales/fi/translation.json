@@ -1,11 +1,15 @@
 {
+  "copyright": {
+    "prefix": "Tekijänoikeudet © ",
+    "name": "FeedbackBounce",
+    "suffix": "{YYYY}."
+  },
   "login": {
     "login": "Kirjaudu sisään",
     "email": "Sähköposti",
     "password": "Salasana",
     "rememberMe": "Muista minut",
-    "noAccount": "Ei käyttäjätunnusta? Rekisteröidy",
-    "footer": "Tekijänoikeudet @ FeedbackBounce 2023"
+    "noAccount": "Ei käyttäjätunnusta? Rekisteröidy"
   },
   "signup": {
     "signup": "Rekisteröidy",
@@ -15,13 +19,18 @@
     "password": "Salasana",
     "getEmails": "Haluan päivityksiä sähköpostilla",
     "signupButton": "REKISTERÖIDY",
-    "alreadyAccount": "On jo käyttäjä? Kirjaudu",
-    "footer": "Tekijänoikeudet @ FeedbackBounce 2023"
+    "alreadyUser": "On jo käyttäjä? Kirjaudu"
   },
   "navbar": {
-    "mainTitle": "FEEDBACKBOUNCE"
+    "mainTitle": "FEEDBACKBOUNCE",
+    "login": "Kirjaudu sisään",
+    "logout": "Kirjaudu ulos"
   },
   "dashboard": {
+    "loadingMessages": {
+      "waitingSessions": "Ei kyselyjä saatavilla tai ladataan kyselyjä...",
+      "waitingQuestions": "Ei kysymyksiä saatavilla tai ladataan kysymyksiä..."
+    },
     "questionsHeading": "Kysymykset",
     "pickQuestionHeading": "Valitse aihe",
     "questionPickHint": "Aihe...",
@@ -31,9 +40,9 @@
       "play": "Leikki",
       "trip": "Retki",
       "sport": "Liikunta",
-      "exercise": "Tuntitehtävä"
+      "exercise": "Tuntitehtävä",
+      "mood": "Tunnekysely"
     },
-    "emotionquestion": "Tunnekysely",
     "questionContentFieldHint": "Kirjoita kysymys tähän...",
     "pickAnswerTypeHeading": "Valitse vastauksen tyyppi:",
     "answerType": {
@@ -42,22 +51,38 @@
       "write": "Kirjoitus-vastaus"
     },
     "addQuestionButton": "LISÄÄ KYSYMYS",
-    "createSession": "LÄHETÄ VASTAUKSET",
+    "createSession": "LÄHETÄ KYSYMYKSET",
     "previousQuestionHeading": "Aikaisemmat kysymykset",
-    "questionsSent": "Kysymykset lähetetty",
-    "sessionN": "Kysely {n}",
-    "confirm": "Ok"
+    "sessionN": "Kysely {N}",
+    "confirm": "Ok",
+    "alerts": {
+      "selectTopic": "Valitse aihe kysymyksille ennen lähettämistä",
+      "createQuestion": "Luo ainakin yksi kysymys ennen lähettämistä",
+      "fillAllQuestions": "Täytä kaikki kysymykset ennen lähettämistä",
+      "chooseAnswerType": "Valitse vastauksien tyypit ennen lähettämistä",
+      "notLoggedIn": "Et ole kirjautunut sisään",
+      "questionsSent": "Kysymykset lähetetty"
+    },
+    "results": {
+      "backNavigation": "Takaisin",
+      "copyUrl": "Kopioi kyselyn linkki",
+      "copyQrCodeUrl": "Kopioi kyselyn QR-koodin linkki",
+      "printSession": "Tulosta kysely",
+      "drawingAltText": "Piirros"
+    }
   },
   "admin": {
-    "adminTitle": "Admin hallintosivusto",
-    "searchUser": "Etsi käyttäjää.."
+    "adminTitle": "Käyttäjähallinnointi",
+    "searchUser": "Etsi käyttäjää..",
+    "logout": "Kirjaudu ulos"
   },
   "session": {
     "writeHereHint": "Kirjoita palaute tähän..",
-    "sendButton": "Lähetä"
+    "sendButton": "Lähetä",
+    "errorSavingAnswers": "Virhe vastauksien tallennuksessa!"
   },
   "thankyou": {
-    "thanksTitle": "Kiitos vastauksesta."
+    "thanksTitle": "Kiitos vastauksesta!"
   },
   "landing": {
     "feedbackSystem": {
@@ -71,21 +96,25 @@
     "analyzing": {
       "title": "Tulosten analysointi ja toiminnan parantaminen",
       "content": "Saatu palaute on arvokasta vain, jos sen pohjalta voidaan tehdä toimenpiteitä. Feedbackbounce antaa opettajille selkeän katsauksen saatuun palautteeseen visuaalisten kaavioiden ja analyysityökalujen avulla. Olipa kyse yksittäisen oppitunnin palautteesta tai pitkän aikavälin trendeistä, Feedbackbounce tarjoaa ratkaisut tiedon keräämiseen ja analysointiin. Anna Feedbacbounce auttaa sinua tehostamaan opetustasi ja tarjoamaan oppilaillesi parhaan mahdollisen oppimiskokemuksen."
-    },
-    "footer": {
-      "altText": "Palautepomppu Logo",
-      "contact": {
-        "title": "Yhteystiedot",
-        "email": "info@palautepomppu.fi",
-        "phone": "+358 40 123 4567"
-      },
-      "links": {
-        "title": "Linkit",
-        "terms": "Käyttöehdot",
-        "dataProtection": "Tietosuoja",
-        "termsLink": "https://tietosuoja.fi/henkilotietojen-kasittely",
-        "dataProtectionLink": "https://europa.eu/youreurope/business/dealing-with-customers/data-protection/data-protection-gdpr/index_fi.htm"
-      }
     }
+  },
+  "footer": {
+    "altText": "FeedbackBounce Logo",
+    "contact": {
+      "title": "Yhteystiedot",
+      "email": "info@feedbackbounce.com",
+      "phone": "+358 40 123 4567"
+    },
+    "links": {
+      "title": "Linkit",
+      "terms": "Käyttöehdot",
+      "dataProtection": "Tietosuoja",
+      "termsLink": "https://tietosuoja.fi/henkilotietojen-kasittely",
+      "dataProtectionLink": "https://europa.eu/youreurope/business/dealing-with-customers/data-protection/data-protection-gdpr/index_fi.htm"
+    }
+  },
+  "_general": {
+    "videoTagNotSupported": "Selaimesi ei tue videota.",
+    "invalidInputError": "Virheellinen syöte."
   }
 }
