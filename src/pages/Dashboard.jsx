@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar.jsx';
 import SessionList from '../components/SessionList.jsx';
 import { BASE_URL, ENDPOINTS } from '../constants/api';
 import { useTranslation } from 'react-i18next';
+import Footer from '../components/Footer.jsx';
 
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -32,7 +33,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar />
+      <Navbar showLoginButton={true} />
       <div className="dashboard-container">
         <TeachersQuestion
           content={t('dashboard.questionsHeading')}
@@ -42,6 +43,7 @@ export default function Dashboard() {
         />
         <SessionList data={data} />
       </div>
+      <Footer />
     </>
   );
 }

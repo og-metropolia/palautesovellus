@@ -9,7 +9,8 @@
     "email": "Sähköposti",
     "password": "Salasana",
     "rememberMe": "Muista minut",
-    "noAccount": "Ei käyttäjätunnusta? Rekisteröidy"
+    "noAccount": "Ei käyttäjätunnusta? Rekisteröidy",
+    "cantFindAcc": "Tunnukset eivät täsmää olemassa olevaan käyttäjään."
   },
   "signup": {
     "signup": "Rekisteröidy",
@@ -19,12 +20,15 @@
     "password": "Salasana",
     "getEmails": "Haluan päivityksiä sähköpostilla",
     "signupButton": "REKISTERÖIDY",
-    "alreadyUser": "On jo käyttäjä? Kirjaudu"
+    "alreadyUser": "On jo käyttäjä? Kirjaudu",
+    "logoAltText": "FeedbackBounce Logo"
   },
   "navbar": {
     "mainTitle": "FEEDBACKBOUNCE",
     "login": "Kirjaudu sisään",
-    "logout": "Kirjaudu ulos"
+    "logout": "Kirjaudu ulos",
+    "logoAltText": "FeedbackBounce Logo",
+    "ballAltText": "Pallot"
   },
   "dashboard": {
     "loadingMessages": {
@@ -74,12 +78,31 @@
   "admin": {
     "adminTitle": "Käyttäjähallinnointi",
     "searchUser": "Etsi käyttäjää..",
-    "logout": "Kirjaudu ulos"
+    "logout": "Kirjaudu ulos",
+    "deleteUserTooltip": "Poista käyttäjä"
   },
   "session": {
     "writeHereHint": "Kirjoita palaute tähän..",
     "sendButton": "Lähetä",
-    "errorSavingAnswers": "Virhe vastauksien tallennuksessa!"
+    "errorSavingAnswers": "Virhe vastauksien tallennuksessa!",
+    "draw": {
+      "eraseTooltip": "pyyhekumi",
+      "resetTooltip": "nollaa",
+      "penTooltip": "kynä",
+      "redTooltip": "punainen",
+      "greenTooltip": "vihreä",
+      "blueTooltip": "sininen"
+    },
+    "emoji": {
+      "smile": "iloinen",
+      "wink": "vinkkaus",
+      "surprised": "yllättynyt",
+      "happy": "onnellinen",
+      "neutral": "neutraali",
+      "sad": "surullinen",
+      "angry": "vihainen",
+      "tired": "väsynyt"
+    }
   },
   "thankyou": {
     "thanksTitle": "Kiitos vastauksesta!"
@@ -87,15 +110,18 @@
   "landing": {
     "feedbackSystem": {
       "title": "Moderni palautejärjestelmä opetukseen",
-      "content": "Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen väliseen yhteyteen, luoden innovatiivisen ja tehokkaan alustan sekä opettajille että opiskelijoille. Tämä järjestelmä virtaviivaistaa palauteprosessia, mahdollistaen opettajille helpon tavan kerätä, analysoida ja toimia saadun palautteen pohjalta. Palautepomppun kautta opettajat voivat parantaa opetusmenetelmiään, mukauttaa lähestymistapaansa vastaamaan opiskelijoiden tarpeita ja ennen kaikkea edistää koulutuskokemusten yleistä parantamista. Omaksu Palautepomppu ja astu opetuksen palautteen tulevaisuuteen."
+      "content": "Palautepomppu tuo uuden ulottuvuuden opetuksen ja palautteen väliseen yhteyteen, luoden innovatiivisen ja tehokkaan alustan sekä opettajille että opiskelijoille. Tämä järjestelmä virtaviivaistaa palauteprosessia, mahdollistaen opettajille helpon tavan kerätä, analysoida ja toimia saadun palautteen pohjalta. Palautepomppun kautta opettajat voivat parantaa opetusmenetelmiään, mukauttaa lähestymistapaansa vastaamaan opiskelijoiden tarpeita ja ennen kaikkea edistää koulutuskokemusten yleistä parantamista. Omaksu Palautepomppu ja astu opetuksen palautteen tulevaisuuteen.",
+      "imageAltText": "Lapsi antamassa palautetta."
     },
     "draw": {
       "title": "Piirrä palaute",
-      "content": "Palautepomppu mahdollistaa palautteen antamisen myös piirrosten muodossa. Visuaalinen palaute on voimakas työkalu, joka voi auttaa ymmärtämään oppilaiden tuntemuksia ja ajatuksia syvemmin kuin perinteiset tekstit. Piirtämällä oppilaat voivat ilmaista tunteitaan, ajatuksiaan ja käsityksiään opetuksen sisällöstä ja menetelmistä. Se antaa heille mahdollisuuden kommunikoida eri tavalla ja tuoda esille näkökulmia, jotka saattavat jäädä tekstipohjaisessa palautteessa huomaamatta."
+      "content": "Palautepomppu mahdollistaa palautteen antamisen myös piirrosten muodossa. Visuaalinen palaute on voimakas työkalu, joka voi auttaa ymmärtämään oppilaiden tuntemuksia ja ajatuksia syvemmin kuin perinteiset tekstit. Piirtämällä oppilaat voivat ilmaista tunteitaan, ajatuksiaan ja käsityksiään opetuksen sisällöstä ja menetelmistä. Se antaa heille mahdollisuuden kommunikoida eri tavalla ja tuoda esille näkökulmia, jotka saattavat jäädä tekstipohjaisessa palautteessa huomaamatta.",
+      "imageAltText": "Oppilas piirtää palautettaan."
     },
     "analyzing": {
       "title": "Tulosten analysointi ja toiminnan parantaminen",
-      "content": "Saatu palaute on arvokasta vain, jos sen pohjalta voidaan tehdä toimenpiteitä. Feedbackbounce antaa opettajille selkeän katsauksen saatuun palautteeseen visuaalisten kaavioiden ja analyysityökalujen avulla. Olipa kyse yksittäisen oppitunnin palautteesta tai pitkän aikavälin trendeistä, Feedbackbounce tarjoaa ratkaisut tiedon keräämiseen ja analysointiin. Anna Feedbacbounce auttaa sinua tehostamaan opetustasi ja tarjoamaan oppilaillesi parhaan mahdollisen oppimiskokemuksen."
+      "content": "Saatu palaute on arvokasta vain, jos sen pohjalta voidaan tehdä toimenpiteitä. Feedbackbounce antaa opettajille selkeän katsauksen saatuun palautteeseen visuaalisten kaavioiden ja analyysityökalujen avulla. Olipa kyse yksittäisen oppitunnin palautteesta tai pitkän aikavälin trendeistä, Feedbackbounce tarjoaa ratkaisut tiedon keräämiseen ja analysointiin. Anna Feedbacbounce auttaa sinua tehostamaan opetustasi ja tarjoamaan oppilaillesi parhaan mahdollisen oppimiskokemuksen.",
+      "imageAltText": "Opettaja tarkastelee saamaansa palautetta."
     }
   },
   "footer": {

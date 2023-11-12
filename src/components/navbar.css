@@ -26,6 +26,7 @@
   background-color: var(--p-white);
   width: 100px;
   border-radius: 50%;
+  z-index: 2;
 }
 
 .navbar-login-btn {
@@ -61,11 +62,18 @@
   background-color: var(--p-gray);
 }
 
-.pallo-gif {
+.ball-gif {
   position: absolute;
   width: 300px;
   height: auto;
   margin-left: 65%;
+  margin-right: 5%;
+}
+
+@media (max-width: 950px) {
+  .navbar h1 {
+    letter-spacing: 10px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -93,7 +101,7 @@
     flex-direction: column;
   }
 
-  .pallo-gif {
+  .ball-gif {
     display: none;
   }
 }
@@ -119,7 +127,7 @@
     align-items: center;
   }
 
-  .pallo-gif {
+  .ball-gif {
     display: none;
   }
 }

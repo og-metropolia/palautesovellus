@@ -18,3 +18,9 @@
 .admin-logout-button .MuiSvgIcon-root {
   font-size: 40px;
 }
+
+.action-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

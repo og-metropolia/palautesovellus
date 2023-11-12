@@ -22,7 +22,7 @@ const WriteFeedback = (props) => {
         value={feedback}
         onChange={handleFeedbackChange}
         rows={5}
-        placeholder={t('dashboard.session.writeHereHint')}
+        placeholder={t('session.writeHereHint')}
         className="text-area"
         style={{
           color: props.color,

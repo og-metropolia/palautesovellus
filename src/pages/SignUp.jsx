@@ -1,3 +1,4 @@
+import './sign-up.css';
 import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -21,6 +22,7 @@ import colors from '../constants/colors.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import { isValidEmail } from '../utils/input-validation.mjs';
 import { useTranslation } from 'react-i18next';
+import LangSelector from '../components/LanguageSelector.jsx';
 
 const defaultTheme = createTheme();
 
@@ -99,7 +101,7 @@ export default function SignUp() {
           }}>
           <img
             src="/assets/logo_512x512.png"
-            alt="Palautepomppu Logo"
+            alt={t('signup.logoAltText')}
             className="navbar-favicon"
             width={48}
           />
@@ -182,12 +184,15 @@ export default function SignUp() {
               sx={{ mt: 1, mb: 1 }}>
               {t('signup.signupButton')}
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container>
               <Grid item>
                 <Link component={RouterLink} to={ROUTES.login} variant="body2">
                   {t('signup.alreadyUser')}
                 </Link>
               </Grid>
+              <div className="lang-selector">
+                <LangSelector />
+              </div>
             </Grid>
           </Box>
           <Copyright sx={{ mt: 5 }} />

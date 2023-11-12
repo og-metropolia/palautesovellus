@@ -1,6 +1,8 @@
 import './footer.css';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@mui/material';
+import LangSelector from '../components/LanguageSelector.jsx';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -8,11 +10,15 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="logo-container">
-          <img
-            src="/assets/logo_512x512.png"
-            alt={t('footer.altText')}
-            className="footer-logo"
-          />
+          <Button
+            className="footer-logo-button"
+            onClick={() => (window.location.href = '/')}>
+            <img
+              src="/assets/logo_512x512.png"
+              alt={t('footer.altText')}
+              className="footer-logo"
+            />
+          </Button>
         </div>
         <div className="footer-col-1">
           <h4>{t('footer.contact.title')}</h4>
@@ -38,6 +44,7 @@ export default function Footer() {
             </a>
           </p>
         </div>
+        <LangSelector />
       </div>
     </footer>
   );

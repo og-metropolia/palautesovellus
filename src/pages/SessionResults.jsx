@@ -15,6 +15,7 @@ import { emojis } from '../components/EmojiFeedback.jsx';
 import EmojiRating from '../components/EmojiRating.jsx';
 import { CircularProgress, Tooltip } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import Footer from '../components/Footer.jsx';
 
 function getSessionUrl(id) {
   return `${window.location.protocol}//${window.location.hostname}${
@@ -24,7 +25,7 @@ function getSessionUrl(id) {
 
 function getEmojiFromName(name) {
   for (let i = 0; i < emojis.length; i++) {
-    if (emojis[i].name === name) {
+    if (emojis[i].id === name) {
       return emojis[i].icon;
     }
   }
@@ -33,7 +34,7 @@ function getEmojiFromName(name) {
 
 function getEmojiIdFromName(name) {
   for (let i = 0; i < emojis.length; i++) {
-    if (emojis[i].name === name) {
+    if (emojis[i].id === name) {
       return i;
     }
   }
@@ -153,80 +154,83 @@ export default function SessionResults(props) {
   }
 
   return (
-    <div className="question-container">
-      <div className="questionlist-container">
-        <ButtonGroup variant="text" aria-label="text button group">
-          <Tooltip title={t('dashboard.results.backNavigation')}>
-            <Button
-              className="custom-back-button"
-              onClick={() => (window.location.href = ROUTES.dashboard)}
-              style={{ color: 'white' }}>
-              <ArrowBackIcon />
-            </Button>
-          </Tooltip>
-          <Tooltip title={t('dashboard.results.copyUrl')}>
-            <Button
-              onClick={() => {
-                navigator.clipboard.writeText(
-                  getSessionUrl(props.match.params.id),
-                );
-              }}
-              style={{ color: 'white' }}>
-              <LinkIcon />
-            </Button>
-          </Tooltip>
-          <Tooltip title={t('dashboard.results.copyQrCodeUrl')}>
-            <Button
-              onClick={() => {
-                navigator.clipboard.writeText(
-                  getQrCodeForUrl(getSessionUrl(props.match.params.id)),
-                );
-              }}
-              style={{ color: 'white' }}>
-              <QrCodeIcon />
-            </Button>
-          </Tooltip>
-          <Tooltip title={t('dashboard.results.printSession')}>
-            <Button
-              onClick={() => {
-                setTimeout(() => {
-                  window.print();
-                }, 1000);
-              }}
-              style={{ color: 'white' }}>
-              <PrintIcon />
-            </Button>
-          </Tooltip>
-        </ButtonGroup>
-        <h2>{t('dashboard.questionsHeading')}</h2>
-        <ul>
-          {questions.map((question) => (
-            <li key={question.question_id}>
-              <button
+    <>
+      <div className="question-container">
+        <div className="questionlist-container">
+          <ButtonGroup variant="text" aria-label="text button group">
+            <Tooltip title={t('dashboard.results.backNavigation')}>
+              <Button
+                className="custom-back-button"
+                onClick={() => (window.location.href = ROUTES.dashboard)}
+                style={{ color: 'white' }}>
+                <ArrowBackIcon />
+              </Button>
+            </Tooltip>
+            <Tooltip title={t('dashboard.results.copyUrl')}>
+              <Button
                 onClick={() => {
-                  triggerSelectQuestion(question.question_id);
+                  navigator.clipboard.writeText(
+                    getSessionUrl(props.match.params.id),
+                  );
                 }}
-                style={{
-                  backgroundColor:
-                    new URLSearchParams(window.location.search).get(
-                      'question',
-                    ) === `${question.question_id}`
-                      ? 'var(--landing-blue)'
-                      : 'white',
-                  color:
-                    new URLSearchParams(window.location.search).get(
-                      'question',
-                    ) === `${question.question_id}`
-                      ? 'white'
-                      : 'black',
-                }}>
-                {question.content}
-              </button>
-            </li>
-          ))}
-        </ul>
+                style={{ color: 'white' }}>
+                <LinkIcon />
+              </Button>
+            </Tooltip>
+            <Tooltip title={t('dashboard.results.copyQrCodeUrl')}>
+              <Button
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    getQrCodeForUrl(getSessionUrl(props.match.params.id)),
+                  );
+                }}
+                style={{ color: 'white' }}>
+                <QrCodeIcon />
+              </Button>
+            </Tooltip>
+            <Tooltip title={t('dashboard.results.printSession')}>
+              <Button
+                onClick={() => {
+                  setTimeout(() => {
+                    window.print();
+                  }, 1000);
+                }}
+                style={{ color: 'white' }}>
+                <PrintIcon />
+              </Button>
+            </Tooltip>
+          </ButtonGroup>
+          <h2>{t('dashboard.questionsHeading')}</h2>
+          <ul>
+            {questions.map((question) => (
+              <li key={question.question_id}>
+                <button
+                  onClick={() => {
+                    triggerSelectQuestion(question.question_id);
+                  }}
+                  style={{
+                    backgroundColor:
+                      new URLSearchParams(window.location.search).get(
+                        'question',
+                      ) === `${question.question_id}`
+                        ? 'var(--landing-blue)'
+                        : 'white',
+                    color:
+                      new URLSearchParams(window.location.search).get(
+                        'question',
+                      ) === `${question.question_id}`
+                        ? 'white'
+                        : 'black',
+                  }}>
+                  {question.content}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="answer-container">{answerMarkup}</div>
       </div>
-      <div className="answer-container">{answerMarkup}</div>
-    </div>
+      <Footer />
+    </>
   );
 }

@@ -12,6 +12,7 @@ import EmojiFeedback from '../components/EmojiFeedback';
 import WriteFeedback from '../components/WriteFeedback';
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
+import Navbar from '../components/Navbar.jsx';
 
 function getThemeForValue(value) {
   for (const theme in QUESTION_THEMES) {
@@ -69,6 +70,7 @@ export default function Session(props) {
 
   return (
     <>
+      <Navbar showLoginButton={false} />
       <div className="session-background">
         <img src="/assets/session_background.jpg"></img>
       </div>
@@ -127,7 +129,7 @@ export default function Session(props) {
               color: colors.black,
             }}
             onClick={submitAnswer}>
-            <FaPaperPlane style={{ marginRight: '5px' }} />
+            <FaPaperPlane style={{ marginLeft: '5px', marginRight: '5px' }} />
             {t('session.sendButton')}
           </button>
         </div>

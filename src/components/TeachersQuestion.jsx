@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import {
   Button,
   TextField,
-  Checkbox,
   FormControl,
-  InputLabel,
   Select,
   MenuItem,
-  RadioGroup,
-  FormControlLabel,
   Radio,
-  FormLabel,
 } from '@mui/material';
 import { ENDPOINTS, BASE_URL } from '../constants/api.mjs';
 import { QUESTION_TYPES } from '../constants/question-types.mjs';
@@ -251,15 +246,15 @@ export default function TeachersQuestion(props) {
       ))}
 
       <Button
-        variant="contained"
+        variant="outlined"
         color="primary"
-        style={{ marginTop: '20px', marginRight: '10px' }}
+        style={{ marginTop: '20px', marginRight: '10px', marginLeft: '10px' }}
         onClick={addQuestion}>
         {t('dashboard.addQuestionButton')}
       </Button>
       <Button
         variant="contained"
-        color="secondary"
+        color="primary"
         style={{ marginTop: '20px' }}
         onClick={handleSubmit}>
         {t('dashboard.createSession')}
