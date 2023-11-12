@@ -1,0 +1,46 @@
+# **Sprint Meeting 12.11.2023**
+
+---
+
+**Aika:** 12:00 - 18:00
+
+**Osallistujat:** Adrian Gashi, Leo Härkönen, Yamir Haque
+
+**Scrum Master:** Adrian Gashi
+
+---
+
+**Yleiskatsaus:**
+
+Tässä kokouksessa kävimme läpi kaikki sivut ja komponentit varmistaaksemme lokalisaation oikeellisuuden. Lisäksi teimme käyttöliittymään parannuksia kielen vaihdon suhteen, varmistaen visuaalisen eheyden kaikilla kielillä. Lisäksi laadimme tietokannan lokalisoinnin suunnitteludokumentin Markdown-muodossa ja lisäsimme sen GitHubiin.
+
+---
+
+## **Kokouksessa käsitellyt asiat**
+
+‌
+
+**Lokalisaation Tarkistus ja Päivitykset:**
+
+- Käytiin läpi jokainen sivu ja komponentti.
+- Tarkistettiin lokalisaation toimivuus ja oikeellisuus.
+- Tehtiin tarvittavat lisäykset ja parannukset.
+
+**Käyttöliittymän Parannukset:**
+
+- Tehdyn lokalisaatiotyön pohjalta päivitettiin käyttöliittymää.
+- Varmistettiin, että kielen vaihtaminen ei vaikuta negatiivisesti sivuston visuaaliseen ilmeeseen.
+
+**Tietokannan Lokalisoinnin Suunnitteludokumentti:**
+
+- Laadittiin suunnitteludokumentti lokalisaation toteutuksesta tietokannassa.
+- Dokumentti lisättiin projektin GitHub-repositorioon.
+
+**Seuraavat Askeleet:**
+
+- Sovittiin, että huomenna 13.11.2023 laaditaan Sprint 5 raportti ja suunnitellaan Sprint 6.
+- Käytiin läpi sprintin aikana saavutetut tavoitteet ja onnistumiset.
+
+‌
+
+Seuraava palaveri on sovittu pidettäväksi **13.11.2023**.
