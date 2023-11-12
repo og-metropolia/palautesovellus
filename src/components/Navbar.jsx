@@ -23,16 +23,20 @@ export default function Navbar() {
 
   return (
     <div className="navbar">
-      <Link className="navbar-brand" href="/">
+      <Button
+        className="navbar-brand"
+        onClick={() => (window.location.href = ROUTES.dashboard)}>
         <img
           src="/assets/logo_512x512.png"
           alt="Palautepomppu Logo"
           className="navbar-favicon"
           width={48}
         />
-      </Link>
-      <img src="/assets/pallot.gif" alt="Pallo kuva" className="pallo-gif" />
-      <h1 className="navbar-heading">{t('navbar.mainTitle')}</h1>
+      </Button>
+      <img src="/assets/pallot.gif" alt="Pallo kuva" className="ball-gif" />
+      <Button onClick={() => (window.location.href = '/')}>
+        <h1 className="navbar-heading">{t('navbar.mainTitle')}</h1>
+      </Button>
       <div className="navbar-actions">
         <Tooltip title={userId ? t('navbar.logout') : t('navbar.login')}>
           <Button className="logout-button" onClick={handleButtonClick}>
