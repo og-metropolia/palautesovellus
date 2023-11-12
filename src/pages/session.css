@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .question {
   display: flex;
   flex-direction: column;
@@ -40,16 +41,15 @@
 .session-background img {
   position: fixed;
   z-index: -1;
+  top: 0;
   width: 100%;
   height: 100%;
 }
 
 @media (max-width: 480px) {
   .session-background img {
-    position: fixed;
     width: 1400px;
     height: 100vh;
-    z-index: -1;
     left: 50%;
     transform: translateX(-50%);
   }

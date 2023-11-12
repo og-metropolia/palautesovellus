@@ -12,19 +12,26 @@ import {
 } from 'react-icons/fa';
 import colors from '../constants/colors.mjs';
 import AnswerContext from './AnswerContext.jsx';
+import { Tooltip } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export const emojis = [
-  { icon: <FaLaugh />, name: 'smile' },
-  { icon: <FaGrin />, name: 'wink' },
-  { icon: <FaSurprise />, name: 'surprised' },
-  { icon: <FaSmile />, name: 'happy' },
-  { icon: <FaMeh />, name: 'neutral' },
-  { icon: <FaFrown />, name: 'sad' },
-  { icon: <FaAngry />, name: 'angry' },
-  { icon: <FaTired />, name: 'tired' },
+  { icon: <FaLaugh />, name: 'smile', tooltipName: 'session.emoji.smile' },
+  { icon: <FaGrin />, name: 'wink', tooltipName: 'session.emoji.wink' },
+  {
+    icon: <FaSurprise />,
+    name: 'surprised',
+    tooltipName: 'session.emoji.surprised',
+  },
+  { icon: <FaSmile />, name: 'happy', tooltipName: 'session.emoji.happy' },
+  { icon: <FaMeh />, name: 'neutral', tooltipName: 'session.emoji.neutral' },
+  { icon: <FaFrown />, name: 'sad', tooltipName: 'session.emoji.sad' },
+  { icon: <FaAngry />, name: 'angry', tooltipName: 'session.emoji.angry' },
+  { icon: <FaTired />, name: 'tired', tooltipName: 'session.emoji.tired' },
 ];
 
-const EmojiFeedback = (props) => {
+export default function EmojiFeedback(props) {
+  const { t } = useTranslation();
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const answerContext = useContext(AnswerContext);
 
@@ -40,20 +47,20 @@ const EmojiFeedback = (props) => {
     <div
       className="emoji-container"
       style={{ backgroundColor: props.bgColor || colors.white }}>
-      {Object.entries(emojis).map(([index, { icon, name }]) => (
-        <span
-          key={index}
-          className="emoji"
-          style={{
-            color: props.fgColor || colors.black,
-            opacity: selectedEmoji && selectedEmoji !== index ? 0.5 : 1,
-          }}
-          onClick={() => handleEmojiClick(index)}>
-          {icon}
-        </span>
+      {emojis.map((emoji, index) => (
+        <Tooltip key={index} title={t(emoji.tooltipName)} arrow>
+          <span
+            className="emoji"
+            style={{
+              color: props.fgColor || colors.black,
+              opacity:
+                selectedEmoji !== null && selectedEmoji !== index ? 0.5 : 1,
+            }}
+            onClick={() => handleEmojiClick(index)}>
+            {emoji.icon}
+          </span>
+        </Tooltip>
       ))}
     </div>
   );
-};
-
-export default EmojiFeedback;
+}

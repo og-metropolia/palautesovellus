@@ -9,7 +9,8 @@
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "rememberMe": "تذكرني",
-    "noAccount": "ليس لديك حساب؟ تسجيل"
+    "noAccount": "ليس لديك حساب؟ تسجيل",
+    "cantFindAcc": "البيانات لا تتطابق مع مستخدم موجود."
   },
   "signup": {
     "signup": "تسجيل",
@@ -78,12 +79,31 @@
   "admin": {
     "adminTitle": "إدارةالمستخدم",
     "searchUser": "مستخدم البحث...",
-    "logout": "تسجيل خروج"
+    "logout": "تسجيل خروج",
+    "deleteUserTooltip": "مسح المستخدم"
   },
   "session": {
     "writeHereHint": "اكتب ردودك هنا...",
     "sendButton": "يرسل",
-    "errorSavingAnswers": "حدث خطأ أثناء حفظ الإجابات!"
+    "errorSavingAnswers": "حدث خطأ أثناء حفظ الإجابات!",
+    "draw": {
+      "eraseTooltip": "محو",
+      "resetTooltip": "محو",
+      "penTooltip": "قلم",
+      "redTooltip": "أحمر",
+      "greenTooltip": "أخضر",
+      "blueTooltip": "أزرق"
+    },
+    "emoji": {
+      "smile": "ابتسامة",
+      "wink": "غمز",
+      "surprised": "متفاجئ",
+      "happy": "سعيد",
+      "neutral": "محايد",
+      "sad": "حزين",
+      "angry": "غاضب",
+      "tired": "متعب"
+    }
   },
   "thankyou": {
     "thanksTitle": "شكرا لإجابتك!"

@@ -17,7 +17,7 @@
 }
 
 .button-group {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 @media (max-width: 600px) {
@@ -33,6 +33,7 @@
 
   .button-group button {
     font-size: 14px;
-    margin-right: 2px;
+    margin-right: 3px;
+    margin-left: 3px;
   }
 }

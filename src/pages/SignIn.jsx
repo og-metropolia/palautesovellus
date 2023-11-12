@@ -1,4 +1,3 @@
-import './signup.css';
 import * as React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -21,7 +20,6 @@ import Copyright from '../components/Copyright';
 import colors from '../constants/colors.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import { isValidEmail } from '../utils/input-validation.mjs';
-import Navbar from '../components/Navbar.jsx';
 import LangSelector from '../components/LanguageSelector.jsx';
 import { useTranslation } from 'react-i18next';
 
@@ -89,7 +87,6 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <LangSelector />
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -134,10 +131,9 @@ export default function SignIn() {
             />
             <h1>{t('login.login')}</h1>
             {showError && (
-              <span style={{ color: 'red' }}>
-                Tunnukset eivät täsmää olemassa olevaan käyttäjään.
-              </span>
+              <span style={{ color: 'red' }}>{t('login.cantFindAcc')}</span>
             )}
+
             <Box component="form" noValidate onSubmit={handleSubmit}>
               <TextField
                 margin="normal"
@@ -191,6 +187,9 @@ export default function SignIn() {
                     {t('login.noAccount')}
                   </Link>
                 </Grid>
+                <div className="lang-selector">
+                  <LangSelector />
+                </div>
               </Grid>
               <Box mt={5}>
                 <Copyright />

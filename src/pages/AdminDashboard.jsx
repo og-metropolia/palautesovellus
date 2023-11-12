@@ -14,6 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import ROUTES from '../constants/routes.mjs';
 import { useTranslation } from 'react-i18next';
+import LangSelector from '../components/LanguageSelector.jsx';
 
 export default function AdminDashboard() {
   const { t } = useTranslation();
@@ -63,27 +64,29 @@ export default function AdminDashboard() {
     <div style={{ padding: '20px', textAlign: 'center' }}>
       <h1 className="admin-header">{t('admin.adminTitle')}</h1>
 
-      <TextField
-        className="search-user-field"
-        label={t('admin.searchUser')}
-        variant="outlined"
-        fullWidth
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ marginBottom: '20px', width: '50%' }}
-      />
-      <Tooltip title={t('admin.logout')}>
-        <IconButton
-          className="admin-logout-button"
-          onClick={() => {
-            window.localStorage.removeItem(LOCAL_STORAGE_KEYS.userId);
-            window.location.href = '/';
-          }}
-          color="inherit">
-          <ExitToAppIcon fontSize="large" />
-        </IconButton>
-      </Tooltip>
-
+      <div className="action-container">
+        <TextField
+          className="search-user-field"
+          label={t('admin.searchUser')}
+          variant="outlined"
+          fullWidth
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ marginBottom: '20px', width: '50%' }}
+        />
+        <Tooltip title={t('admin.logout')}>
+          <IconButton
+            className="admin-logout-button"
+            onClick={() => {
+              window.localStorage.removeItem(LOCAL_STORAGE_KEYS.userId);
+              window.location.href = '/';
+            }}
+            color="inherit">
+            <ExitToAppIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
+        <LangSelector />
+      </div>
       <List className="admin-list">
         {filteredUsers.map((user) => (
           <ListItem
@@ -94,12 +97,14 @@ export default function AdminDashboard() {
               marginBottom: '5px',
               columnGap: '20px',
             }}>
-            <IconButton
-              className="delete-user-button"
-              onClick={() => handleDeleteUser(user.teacher_id)}
-              color="inherit">
-              <DeleteIcon />
-            </IconButton>
+            <Tooltip title={t('admin.deleteUserTooltip')}>
+              <IconButton
+                className="delete-user-button"
+                onClick={() => handleDeleteUser(user.teacher_id)}
+                color="inherit">
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
             {user.email}
           </ListItem>
         ))}

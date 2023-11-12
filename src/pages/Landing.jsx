@@ -8,7 +8,7 @@ export default function Landing() {
 
   return (
     <div className="landing-page">
-      <Navbar />
+      <Navbar showLoginButton={true} />
 
       <div className="landing-container">
         <div className="landing-content">

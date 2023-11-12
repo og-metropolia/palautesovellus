@@ -2,7 +2,7 @@ import './footer.css';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@mui/material';
-import ROUTES from '../constants/routes.mjs';
+import LangSelector from '../components/LanguageSelector.jsx';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -44,6 +44,7 @@ export default function Footer() {
             </a>
           </p>
         </div>
+        <LangSelector />
       </div>
     </footer>
   );

@@ -7,7 +7,7 @@ import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import LangSelector from '../components/LanguageSelector.jsx';
 import { useTranslation } from 'react-i18next';
 
-export default function Navbar() {
+export default function Navbar(props) {
   const { t } = useTranslation();
   const userId = window.localStorage.getItem(LOCAL_STORAGE_KEYS.userId);
 
@@ -42,17 +42,19 @@ export default function Navbar() {
         <h1 className="navbar-heading">{t('navbar.mainTitle')}</h1>
       </Button>
       <div className="navbar-actions">
-        <Tooltip title={userId ? t('navbar.logout') : t('navbar.login')}>
-          <Button className="logout-button" onClick={handleButtonClick}>
-            <PersonIcon
-              className="icon-background"
-              style={{
-                fontSize: '44px',
-                color: userId ? 'var(--p-blue)' : 'grey',
-              }}
-            />
-          </Button>
-        </Tooltip>
+        {props.showLoginButton && (
+          <Tooltip title={userId ? t('navbar.logout') : t('navbar.login')}>
+            <Button className="logout-button" onClick={handleButtonClick}>
+              <PersonIcon
+                className="icon-background"
+                style={{
+                  fontSize: '44px',
+                  color: userId ? 'var(--p-blue)' : 'grey',
+                }}
+              />
+            </Button>
+          </Tooltip>
+        )}
         <LangSelector />
       </div>
     </div>

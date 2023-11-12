@@ -9,7 +9,8 @@
     "email": "Sähköposti",
     "password": "Salasana",
     "rememberMe": "Muista minut",
-    "noAccount": "Ei käyttäjätunnusta? Rekisteröidy"
+    "noAccount": "Ei käyttäjätunnusta? Rekisteröidy",
+    "cantFindAcc": "Tunnukset eivät täsmää olemassa olevaan käyttäjään."
   },
   "signup": {
     "signup": "Rekisteröidy",
@@ -77,12 +78,31 @@
   "admin": {
     "adminTitle": "Käyttäjähallinnointi",
     "searchUser": "Etsi käyttäjää..",
-    "logout": "Kirjaudu ulos"
+    "logout": "Kirjaudu ulos",
+    "deleteUserTooltip": "Poista käyttäjä"
   },
   "session": {
     "writeHereHint": "Kirjoita palaute tähän..",
     "sendButton": "Lähetä",
-    "errorSavingAnswers": "Virhe vastauksien tallennuksessa!"
+    "errorSavingAnswers": "Virhe vastauksien tallennuksessa!",
+    "draw": {
+      "eraseTooltip": "pyyhekumi",
+      "resetTooltip": "nollaa",
+      "penTooltip": "kynä",
+      "redTooltip": "punainen",
+      "greenTooltip": "vihreä",
+      "blueTooltip": "sininen"
+    },
+    "emoji": {
+      "smile": "iloinen",
+      "wink": "vinkkaus",
+      "surprised": "yllättynyt",
+      "happy": "onnellinen",
+      "neutral": "neutraali",
+      "sad": "surullinen",
+      "angry": "vihainen",
+      "tired": "väsynyt"
+    }
   },
   "thankyou": {
     "thanksTitle": "Kiitos vastauksesta!"

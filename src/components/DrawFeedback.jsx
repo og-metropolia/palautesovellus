@@ -3,8 +3,11 @@ import React, { useRef, useState, useEffect, useContext } from 'react';
 import { FaPencilAlt, FaEraser, FaCircle, FaTrash } from 'react-icons/fa';
 import colors from '../constants/colors.mjs';
 import AnswerContext from './AnswerContext.jsx';
+import { Tooltip } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const DrawFeedback = (props) => {
+  const { t } = useTranslation();
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState(colors.black);
@@ -90,42 +93,67 @@ const DrawFeedback = (props) => {
       className="draw-container"
       style={{ backgroundColor: props.neutralColor }}>
       <div className="button-group">
-        <button
-          style={{ color: colors.black, marginRight: '5px' }}
-          onClick={() => {
-            setTool('pen');
-            setColor(colors.black);
-          }}>
-          <FaPencilAlt />
-        </button>
-        <button
-          style={{ marginRight: '5px' }}
-          onClick={() => setTool('eraser')}>
-          <FaEraser />
-        </button>
-        <button
-          style={{ color: colors.red, marginRight: '5px' }}
-          onClick={() => setColor(colors.red)}>
-          <FaCircle />
-        </button>
-        <button
-          style={{ color: colors.green, marginRight: '5px' }}
-          onClick={() => setColor(colors.green)}>
-          <FaCircle />
-        </button>
-        <button
-          style={{ color: colors.blue, marginRight: '5px' }}
-          onClick={() => setColor(colors.blue)}>
-          <FaCircle />
-        </button>
-        <button
-          onClick={() => {
-            const canvas = canvasRef.current;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-          }}>
-          <FaTrash />
-        </button>
+        <Tooltip title={t('session.draw.penTooltip')}>
+          <button
+            style={{
+              color: colors.black,
+              marginLeft: '5px',
+              marginRight: '5px',
+            }}
+            onClick={() => {
+              setTool('pen');
+              setColor(colors.black);
+            }}>
+            <FaPencilAlt />
+          </button>
+        </Tooltip>
+        <Tooltip title={t('session.draw.eraseTooltip')}>
+          <button
+            style={{ marginLeft: '5px', marginRight: '5px' }}
+            onClick={() => setTool('eraser')}>
+            <FaEraser />
+          </button>
+        </Tooltip>
+        <Tooltip title={t('session.draw.redTooltip')}>
+          <button
+            style={{ color: colors.red, marginLeft: '5px', marginRight: '5px' }}
+            onClick={() => setColor(colors.red)}>
+            <FaCircle />
+          </button>
+        </Tooltip>
+        <Tooltip title={t('session.draw.greenTooltip')}>
+          <button
+            style={{
+              color: colors.green,
+              marginLeft: '5px',
+              marginRight: '5px',
+            }}
+            onClick={() => setColor(colors.green)}>
+            <FaCircle />
+          </button>
+        </Tooltip>
+        <Tooltip title={t('session.draw.blueTooltip')}>
+          <button
+            style={{
+              color: colors.blue,
+              marginLeft: '5px',
+              marginRight: '5px',
+            }}
+            onClick={() => setColor(colors.blue)}>
+            <FaCircle />
+          </button>
+        </Tooltip>
+        <Tooltip title={t('session.draw.resetTooltip')}>
+          <button
+            style={{ marginLeft: '5px', marginRight: '5px' }}
+            onClick={() => {
+              const canvas = canvasRef.current;
+              const ctx = canvas.getContext('2d');
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }}>
+            <FaTrash />
+          </button>
+        </Tooltip>
       </div>
       <canvas
         ref={canvasRef}

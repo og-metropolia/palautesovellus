@@ -24,10 +24,24 @@ function App() {
 
   useEffect(() => {
     setContentDirection(i18n.language !== 'ar' ? 'ltr' : 'rtl');
+    const langSelectors = document.querySelectorAll('.lang-selector');
+    for (const element of langSelectors) {
+      if (element) {
+        element.style.marginLeft = i18n.language !== 'ar' ? 'auto' : '0';
+        element.style.marginRight = i18n.language !== 'ar' ? '0' : 'auto';
+      }
+    }
   }, []);
 
   i18n.on('languageChanged', () => {
     setContentDirection(i18n.language !== 'ar' ? 'ltr' : 'rtl');
+    const langSelectors = document.querySelectorAll('.lang-selector');
+    for (const element of langSelectors) {
+      if (element) {
+        element.style.marginLeft = i18n.language !== 'ar' ? 'auto' : '0';
+        element.style.marginRight = i18n.language !== 'ar' ? '0' : 'auto';
+      }
+    }
   });
 
   return (

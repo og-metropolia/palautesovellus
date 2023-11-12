@@ -9,7 +9,8 @@
     "email": "Email",
     "password": "Password",
     "rememberMe": "Remember me",
-    "noAccount": "No username? Register"
+    "noAccount": "No username? Register",
+    "cantFindAcc": "Credentials do not match an existing user."
   },
   "signup": {
     "signup": "Register",
@@ -77,12 +78,31 @@
   "admin": {
     "adminTitle": "User Management",
     "searchUser": "Search user...",
-    "logout": "Logout"
+    "logout": "Logout",
+    "deleteUserTooltip": "Delete user"
   },
   "session": {
     "writeHereHint": "Write feedback here..",
     "sendButton": "Send",
-    "errorSavingAnswers": "Error while saving answers!"
+    "errorSavingAnswers": "Error while saving answers!",
+    "draw": {
+      "eraseTooltip": "erase",
+      "resetTooltip": "reset",
+      "penTooltip": "pen",
+      "redTooltip": "red",
+      "greenTooltip": "blue",
+      "blueTooltip": "blue"
+    },
+    "emoji": {
+      "smile": "smile",
+      "wink": "wink",
+      "surprised": "surprised",
+      "happy": "happy",
+      "neutral": "neutral",
+      "sad": "sad",
+      "angry": "angry",
+      "tired": "tired"
+    }
   },
   "thankyou": {
     "thanksTitle": "Thank you for the answer!"
