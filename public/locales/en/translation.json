@@ -19,12 +19,15 @@
     "password": "Password",
     "getEmails": "I want updates by email",
     "signupButton": "Register",
-    "alreadyUser": "Already user? Log in"
+    "alreadyUser": "Already user? Log in",
+    "logoAltText": "FeedbackBounce Logo"
   },
   "navbar": {
     "mainTitle": "FEEDBACKBOUNCE",
     "login": "Log in",
-    "logout": "Log out"
+    "logout": "Log out",
+    "logoAltText": "FeedbackBounce Logo",
+    "ballAltText": "Balls"
   },
   "dashboard": {
     "loadingMessages": {
@@ -87,15 +90,18 @@
   "landing": {
     "feedbackSystem": {
       "title": "Modern feedback system for education",
-      "content": "FeedbackBounce introduces a new dimension to the connection between teaching and feedback, creating an innovative and efficient platform for both teachers and students. This system streamlines the feedback process, allowing teachers an easy way to collect, analyze, and act based on received feedback. Through FeedbackBounce, teachers can improve their teaching methods, adapt their approach to meet students' needs, and most importantly, enhance the overall educational experience. Adopt FeedbackBounce and step into the future of educational feedback."
+      "content": "FeedbackBounce introduces a new dimension to the connection between teaching and feedback, creating an innovative and efficient platform for both teachers and students. This system streamlines the feedback process, allowing teachers an easy way to collect, analyze, and act based on received feedback. Through FeedbackBounce, teachers can improve their teaching methods, adapt their approach to meet students' needs, and most importantly, enhance the overall educational experience. Adopt FeedbackBounce and step into the future of educational feedback.",
+      "imageAltText": "Child giving feedback"
     },
     "draw": {
       "title": "Draw feedback",
-      "content": "FeedbackBounce allows giving feedback in the form of drawings as well. Visual feedback is a powerful tool that can help understand students' feelings and thoughts more deeply than traditional texts. By drawing, students can express their emotions, thoughts, and perceptions about the content and methods of teaching. It gives them the opportunity to communicate in a different way and to highlight perspectives that might go unnoticed in text-based feedback."
+      "content": "FeedbackBounce allows giving feedback in the form of drawings as well. Visual feedback is a powerful tool that can help understand students' feelings and thoughts more deeply than traditional texts. By drawing, students can express their emotions, thoughts, and perceptions about the content and methods of teaching. It gives them the opportunity to communicate in a different way and to highlight perspectives that might go unnoticed in text-based feedback.",
+      "imageAltText": "Student drawing their feedback"
     },
     "analyzing": {
       "title": "Analysis of results and improvement of actions",
-      "content": "Feedback received is valuable only if actions can be taken based on it. FeedbackBounce gives teachers a clear overview of the feedback received through visual diagrams and analysis tools. Whether it's feedback from a single lesson or long-term trends, FeedbackBounce provides solutions for collecting and analyzing information. Let FeedbackBounce help you enhance your teaching and offer your students the best possible learning experience."
+      "content": "Feedback received is valuable only if actions can be taken based on it. FeedbackBounce gives teachers a clear overview of the feedback received through visual diagrams and analysis tools. Whether it's feedback from a single lesson or long-term trends, FeedbackBounce provides solutions for collecting and analyzing information. Let FeedbackBounce help you enhance your teaching and offer your students the best possible learning experience.",
+      "imageAltText": "Teacher reviewing received feedback."
     }
   },
   "footer": {

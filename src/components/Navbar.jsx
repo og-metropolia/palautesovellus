@@ -1,7 +1,7 @@
 import './navbar.css';
 import React from 'react';
 import { Person as PersonIcon } from '@mui/icons-material';
-import { Link, Button, Tooltip } from '@mui/material';
+import { Button, Tooltip } from '@mui/material';
 import ROUTES from '../constants/routes.mjs';
 import { LOCAL_STORAGE_KEYS } from '../constants/local-storage.mjs';
 import LangSelector from '../components/LanguageSelector.jsx';
@@ -28,12 +28,16 @@ export default function Navbar() {
         onClick={() => (window.location.href = ROUTES.dashboard)}>
         <img
           src="/assets/logo_512x512.png"
-          alt="Palautepomppu Logo"
+          alt={t('navbar.logoAltText')}
           className="navbar-favicon"
           width={48}
         />
       </Button>
-      <img src="/assets/pallot.gif" alt="Pallo kuva" className="ball-gif" />
+      <img
+        src="/assets/pallot.gif"
+        alt={t('navbar.ballAltText')}
+        className="ball-gif"
+      />
       <Button onClick={() => (window.location.href = '/')}>
         <h1 className="navbar-heading">{t('navbar.mainTitle')}</h1>
       </Button>

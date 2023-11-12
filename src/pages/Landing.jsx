@@ -19,7 +19,7 @@ export default function Landing() {
         <img
           className="landing-image"
           src="/assets/student_drawing_on_tablet.jpg"
-          alt="Lapsi antamassa palautetta."
+          alt={t('landing.feedbackSystem.imageAltText')}
         />
       </div>
 
@@ -27,7 +27,7 @@ export default function Landing() {
         <img
           className="landing-image"
           src="/assets/drawfeedback.jpg"
-          alt="Oppilas piirtää palautettaan."
+          alt={t('landing.draw.imageAltText')}
         />
         <div className="landing-content">
           <h2>{t('landing.draw.title')}</h2>
@@ -43,7 +43,7 @@ export default function Landing() {
         <img
           className="landing-image"
           src="/assets/person_analyzing.png"
-          alt="Opettaja tarkastelee saamaansa palautetta."
+          alt={t('landing.analyzing.imageAltText')}
         />
       </div>
       <Footer />

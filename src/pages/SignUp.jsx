@@ -99,7 +99,8 @@ export default function SignUp() {
           }}>
           <img
             src="/assets/logo_512x512.png"
-            alt="Palautepomppu Logo"
+            // alt="Palautepomppu Logo"
+            alt={t('signup.logoAltText')}
             className="navbar-favicon"
             width={48}
           />
