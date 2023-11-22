@@ -24,6 +24,7 @@ export default function Landing() {
   return (
     <div>
       <Button
+        id="lang-selector-button"
         style={{ backgroundColor: '#f0f0f0' }}
         aria-haspopup="true"
         onClick={handleClick}>

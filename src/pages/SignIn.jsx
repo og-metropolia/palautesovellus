@@ -60,7 +60,6 @@ export default function SignIn() {
       .then((data) => {
         if (data.successful) {
           setShowError(false);
-          console.log(data);
           if (is_admin) {
             window.localStorage.setItem(
               LOCAL_STORAGE_KEYS.adminId,
