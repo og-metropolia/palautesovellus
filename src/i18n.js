@@ -20,5 +20,5 @@ i18n
       },
       checkOnLoad: true,
     },
-    languages: ['en', 'es', 'ar'],
+    languages: ['en', 'fi', 'ar'],
   });
