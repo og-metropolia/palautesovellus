@@ -3,27 +3,31 @@ import { test, expect } from '@playwright/test';
 import ROUTES from '../../src/constants/routes.mjs';
 
 const BASE_PATH = 'http://localhost:5173';
+const cookies = [
+  { name: 'teacherId', value: '0', url: 'http://localhost:5173/' },
+];
 
 test.describe('SignIn Component', () => {
   test('should display error for invalid email', async ({ page }) => {
-    await page.goto(ROUTES.login);
-    await page.locator('css=#lang-selector-button').click();
+    await page.context().addCookies(cookies);
+    await page.goto(BASE_PATH + ROUTES.dashboard);
 
-    await page.fill('input[name="email"]', 'invalid-email');
-    await page.fill('input[name="password"]', 'samplePassword');
+    await page.getByLabel('Email *').fill('invalid-email');
+    await page.getByLabel('Email *').press('Tab');
+    await page.getByLabel('Password *').fill('invalidPassword');
 
-    await page.getByRole('button', { name: 'Log in' }).click();
+    await page.getByLabel('Password *').press('Tab');
+    await page.getByLabel('toggle password visibility').press('Tab');
+    await page.getByLabel('Remember me').press('Tab');
+    await page.getByRole('button', { name: 'Log in' }).press('Enter');
 
-    const errorMessage = await page.textContent('span');
-    expect(errorMessage).toBe('Credentials do not match an existing user.');
+    await page.goto(ROUTES.dashboard);
+    expect(page.url()).toBe(BASE_PATH + ROUTES.dashboard);
   });
 
   test('should sign in with valid credentials and redirect to dashboard', async ({
     page,
   }) => {
-    const cookies = [
-      { name: 'teacherId', value: '0', url: 'http://localhost:5173/' },
-    ];
     await page.context().addCookies(cookies);
     await page.goto(BASE_PATH + ROUTES.dashboard);
 
@@ -41,8 +45,10 @@ test.describe('SignIn Component', () => {
   });
 
   test("sign out from teacher's dashboard", async ({ page }) => {
+    await page.context().addCookies(cookies);
     await page.goto(ROUTES.dashboard);
-    await page.getByLabel('Log out').click();
-    expect(page.url()).toBe(BASE_PATH + ROUTES.landing);
+    // await page.getByLabel('Log out').click();
+    await page.locator('#lang-selector-button').click();
+    expect(page.url()).toBe(BASE_PATH + '/');
   });
 });

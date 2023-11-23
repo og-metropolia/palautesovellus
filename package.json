@@ -6,6 +6,7 @@
   "scripts": {
     "start:client": "vite",
     "start:server": "node src/backend/server.mjs",
+    "start:server:sqlite": "node src/backend/sqlite.mjs",
     "start": "npm-run-all --parallel start:client start:server",
     "test": "npx playwright test && vitest --no-color",
     "test:unit": "vitest --no-color",
@@ -32,6 +33,7 @@
     "react-i18next": "^13.3.1",
     "react-icons": "^4.11.0",
     "react-router-dom": "^5.3.4",
+    "sqlite3": "^5.1.6",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
