@@ -1,0 +1,35 @@
+# **Sprint Meeting 23.11.2023**
+
+---
+
+**Aika:** 17:00 - 19:45
+
+**Osallistujat:** Adrian Gashi, Yamir Haque, Leo Härkönen
+
+**Scrum Master:** Leo Härkönen
+
+---
+
+**Yleiskatsaus:**
+
+Tässä kokouksessa keskustelimme vaihtoehtoisen tietokanta ratkaisua sekä aloitimme raportin liittyen testidokumentointiin.
+
+---
+
+## **Kokouksessa käsitellyt asiat**
+
+**Siirtyminen vaihtoehtoiseen tietokanta ratkaisuun**
+
+- Keskustelun jälkeen päädyimme siirtyä SQLite tietokantaratkaisuun Metropolian oman MariaDB -tietokannan sijasta VPN ongelmien takia.
+- Toteutimme siirtymisen, mutta emme vielä saaneet mahdollisuutta testata kaikkien ominaisuuksien toimivuutta uudella ratkaisulla, yksikkö- ja E2E-testit menivät kuitenkin läpi.
+
+**Testiraportti dokumentti**
+
+- Aloimme pohtimaan sovelluksen testauksen dokumentointia.
+
+**Seuraavat Askeleet:**
+
+- Onnistuneen tietokannan siirtymisen johdosta voimme nyt jatkaa E2E-testien toteutusta kattavasti.
+- Testiraportti on vielä kesken, mutta hyvä pohja on luotu.
+
+Jatkamme molemmilla aiheilla ensi kokouksessa.
