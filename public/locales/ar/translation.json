@@ -57,7 +57,7 @@
     },
     "addQuestionButton": "أضف سؤال",
     "createSession": "أنشئ جلسة",
-    "previousQuestionHeading": "الأسئلة السابقة",
+    "previousSessionHeading": "المسوحات السابقة",
     "sessionN": "الجلسة {N}",
     "confirm": "تأكيد",
     "alerts": {

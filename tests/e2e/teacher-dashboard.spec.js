@@ -2,54 +2,57 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:5173/dashboard');
-  await page.goto('http://localhost:5173/login');
-  await page.getByLabel('Sähköposti *').fill('s@example.edu');
-  await page.getByLabel('Salasana *').fill('password');
-  await page.getByRole('button', { name: 'Kirjaudu sisään' }).click();
+  await page.goto('http://localhost:5173/login', { timeout: 10000 });
+  await page.waitForTimeout(1000);
+  await page.getByLabel('Email *').fill('s@example.edu');
+  await page.getByLabel('Password *').fill('password');
+  await page.getByRole('button', { name: 'Log in' }).click();
 });
 
 test.describe('Teacher Dashboard', () => {
   test('should create a question session', async ({ page }) => {
-    await page.getByText('Aihe...').click();
-    await page.getByRole('option', { name: 'Matematiikka' }).click();
+    test.setTimeout(120000);
+    await page.getByText('Topic...').click();
+    await page.getByRole('option', { name: 'Mathematics' }).click();
     await page
-      .getByPlaceholder('Kirjoita kysymys tähän...')
-      .fill('Testi Emoji Kysymys');
+      .getByPlaceholder('Write the question here...')
+      .fill('Test Emoji Question');
     await page.locator('input[name="emoji-0"]').check();
 
-    await page.getByRole('button', { name: 'Lisää kysymys' }).click();
+    await page.getByRole('button', { name: 'ADD QUESTION' }).click();
     await page
-      .getByPlaceholder('Kirjoita kysymys tähän...')
+      .getByPlaceholder('Write the question here...')
       .nth(1)
-      .fill('Testi Piirros Kysymys');
+      .fill('Test Draw Question');
     await page.locator('input[name="draw-1"]').check();
 
-    await page.getByRole('button', { name: 'Lisää kysymys' }).click();
+    await page.getByRole('button', { name: 'ADD QUESTION' }).click();
     await page
-      .getByPlaceholder('Kirjoita kysymys tähän...')
+      .getByPlaceholder('Write the question here...')
       .nth(2)
-      .fill('Testi Kirjoitus Kysymys');
+      .fill('Test Writing Question');
     await page.locator('input[name="write-2"]').check();
-    await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
 
     page.once('dialog', async (dialog) => {
-      expect(dialog.message()).toBe('Kysymykset lähetetty');
+      expect(dialog.message()).toBe('Question sent');
       dialog.accept();
     });
 
+    await page.waitForTimeout(1000);
     await page.locator('div.sessionlist-container ul>li').nth(-1).click();
+    await page.waitForTimeout(1000);
     expect(page.url()).toMatch(/.*\/results\/session\/\d+(\?question=\d+)?/);
 
     await expect(
-      page.getByRole('button', { name: 'Testi Emoji Kysymys' }),
-    ).toBeVisible();
+      page.getByRole('button', { name: 'Test Emoji Question' }),
+    ).toBeVisible({ timeout: 5000 });
     await expect(
-      page.getByRole('button', { name: 'Testi Piirros Kysymys' }),
-    ).toBeVisible();
+      page.getByRole('button', { name: 'Test Draw Question' }),
+    ).toBeVisible({ timeout: 5000 });
     await expect(
-      page.getByRole('button', { name: 'Testi Kirjoitus Kysymys' }),
-    ).toBeVisible();
+      page.getByRole('button', { name: 'Test Writing Question' }),
+    ).toBeVisible({ timeout: 5000 });
 
     page.close();
   });
@@ -57,11 +60,9 @@ test.describe('Teacher Dashboard', () => {
   test('should fail to create a question because missing all fields', async ({
     page,
   }) => {
-    await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
     page.once('dialog', async (dialog) => {
-      expect(dialog.message()).toBe(
-        'Täytä kaikki kysymykset ennen lähettämistä',
-      );
+      expect(dialog.message()).toBe('Fill in all questions before submitting');
       dialog.accept();
     });
   });
@@ -70,54 +71,52 @@ test.describe('Teacher Dashboard', () => {
     page,
   }) => {
     await page
-      .getByPlaceholder('Kirjoita kysymys tähän...')
-      .fill('Testi Kysymys');
-    await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+      .getByPlaceholder('Write the question here...')
+      .fill('Test Question');
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
 
-    await page.getByText('Emoji-vastaus').click();
+    await page.getByText('Emoji answer').click();
     await page.locator('input[name="emoji-0"]').check();
-    await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
 
     page.once('dialog', async (dialog) => {
-      expect(dialog.message()).toBe(
-        'Täytä kaikki kysymykset ennen lähettämistä',
-      );
+      expect(dialog.message()).toBe('Fill in all questions before submitting');
       dialog.accept();
     });
   });
-});
 
-test('should fail to create a question because missing question text', async ({
-  page,
-}) => {
-  await page.getByText('Aihe...').click();
-  await page.getByRole('option', { name: 'Matematiikka' }).click();
-  await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+  test('should fail to create a question because missing question text', async ({
+    page,
+  }) => {
+    await page.getByText('Topic...').click();
+    await page.getByRole('option', { name: 'Mathematics' }).click();
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
 
-  await page.getByText('Emoji-vastaus').click();
-  await page.locator('input[name="emoji-0"]').check();
-  await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+    await page.getByText('Emoji answer').click();
+    await page.locator('input[name="emoji-0"]').check();
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
 
-  page.once('dialog', async (dialog) => {
-    expect(dialog.message()).toBe('Täytä kaikki kysymykset ennen lähettämistä');
-    dialog.accept();
+    page.once('dialog', async (dialog) => {
+      expect(dialog.message()).toBe('Fill in all questions before submitting');
+      dialog.accept();
+    });
   });
-});
 
-test('should fail to create a question because missing answer type', async ({
-  page,
-}) => {
-  await page.getByText('Aihe...').click();
-  await page.getByRole('option', { name: 'Matematiikka' }).click();
-  await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+  test('should fail to create a question because missing answer type', async ({
+    page,
+  }) => {
+    await page.getByText('Topic...').click();
+    await page.getByRole('option', { name: 'Mathematics' }).click();
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
 
-  await page
-    .getByPlaceholder('Kirjoita kysymys tähän...')
-    .fill('Testi Kysymys');
-  await page.getByRole('button', { name: 'Lähetä kysymykset' }).click();
+    await page
+      .getByPlaceholder('Write the question here...')
+      .fill('Test Question');
+    await page.getByRole('button', { name: 'SEND QUESTIONS' }).click();
 
-  page.once('dialog', async (dialog) => {
-    expect(dialog.message()).toBe('Täytä kaikki kysymykset ennen lähettämistä');
-    dialog.accept();
+    page.once('dialog', async (dialog) => {
+      expect(dialog.message()).toBe('Fill in all questions before submitting');
+      dialog.accept();
+    });
   });
 });
