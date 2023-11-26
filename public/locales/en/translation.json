@@ -56,7 +56,7 @@
     },
     "addQuestionButton": "ADD QUESTION",
     "createSession": "SEND QUESTIONS",
-    "previousQuestionHeading": "Previous questions",
+    "previousSessionHeading": "Previous sessions",
     "sessionN": "Survey {N}",
     "confirm": "Ok",
     "alerts": {
@@ -90,7 +90,7 @@
       "resetTooltip": "reset",
       "penTooltip": "pen",
       "redTooltip": "red",
-      "greenTooltip": "blue",
+      "greenTooltip": "green",
       "blueTooltip": "blue"
     },
     "emoji": {

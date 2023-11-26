@@ -20,7 +20,7 @@ export default function Sessionlist(props) {
   return (
     <div className="session-wrapper">
       <div className="sessionlist-container">
-        <h2>{t('dashboard.previousQuestionHeading')}</h2>
+        <h2>{t('dashboard.previousSessionHeading')}</h2>
         <ul>
           {sessions.map((session, index) => (
             <li key={session.session_id}>

@@ -56,7 +56,7 @@
     },
     "addQuestionButton": "LISÄÄ KYSYMYS",
     "createSession": "LÄHETÄ KYSYMYKSET",
-    "previousQuestionHeading": "Aikaisemmat kysymykset",
+    "previousSessionHeading": "Aikaisemmat kyselyt",
     "sessionN": "Kysely {N}",
     "confirm": "Ok",
     "alerts": {
