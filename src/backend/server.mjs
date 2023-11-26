@@ -6,7 +6,8 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import TABLES from '../constants/tables.mjs';
 import { ENDPOINTS, API_PATH } from '../constants/api.mjs';
-import { queryRecordsAll, insertRecord, deleteRecord } from './sql.mjs';
+// import { queryRecordsAll, insertRecord, deleteRecord } from './sql.mjs';
+import { queryRecordsAll, insertRecord, deleteRecord } from './sqlite.mjs';
 
 const SALT_ROUNDS = 10;
 
@@ -17,19 +18,39 @@ app.use(cors());
 app.use(bodyParser.json());
 const port = process.env.API_PORT || 3000;
 
-export const conn = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+// export const conn = mysql.createConnection({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USERNAME,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+// });
 
-conn.connect((err) => {
+// conn.connect((err) => {
+//   if (err) {
+//     console.log('Error connecting to MySQL database = ', err);
+//     return;
+//   }
+//   console.log('MySQL successfully connected!');
+// });
+
+import sqlite3 from 'sqlite3';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export const DATABASE_FILE = path.join(
+  __dirname,
+  '../../database/feedbackbounce.sqlite',
+);
+
+const conn = new sqlite3.Database(DATABASE_FILE, (err) => {
   if (err) {
-    console.log('Error connecting to MySQL database = ', err);
-    return;
+    console.error('Error opening database', err);
+  } else {
+    console.log('SQLite successfully connected');
   }
-  console.log('MySQL successfully connected!');
 });
 
 function getRecordsAll(endpoint, tableName) {
@@ -45,20 +66,20 @@ function authorize() {
     if (is_admin) {
       const queryString = `SELECT * FROM ${TABLES.admin} WHERE email = ?`;
 
-      conn.query(queryString, [email], async (err, results) => {
+      conn.all(queryString, [email], (err, rows) => {
         if (err) {
           console.error('Database error: ', err);
           return res.status(500).send('Internal Server Error');
         }
 
-        if (results.length > 0) {
-          const user = results[0];
+        if (rows.length > 0) {
+          const user = rows[0];
           bcrypt.compare(submittedPassword, user.password, (err, result) => {
             if (err) throw err;
             res.status(200).json({
               code: 200,
               successful: result ? true : false,
-              user_id: results[0].admin_id,
+              user_id: rows[0].admin_id,
             });
           });
         } else {
@@ -72,7 +93,7 @@ function authorize() {
     } else {
       const queryString = `SELECT * FROM ${TABLES.users} WHERE email = ?`;
 
-      conn.query(queryString, [email], async (err, results) => {
+      conn.all(queryString, [email], async (err, results) => {
         if (err) {
           console.error('Database error: ', err);
           return res.status(500).send('Internal Server Error');
@@ -201,7 +222,7 @@ function checkExistingUser(email) {
 
     console.log('Checking if user exists with email: ', email);
 
-    conn.query(queryString, [email], (err, results) => {
+    conn.all(queryString, [email], (err, results) => {
       if (err) {
         console.error('Database error: ', err);
         resolve(true);
@@ -222,7 +243,7 @@ function queryQuestionsBySessionId() {
 
     const queryString = `SELECT * FROM ${TABLES.question} WHERE session_id = ?`;
 
-    conn.query(queryString, [session_id], (err, results) => {
+    conn.all(queryString, [session_id], (err, results) => {
       if (err) {
         return res.status(500).json({
           code: 500,
@@ -244,7 +265,7 @@ function querySessionsByTeacherId() {
 
     const queryString = `SELECT * FROM ${TABLES.session} WHERE teacher_id = ?`;
 
-    conn.query(queryString, [teacher_id], (err, results) => {
+    conn.all(queryString, [teacher_id], (err, results) => {
       if (err) {
         return res.status(500).json({
           code: 500,
@@ -266,7 +287,7 @@ function queryAnswersByQuestionId() {
 
     const queryString = `SELECT * FROM ${TABLES.answer} WHERE question_id = ?`;
 
-    conn.query(queryString, [question_id], (err, results) => {
+    conn.all(queryString, [question_id], (err, results) => {
       if (err) {
         return res.status(500).json({
           code: 500,
