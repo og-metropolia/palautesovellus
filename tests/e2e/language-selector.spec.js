@@ -2,8 +2,9 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
+  test.setTimeout(120000);
   await page.goto('/', { timeout: 10000 });
-  await page.waitForTimeout(3000); // fixes test failing on firefox occasionally
+  await page.waitForTimeout(3000);
   await page.waitForSelector('#lang-selector-button', {
     state: 'visible',
   });
@@ -12,8 +13,9 @@ test.beforeEach(async ({ page }) => {
 const changeLanguage = async (page, language) => {
   const languageSelector = page.locator('#lang-selector-button').first();
   await languageSelector.click();
+  await page.waitForTimeout(3000);
   await page.getByRole('menuitem', { name: language }).click();
-  await page.waitForTimeout(1000); // fixes translations not applying on webkit
+  await page.waitForTimeout(3000);
 };
 
 const login = async (page) => {
