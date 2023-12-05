@@ -14,7 +14,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
-  "[markdown]": { "editor.formatOnSave": false },
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false
+  },
   "markdown.extension.toc.unorderedList.marker": "-",
   "markdown.updateLinksOnFileMove.enabled": "always"
 }
