@@ -1,16 +1,12 @@
-
 # Palautepomppu
-- [Showcase](#showcase)
-  - [Front Page](#front-page)
-  - [Login page](#login-page)
-  - [Sign up page](#sign-up-page)
-  - [Teachers Dashboard](#teachers-dashboard)
-  - [Session page](#session-page)
-  - [Result page](#result-page)
-  - [Admin page](#admin-page)
-  - [Thank you page](#thank-you-page)
+
+- [Local Development](#local-development)
+- [Tech and Tools](#tech-and-tools)
+- [REST API Documentation](#rest-api-documentation)
 - [Diagrams](#diagrams)
 - [Testing](#testing)
+  - [Unit Testing](#unit-testing)
+  - [End-to-end Testing](#end-to-end-testing)
 - [Endpoints](#endpoints)
   - [Auth](#auth)
   - [Users](#users)
@@ -26,12 +22,19 @@
   - [Answer](#answer)
     - [Create Answer](#create-answer)
     - [Get Answers](#get-answers)
-
-
+- [Showcase](#showcase)
+  - [Front Page](#front-page)
+  - [Login page](#login-page)
+  - [Sign up page](#sign-up-page)
+  - [Teachers Dashboard](#teachers-dashboard)
+  - [Session page](#session-page)
+  - [Result page](#result-page)
+  - [Admin page](#admin-page)
+  - [Thank you page](#thank-you-page)
 
 ---
 
-# Local Development
+## Local Development
 
 **Note:** You need to turn on Metropolia VPN to access the database.
 **Note:** You need to create a `./.env` file with proper credentials. See `.env.example` for reference.
@@ -41,11 +44,11 @@ npm install
 npm start
 ```
 
-* http://localhost:5173 for React website:
-* http://localhost:3000 for Express REST API:
+* <http://localhost:5173> for React website:
+* <http://localhost:3000> for Express REST API:
 
+## Tech and Tools
 
-# Tech and Tools
 - React
 - Express
 - MySQL
@@ -55,12 +58,14 @@ npm start
 
 [And many others!](/package.json)
 
-# REST API Documentation
+## REST API Documentation
 
-**Production URL**: http://10.120.33.52/api/v0/
+**Production URL**: <http://10.120.33.52/api/v0/>
 
 ## Diagrams
+
 > Note that the PDF files are not up to date, but the source files should be.
+
 * [Activity diagram](/docs/diagrams/activity-diagram.pdf)
 * [Class diagram](/docs/diagrams/class-diagram.pdf)
 * [Deployment diagram](/docs/diagrams/deployment-diagram.pdf)
@@ -72,25 +77,29 @@ npm start
 ## Testing
 
 ### Unit Testing
+
 - Connect to Metropolia VPN.
 - Log in to Jenkins.
 - Run the palautepomppu-testing-unit job.
 - View results:
-http://10.120.33.63:8080/job/palautepomppu-testing-unit/ws/vitest/index.html#/
+<http://10.120.33.63:8080/job/palautepomppu-testing-unit/ws/vitest/index.html#/>
 
 ### End-to-end Testing
+
 - Connect to Metropolia VPN.
 - Log in to Jenkins.
 - Run the palautepomppu-testing-e2e job.
 - View results:
-http://10.120.33.63:8080/job/palautepomppu-testing-e2e/ws/playwright-report/index.html/
+<http://10.120.33.63:8080/job/palautepomppu-testing-e2e/ws/playwright-report/index.html/>
 
 ## Endpoints
 
 ### Auth
+
 **Endpoint**: `GET /auth/`
 
 Payload
+
 ```json
 {
   "email": "john.doe@example.com",
@@ -98,7 +107,9 @@ Payload
   "is_admin": false
 }
 ```
+
 Response
+
 ```json
 {
   "successful": true,
@@ -106,12 +117,15 @@ Response
   "user_id": 1
 }
 ```
+
 ### Users
 
 #### Get users
+
 Endpoint: `GET /users/`
 
 Response
+
 ```json
 [
   {
@@ -130,10 +144,13 @@ Response
   }
 ]
 ```
+
 #### Create user
+
 Endpoint: `POST /users/`
 
 Payload
+
 ```json
 {
   "firstName": "Jane",
@@ -142,7 +159,9 @@ Payload
   "email": "jane.doe@example.com"
 }
 ```
+
 Response
+
 ```json
 {
   "message": "Record created successfully!",
@@ -150,29 +169,37 @@ Response
   "user_id": 1
 }
 ```
+
 #### Delete user
+
 Endpoint: `DELETE /users/:id`
 
 Response
+
 ```json
 {
   "code": 200,
   "message": "Record deleted successfully!"
 }
 ```
+
 ### Session
 
 #### Create session
+
 Endpoint: `POST /session/`
 
 Payload
+
 ```json
 {
   "teacher_id": 1,
   "moment": "2023-04-21T14:30:56.000Z"
 }
 ```
+
 Response
+
 ```json
 {
   "message": "Record created successfully!",
@@ -180,13 +207,17 @@ Response
   "session_id": 1
 }
 ```
+
 #### Get Sessions
+
 Endpoint: `GET /session/`
 
 Query parameters:
+
 * `teacher_id=2`
 
 Response
+
 ```json
 {
   "code": 200,
@@ -209,6 +240,7 @@ Response
   ]
 }
 ```
+
 ### Question
 
 #### Create Question
@@ -216,6 +248,7 @@ Response
 Endpoint: `POST /question/`
 
 Payload
+
 ```json
 {
     "content": "What was the best thing in today’s lesson?",
@@ -223,7 +256,9 @@ Payload
   "theme": 1
 }
 ```
+
 Response
+
 ```json
 {
   "message": "Record created successfully!",
@@ -231,13 +266,17 @@ Response
   "question_id": 1
 }
 ```
+
 #### Get Questions
 
 Endpoint: `GET /question/`
 
 Query parameters:
+
 * `session_id=1`
+
 Response
+
 ```json
 [
     {
@@ -263,6 +302,7 @@ Response
   }
 ]
 ```
+
 ### Answer
 
 #### Create Answer
@@ -270,6 +310,7 @@ Response
 Endpoint: `POST /answer/`
 
 Payload
+
 ```json
 {
   "question_id": 1,
@@ -277,7 +318,9 @@ Payload
   "responder": "8ad6253f-6f4c-4b1e-a617-70f3db74a72a"
 }
 ```
+
 Response
+
 ```json
 {
   "message": "Record created successfully!",
@@ -285,13 +328,17 @@ Response
   "id": 1
 }
 ```
+
 #### Get Answers
+
 Endpoint: `GET /answer/`
 
 Query parameters:
+
 * `question_id=30`
 
 Response
+
 ```json
 {
     "code": 200,
@@ -320,46 +367,53 @@ Response
 
 Front page is shown when the user is not logged in.
 
-![Front Page](/images/frontpage.jpg)
-![Front Page](/images/frontpage2.jpg)
+![Landing 1](/images/pages/landing_01__en.jpg)
+![Landing 2](/images/pages/landing_02__en.jpg)
+![Landing 3](/images/pages/landing_03__en.jpg)
 
 ### Login page
 
 Login page is shown when the user is not logged in and clicks the login button.
 
-![Login](/images/signin.jpg)
+![Login](/images/pages/login_01__en.jpg)
 
 ### Sign up page
 
 Sign up page is shown when the user is not logged in and clicks "Ei käyttäjätunnusta? Rekisteröidy" link from the login page.
 
-![Sign up](/images/signup.jpg)
+![Sign up](/images/pages/signup_01__en.jpg)
 
 ### Teachers Dashboard
 
 Teachers dashboard is shown after the user has logged in with teacher credentials. Teacher can create new sessions and see the results of the previous sessions.
 
-![Dashboard](/images/dashboard.jpg)
+![Dashboard](/images/pages/dashboard_01__en.jpg)
+![Dashboard](/images/pages/dashboard_02__en.jpg)
 
 ### Session page
 
 Session page is shown after teacher has created a new session and shared the session QR-code or the link to the students. Students can answer the questions in the session.
 
-![Session](/images/session.jpg)
+![Session 1](/images/pages/session_01__en.jpg)
+![Session 2](/images/pages/session_02__en.jpg)
+![Session 3](/images/pages/session_03__en.jpg)
 
 ### Result page
 
 Result page is shown after the teacher clicks one session from "Aikaisemmat kyselyt". Teacher can see the results of the session.
 
-![Result](/images/resultSession.jpg)
+![Results 1](/images/pages/sessionresults_01__en.jpg)
+![Results 2](/images/pages/sessionresults_02__en.jpg)
+![Results 2](/images/pages/sessionresults_03__en.jpg)
 
 ### Admin page
 
 Admin page is shown after the user has logged in with admin credentials. Admin can delete users.
 
-![Admin](/images/admin.jpg)
+![Admin](/images/pages/admin_01__en.jpg)
 
 ### Thank you page
+
 Thank you page is shown after the user has answered the questions in the session and clicked "Lähetä".
 
-![Thank you](/images/thankyou.jpg)
+![Thank You](/images/pages/thanks_01__en.jpg)
