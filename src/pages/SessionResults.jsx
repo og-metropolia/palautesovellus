@@ -34,7 +34,7 @@ function getEmojiFromName(name) {
 
 function getEmojiIdFromName(name) {
   for (let i = 0; i < emojis.length; i++) {
-    if (emojis[i].id === name) {
+    if (emojis[i].name === name) {
       return i;
     }
   }
